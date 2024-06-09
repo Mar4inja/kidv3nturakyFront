@@ -1,0 +1,15 @@
+.clock {
+    color: #262c29;
+    font-size: 60px;
+    font-family: Orbitron, sans-serif;
+    letter-spacing: 7px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid rgb(54, 52, 52);
+    border-radius: 20px;
+    margin-left: -990px;
+    margin-top: -500px;
+  }
+  

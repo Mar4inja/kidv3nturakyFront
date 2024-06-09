@@ -1,0 +1,51 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 0;
+    margin-top: 20px;
+    border-radius: 20px;
+    z-index: 1000;
+}
+
+.navbar::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -10px; /* Izvieto līniju zem navigācijas joslas */
+    left: 0;
+    width: 100%;
+    height: 3px; /* Norādiet vēlamo līnijas biezumu */
+    background-color: rgba(0, 0, 0, 0.699); /* Norādiet vēlamo līnijas krāsu */
+}
+
+
+
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    margin: 0 15px;
+}
+
+.navbar-item a {
+    color: rgba(15, 13, 13, 0.986);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold; /* Pievieno fonta biezumu */
+    transition: color 0.3s;
+    padding: 8px 12px; /* Papildus padding, lai atstarpes starp pogām būtu lielākas */
+}
+
+.navbar-item a:hover {
+    color: #ddd;
+    background-color: #bbb; /* Fona krāsa, kad peli nokļūst virs pogas */
+}

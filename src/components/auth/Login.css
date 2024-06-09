@@ -1,0 +1,141 @@
+/* Resetējiet noklusējuma stilus */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Fona stili */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("../../assets/joanna-kosinska-1_CMoFsPfso-unsplash.jpg") rgba(0, 0, 0, 0.671);
+  background-size: cover;
+}
+
+/* Stili formai, kas specifiski paredzēti pieteikšanās lapai */
+.login-page .form-wrapper {
+  background: url("../../assets/gameboy.jpg");
+  width: 500px;
+  height: 800px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  border-radius: 20px;
+  border: 3px solid rgb(90, 75, 75);
+}
+
+/* Stili formai */
+.login-page .form-container {
+  padding: 20px;
+}
+
+.login-page .form-header {
+  text-align: center;
+  margin: 0 auto 20px auto;
+  position: relative;
+  top: 60px;
+  width: 30%;
+}
+
+.login-page .form-header h1 {
+  font-size: 24px;
+  color: #0c0c0cdc;
+  border: 2px solid #343533;
+  border-radius: 10px;
+}
+
+/* Stili ievades laukam */
+.login-page .input-wrapper {
+  position: relative;
+  margin-bottom: 118px;
+}
+
+.login-page .input-wrapper input {
+  width: 63%;
+  padding: 10px;
+  border: 1px solid #186839;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.5s;
+  margin-left: 85px;
+  margin-bottom: 30px;
+  opacity: 60%;
+}
+
+.login-page .input-wrapper:nth-child(1) {
+  margin-top: 160px;
+}
+
+.login-page .input-wrapper:nth-child(2) {
+  margin-top: -110px;
+}
+
+.login-page .input-wrapper input:focus {
+  border-color: #007bff;
+}
+
+.login-page .input-wrapper label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  margin-top: -15px;
+  margin-left: 85px;
+  transform: translateY(-50%);
+  color: #0d0e0d;
+  transition: all 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.login-page .input-wrapper label.active {
+  transform: translateY(-255%) translateX(-5px);
+  color: #030303;
+}
+
+.login-page .input-wrapper input:not(:focus) + label {
+  color: #080808;
+  opacity: 60%;
+}
+
+.login-page .input-wrapper input:focus + label {
+  transform: translateY(-255%) translateX(-5px);
+}
+
+/* Stili iesniegšanas pogai */
+.login-page .submit-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: -20px;
+  margin-left: 154px;
+  height: 45px;
+  width: 150px;
+}
+
+.login-page .submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Stili teksta maiņai */
+.login-page .toggle-text {
+  text-align: center;
+  margin-top: 10px;
+  color: #333;
+}
+
+.login-page .toggle-text span {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.login-page .toggle-text span:hover {
+  text-decoration: underline;
+}
