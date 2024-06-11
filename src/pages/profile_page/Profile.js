@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Profile.css'; // Pieņemsim, ka šeit ir jūsu CSS stils
+import styles from "./Profile.module.css"
+import Navbar from '../../components/navbar/Navbar';
 
 const Profile = ({ name, bio, profilePicture }) => {
   return (
-    <div className="profile-container">
-      <img src={profilePicture} alt={`${name}'s profile`} className="profile-picture" />
-      <h1>{name}</h1>
-      <p>{bio}</p>
+    <div className={styles["profile-container"]}>
+      <Navbar/>
+      <div className={styles["avatar"]}>
+        <img src={profilePicture} alt={`${name}'s profile`} className={styles["profile-picture"]} />
+      </div>
+      <div className={styles["profile-info"]}>
+        <h1 className={styles["profile-name"]}>{name}</h1>
+        <p className={styles["profile-bio"]}>{bio}</p>
+      </div>
     </div>
   );
 };

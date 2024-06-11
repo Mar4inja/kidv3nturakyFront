@@ -1,27 +1,31 @@
-import React from "react";
-import "./Home.css";
+import React, { useEffect } from "react";
+import styles from "./Home.module.css"; // Importējiet CSS moduli
 import backgroundImage from "../../assets/joanna-kosinska-1_CMoFsPfso-unsplash.jpg";
-import Clock from "../clock/Clock";
 import Navbar from "../navbar/Navbar";
 
+import SlideCards from "../cards/SlideCards";
 
-export const Home = () => {
+const Home = () => {
+  useEffect(() => {
+    // Disable scrolling when component mounts
+    document.body.style.overflow = "hidden";
+
+    // Re-enable scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = "visible";
+    };
+  }, []);
+
   return (
-    <div className="home-container">
+    <div className={styles["home-container"]}>
       <Navbar />
-      <Clock />
-      <div className="background-container">
-        <img
-          src={backgroundImage}
-          alt="Background"
-          className="background-image"
-        />
-      </div>
-
-      <div className="card">
-        <div className="image_box"></div>
-        <div className="content"></div>
+      <SlideCards />
+      <div className={styles["card"]}>
+        <div className={styles["image_box"]}></div>
+        <div className={styles["content"]}></div>
       </div>
     </div>
   );
 };
+
+export default Home;
