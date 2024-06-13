@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink } from 'react-router-dom';
-
 import './Navbar.css';
-import AuthContext from "../../context/AuthContext";
+import { AuthContext } from '../../context/AuthContext'; // Importējiet AuthContext
 
 const Navbar = () => {
     const { isLoggedIn } = useContext(AuthContext); // Saņem autentifikācijas kontekstu

@@ -1,35 +1,43 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Jauns imports, kas iekļauj useNavigate
-import styles from "./Login.module.css";
-import Navbar from "../navbar/Navbar";
-import loginBackgroundImage from "../../assets/desk-office.jpg";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../features/userSlice';
+import { useAuth } from '../../context/AuthContext';
+import styles from './Login.module.css';
+import Navbar from '../navbar/Navbar';
+import loginBackgroundImage from '../../assets/desk-office.jpg';
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Izmantojam useNavigate vietā useHistory
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { loading, error } = useSelector((state) => state.user);
+  const { login } = useAuth();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log("Logging in with:", { username, password });
-    // Pēc veiksmīgas pieteikšanās novirza uz profila lapu
-    navigate("/profile");
+    dispatch(loginUser({ username, password })).then((result) => {
+      if (loginUser.fulfilled.match(result)) {
+        login(); // Atjaunina autentifikācijas stāvokli
+        navigate('/profile');
+      }
+    });
   };
 
   return (
-    <div className={styles["login-container"]}>
+    <div className={styles['login-container']}>
       <Navbar />
-      <div className={styles["background-container"]}>
+      <div className={styles['background-container']}>
         <img
           src={loginBackgroundImage}
           alt="Background"
-          className={styles["background-image"]}
+          className={styles['background-image']}
         />
       </div>
-      <form className={styles["login-form"]} onSubmit={handleLogin}>
+      <form className={styles['login-form']} onSubmit={handleLogin}>
         <h2>Login</h2>
-        <div className={styles["form-group"]}>
+        <div className={styles['form-group']}>
           <input
             type="text"
             placeholder="Username"
@@ -38,7 +46,7 @@ const Login = () => {
             required
           />
         </div>
-        <div className={styles["form-group"]}>
+        <div className={styles['form-group']}>
           <input
             type="password"
             placeholder="Password"
@@ -47,11 +55,12 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit" className={styles["login-btn"]}>
+        <button type="submit" className={styles['login-btn']} disabled={loading}>
           Login
         </button>
+        {error && <p className={styles['error']}>{error}</p>}
       </form>
-      <div className={styles["register-link"]}>
+      <div className={styles['register-link']}>
         <p>
           Don't have an account? <Link to="/register">Register</Link>
         </p>
