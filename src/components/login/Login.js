@@ -18,13 +18,23 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(loginUser({ username, password })).then((result) => {
-      if (loginUser.fulfilled.match(result)) {
-        login(); // Atjaunina autentifikācijas stāvokli
+      if (result.meta.requestStatus === 'fulfilled') {
+        const accessToken = result.payload.accessToken; // Atjaunināt uz accessToken
+        const refreshToken = result.payload.refreshToken; // Atjaunināt uz refreshToken
+
+        // Saglabāt tokenus (piemēram, localStorage vai cookies)
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
+
+        // Pieslēgties lietotājam (piemēram, izsaukt 'login' funkciju, lai iestatītu sesiju)
+        login(); // Izmantojiet jūsu konteksta funkciju, lai iestatītu sesiju
+
+        // Pārvietojiet lietotāju uz profila lapu
         navigate('/profile');
       }
     });
   };
-
+  
   return (
     <div className={styles['login-container']}>
       <Navbar />

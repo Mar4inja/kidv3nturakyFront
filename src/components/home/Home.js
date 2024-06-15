@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./Home.module.css"; // Importējiet CSS moduli
-import backgroundImage from "../../assets/joanna-kosinska-1_CMoFsPfso-unsplash.jpg";
+
 import Navbar from "../navbar/Navbar";
 
 import SlideCards from "../cards/SlideCards";

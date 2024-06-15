@@ -14,6 +14,9 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setIsLoggedIn(false);
     dispatch(logoutAction());
+    // Atjaunināt tokenus (piemēram, izņemt localStorage vai cookies)
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   };
 
   return (
@@ -23,4 +26,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export { AuthContext }; // Pārliecinieties, ka eksportējat AuthContext
+export { AuthContext };
