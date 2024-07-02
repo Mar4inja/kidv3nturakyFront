@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import styles from "./About.module.css";
-import aboutBackgroundImage from "../../assets/fons.jpg"
+import aboutBackgroundImage from "../../assets/about/about1.jpg"
 
 
 const About = () => {
@@ -17,7 +17,7 @@ const About = () => {
         />
       </div>
         <div className={styles.section}>
-          <h1 className={styles.header}>About Us</h1>
+          <h2 className={styles.header}>About Us</h2>
           <p className={styles.text}>
             KidVenturaKi is the ultimate online platform for children, offering
             educational games and quizzes. Our mission is to make learning a fun
@@ -43,7 +43,6 @@ const About = () => {
         <div className={styles.section}>
           <h2 className={styles.header}>Our Future plans</h2>
           <p className={styles.text}>
-          <h1 className={styles.text}>About KidVenturaKi future plans</h1>
             KidVenturaKi is constantly looking for ways to improve and expand
             its offerings to provide the best educational experiences for
             children. Our future plans include the development of new and

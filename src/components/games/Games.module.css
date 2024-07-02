@@ -1,0 +1,102 @@
+/* Galvenais konteiners spēles lapai */
+.gamesContainer {
+    position: relative; /* Relatīvs izvietojums, lai varētu novietot fonu un kartītes */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontāla centrēšana */
+    justify-content: center; /* Vertikāla centrēšana */
+    padding: 20px;
+    min-height: 100vh; /* Minimālā augstuma nodrošināšana, lai aptvertu visu ekrānu */
+    overflow: hidden; /* Novērš, ka pārāk daudz satura iznāk ārpus ekrāna */
+}
+
+/* Konteineris fonam */
+.backgroundContainer {
+    position: absolute; /* Fons atrodas aiz visa cita satura */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Fons ir aiz citiem elementiem */
+}
+
+/* Fona attēls */
+.backgroundImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Attēla izkārtojums, lai tas aizņemtu visu ekrānu */
+
+}
+
+/* Galvenā kartīte */
+.card {
+    background: rgba(255, 255, 255, 0.8); /* Caurspīdīga balta fona krāsa kartītei */
+    padding: 20px; /* 20px atstarpe ap kartītes saturu */
+    border-radius: 8px; /* Stūru mīkstināšana ar 8px rādiusu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Vieglas ēnas efekts ap kartīti */
+    text-align: center; /* Teksta centrēšana kartītes vidū */
+    color: #333; /* Teksta krāsa tumši pelēka */
+    width: 300px; /* Kartītes platums 300px */
+    height: 200px; /* Kartītes augstums 200px */
+    cursor: pointer; /* Rāda, ka kartīte ir klikšķināma */
+    display: flex; /* Centrē satura elementus */
+    flex-direction: column; /* Vertikāla satura izkārtošana */
+    justify-content: center; /* Centrē satura elementus vertikāli */
+    align-items: center; /* Horizontāla satura izkārtošana */
+}
+
+/* Jautājumu kartīšu konteineris */
+.questionsContainer {
+    display: flex; /* Izvieto jautājumu kartītes horizontāli */
+    flex-direction: column; /* Vertikāla izkārtojuma nodrošināšana */
+    align-items: center; /* Centrē jautājumu kartītes */
+    /* Pašreizējais `.questionsContainer` būs centrēts vidū ar `.gamesContainer` */
+}
+
+/* Atgriešanās pogas */
+.backButton {
+    margin-bottom: 20px; /* 20px atstarpe no jautājumu kartītēm */
+    padding: 10px 20px; /* 10px augšā un apakšā, 20px malās */
+    background-color: #007bff; /* Pogas fona krāsa */
+    color: #fff; /* Teksta krāsa */
+    border: none; /* Noņem pogas apmali */
+    border-radius: 5px; /* Pogas stūru mīkstināšana */
+    cursor: pointer; /* Rāda, ka poga ir klikšķināma */
+    transition: background-color 0.3s ease; /* Fona krāsas maiņas animācija */
+}
+
+/* Atgriešanās pogas hover efekts */
+.backButton:hover {
+    background-color: #0056b3; /* Tumšāka fona krāsa hover stāvoklī */
+}
+
+/* Jautājumu kartīšu rinda */
+.questionsRow {
+    display: flex; /* Kartīšu izkārtojums horizontāli */
+    flex-wrap: wrap; /* Kartītes ietver arī nākamās rindas, ja nepietiek vietas */
+    justify-content: center; /* Centrē kartītes horizontāli */
+    gap: 10px; /* Atstarpe starp kartītēm */
+    max-width: 100%; /* Nodrošina, ka kartītes nesniedzas ārpus ekrāna */
+}
+
+/* Jautājumu kartīte */
+.questionCard {
+    background: rgba(255, 255, 255, 0.8); /* Caurspīdīga balta fona krāsa kartītei */
+    padding: 15px; /* 15px atstarpe ap kartītes saturu */
+    border-radius: 8px; /* Stūru mīkstināšana ar 8px rādiusu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Vieglas ēnas efekts ap kartīti */
+    width: 200px; /* Kartītes platums 200px */
+    text-align: center; /* Teksta centrēšana kartītes vidū */
+    color: #333; /* Teksta krāsa tumši pelēka */
+    cursor: pointer; /* Rāda, ka kartīte ir klikšķināma */
+}
+
+/* Jautājumu kartītes virsraksts */
+.questionCard h2 {
+    margin-bottom: 10px; /* 10px atstarpe apakšā no virsraksta */
+}
+
+/* Jautājumu kartītes teksts */
+.questionCard p {
+    margin: 0; /* Noņem margin, lai teksts būtu tuvu virsrakstam */
+}

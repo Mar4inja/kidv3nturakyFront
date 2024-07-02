@@ -1,0 +1,15 @@
+/* Navbar.css */
+.logoutButton {
+  width: 100%; /* Piepilda pogas platumu 100% no tā vecāka elementa */
+  padding: 10px; /* Pievieno pogai iekšējo atstarpju */
+  background-color: #007bff; /* Iestata pogas fona krāsu */
+  color: #fff; /* Iestata teksta krāsu pogā */
+  border: none; /* Noņem pogas apmales */
+  border-radius: 4px; /* Iestata pogas ierobežojuma radiusu */
+  cursor: pointer; /* Iestata kursora stāvokli par parādīšanu, kad pārslēdzas uz pogu */
+  transition: background-color 0.3s ease; /* Iestata pārejas efektu poga, kad pārslēdzas uz hover stāvokli */
+}
+
+.logoutButton:hover {
+  background-color: #000000; /* Maina fona krāsu uz tumšāku hover stāvoklī */
+}

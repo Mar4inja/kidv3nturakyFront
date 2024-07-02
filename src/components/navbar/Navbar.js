@@ -1,11 +1,8 @@
-// Navbar.js
-
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCurrentUser } from '../../features/auth/authSlice';
-import { logoutUser } from '../../features/auth/authSlice';
+import { selectCurrentUser, logoutUser } from '../../features/auth/authSlice';
 
 const Navbar = () => {
   const user = useSelector(selectCurrentUser);
@@ -18,33 +15,50 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
-      <ul className="navbar-menu">
-        <li className="navbar-item">
-          <NavLink exact to="/" activeClassName="active">
-            Home
-          </NavLink>
-        </li>
-        <li className="navbar-item">
-          <NavLink to="/about" activeClassName="active">
-            About
-          </NavLink>
-        </li>
-        {!user ? (
+      <nav className="navbar">
+        <ul className="navbar-menu">
           <li className="navbar-item">
-            <NavLink to="/login" activeClassName="active">
-              Login
+            <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? 'navbar-item active' : 'navbar-item')}
+            >
+              Home
             </NavLink>
           </li>
-        ) : (
           <li className="navbar-item">
-            <button className="logout-button" onClick={handleLogout}>
-              Logout
-            </button>
+            <NavLink
+                to="/games"
+                className={({ isActive }) => (isActive ? 'navbar-item active' : 'navbar-item')}
+            >
+              Games
+            </NavLink>
           </li>
-        )}
-      </ul>
-    </nav>
+          <li className="navbar-item">
+            <NavLink
+                to="/about"
+                className={({ isActive }) => (isActive ? 'navbar-item active' : 'navbar-item')}
+            >
+              About
+            </NavLink>
+          </li>
+          {!user ? (
+              <li className="navbar-item">
+                <NavLink
+                    to="/login"
+                    className={({ isActive }) => (isActive ? 'navbar-item active' : 'navbar-item')}
+                >
+                  Login
+                </NavLink>
+              </li>
+          ) : (
+              <li className="navbar-item">
+                <button className="logout-button" onClick={handleLogout}>
+                  Logout
+                </button>
+              </li>
+          )}
+        </ul>
+      </nav>
   );
 };
 
