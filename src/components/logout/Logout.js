@@ -1,23 +1,19 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser } from "../../features/userSlice";
-import "./Logout.css";
+// Logout.js
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { logoutUser } from '../../features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
-export const Logout = () => {
-  const user = useSelector(selectUser);
+const Logout = () => {
   const dispatch = useDispatch();
-  const handleLogout = (e) => {
-    e.preventDefault();
-    dispatch(logout());
-  };
-    return (
-        <div className="logout">
-          <h1>
-            Welcome <span className="user_name">{user.name}</span>
-          </h1>{""}
-          <button className="logout_button" onClick={(e) => handleLogout(e)}>
-           
-          </button>
-        </div>
-    );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(logoutUser());
+    navigate('/');
+  }, [dispatch, navigate]);
+
+  return null; // Render nothing, as this is just for logging out
 };
+
+export default Logout;

@@ -1,10 +1,11 @@
+/* Stilizē galveno konteineri, kurā atrodas ielogošanās forma */
 .login-container {
-  display: flex; /* Izvēlas "flex" izkārtojumu, lai elementi būtu vienā līnijā */
-  flex-direction: column; /* Novieto ielogošanās formu un reģistrācijas saiti vertikāli */
-  justify-content: center; /* Centrē elementus horizontāli */
-  align-items: center; /* Centrē elementus vertikāli */
-  height: 100vh; /* Iestata konteineri, lai aizņemtu visu ekrāna augstumu */
-  margin-left: -55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  
 }
 
 .background-container {
@@ -14,7 +15,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: -1; /* Lai fona attēls būtu aiz pārējā satura */
+  z-index: -1;
 }
 
 .background-container img {
@@ -24,63 +25,78 @@
   object-position: center;
 }
 
+
 .login-form {
-  width: 300px; /* Iestata ielogošanās formas platumu */
-  padding: 20px; /* Pievieno iekšējo atstarpju ielogošanās formai */
-  background-color: #f4f4f4; /* Iestata fona krāsu ielogošanās formai */
-  border-radius: 8px; /* Iestata ielogošanās formas ierobežojuma radiusu */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Pievieno ēnas efektu ielogošanās formai */
-}
-
-.login-form h2 {
-  margin-bottom: 20px; /* Pievieno atstarpi apakšējai malai starp virsrakstu un ielogošanās formu */
-  text-align: center; /* Centrē virsrakstu horizontāli */
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  margin-right: 135px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
   color: rgba(0, 0, 0, 0.836);
+  margin-top: 30px;
+  display: flex; /* Add this */
+  flex-direction: column; /* Add this */
+  justify-content: center; /* Add this */
 }
 
+.login-form > span {
+  margin-top: 20px; /* Add this */
+
+}
+
+.form-title{
+  margin-bottom: 40px;
+
+
+}
 .form-group {
-  margin-bottom: 35px; /* Pievieno atstarpi starp laukiem */
+  margin-bottom: 20px;
+
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 input[type='text'],
 input[type='password'] {
-  width: 100%; /* Piepilda lauka platuma 100% no tā vecāka elementa */
-  padding: 10px; /* Pievieno laukam iekšējo atstarpju */
-  border: 1px solid #ccc; /* Iestata lauka apmales stilu un krāsu */
-  border-radius: 4px; /* Iestata lauka ierobežojuma radiusu */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.login-btn {
-  width: 100%; /* Piepilda pogas platumu 100% no tā vecāka elementa */
-  padding: 10px; /* Pievieno pogai iekšējo atstarpju */
-  background-color: #007bff; /* Iestata pogas fona krāsu */
-  color: #fff; /* Iestata teksta krāsu pogā */
-  border: none; /* Noņem pogas apmales */
-  border-radius: 4px; /* Iestata pogas ierobežojuma radiusu */
-  cursor: pointer; /* Iestata kursora stāvokli par parādīšanu, kad pārslēdzas uz pogu */
-  transition: background-color 0.3s ease; /* Iestata pārejas efektu poga, kad pārslēdzas uz hover stāvokli */
-}
+
 
 .login-btn:hover {
-  background-color: #0056b3; /* Maina fona krāsu uz tumšāku tover stāvoklī */
+  background-color: #0056b3;
 }
 
-/* Stilizē reģistrācijas saiti */
 .register-link {
-  margin-top: 10px; /* Pievieno margin-top, lai izveidotu atstatumu starp ielogošanās formu un reģistrācijas saiti */
+  margin-top: 10px;
 }
 
 .register-link p {
-  margin: 0; /* Nodrošina, ka nav ārējas atstarpes ap reģistrācijas saiti */
-  text-align: center; /* Centrē tekstu horizontāli */
+  text-align: center; 
+  margin-right: 140px;
 }
 
 .register-link a {
-  color: #007bff; /* Iestata saites krāsu */
-  text-decoration: none; /* Noņem noklusēto saites apzīmējumu */
-  transition: color 0.3s ease; /* Iestata pārejas efektu saitei, kad pārslēdzas uz hover stāvokli */
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .register-link a:hover {
-  color: #0056b3; /* Maina saites krāsu uz tumšāku hover stāvoklī */
+  color: #0056b3;
 }

@@ -54,12 +54,23 @@ label {
 }
 
 input[type='text'],
-input[type='email'] {
+input[type='email'],
+input[type='number'] {
   width: 100%; /* Piepilda lauka platuma 100% no tā vecāka elementa */
   padding: 10px; /* Pievieno laukam iekšējo atstarpju */
   border: 1px solid #ccc; /* Iestata lauka apmales stilu un krāsu */
   border-radius: 4px; /* Iestata lauka ierobežojuma radiusu */
 }
+
+
+/* Register.module.css */
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 
 /* Stilizē reģistrācijas formas iesniegšanas pogu */
 .register-btn {

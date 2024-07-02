@@ -1,27 +1,34 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../../features/registerSlice";
+import { registerUser } from "../../features/register/RegisterSlice";
 import styles from "./Register.module.css";
 import Navbar from "../navbar/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Importējam useNavigate no react-router-dom
 import registerBackgroundImage from "../../assets/desk-office.jpg";
+import { selectRegisterLoading, selectRegisterError } from "../../features/register/RegisterSlice";
 
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+    age: 0,
     email: "",
     password: "",
   });
 
-  const { firstName, lastName, email, password } = formData;
+  const { firstName, lastName, age, gender,  email, password } = formData;
 
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.register);
+  const loading = useSelector(selectRegisterLoading);
+  const error = useSelector(selectRegisterError);
+  const navigate = useNavigate(); // Izmantojam useNavigate hook
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerUser(formData));
+    dispatch(registerUser(formData)).then(() => {
+      // Pēc veiksmīgas reģistrācijas veicam navigāciju uz ielogojuma lapu
+      navigate("/login");
+    });
   };
 
   const handleChange = (e) => {
@@ -43,47 +50,70 @@ const Register = () => {
         <div className={styles["form-group"]}>
           <label htmlFor="firstName">First Name:</label>
           <input
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={handleChange}
-            required
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={handleChange}
+              required
           />
         </div>
         <div className={styles["form-group"]}>
           <label htmlFor="lastName">Last Name:</label>
           <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={handleChange}
-            required
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={handleChange}
+              required
           />
+        </div>
+        <div className={styles["form-group"]}>
+          <label htmlFor="age">Age:</label>
+          <input
+              type="number"
+              id="age"
+              value={age}
+              onChange={handleChange}
+              required
+          />
+        </div>
+        <div className={styles["form-group"]}>
+          <label htmlFor="gender">Gender:</label>
+          <select
+              id="gender"
+              value={gender}
+              onChange={handleChange}
+              required
+          >
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </div>
         <div className={styles["form-group"]}>
           <label htmlFor="email">Email:</label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={handleChange}
-            required
+              type="email"
+              id="email"
+              value={email}
+              onChange={handleChange}
+              required
           />
         </div>
         <div className={styles["form-group"]}>
           <label htmlFor="password">Password:</label>
           <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={handleChange}
-            required
+              type="password"
+              id="password"
+              value={password}
+              onChange={handleChange}
+              required
           />
         </div>
         <button
-          type="submit"
-          className={styles["register-btn"]}
-          disabled={loading}
+            type="submit"
+            className={styles["register-btn"]}
+            disabled={loading}
         >
           {loading ? "Registering..." : "Register"}
         </button>

@@ -7,7 +7,6 @@ import SlideCards from "../cards/SlideCards";
 
 const Home = () => {
   useEffect(() => {
-    // Disable scrolling when component mounts
     document.body.style.overflow = "hidden";
 
     // Re-enable scrolling when component unmounts
@@ -17,12 +16,12 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={styles["home-container"]}>
+    <div className={styles.homeContainer}>
       <Navbar />
       <SlideCards />
-      <div className={styles["card"]}>
-        <div className={styles["image_box"]}></div>
-        <div className={styles["content"]}></div>
+      <div className={styles.card}>
+        <div className={styles.image_box}></div>
+        <div className={styles.content}></div>
       </div>
     </div>
   );

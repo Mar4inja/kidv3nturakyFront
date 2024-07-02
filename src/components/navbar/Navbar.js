@@ -1,21 +1,51 @@
-import React, { useContext } from "react";
-import { NavLink } from 'react-router-dom';
+// Navbar.js
+
+import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import { AuthContext } from '../../context/AuthContext'; // Importējiet AuthContext
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCurrentUser } from '../../features/auth/authSlice';
+import { logoutUser } from '../../features/auth/authSlice';
 
 const Navbar = () => {
-    const { isLoggedIn } = useContext(AuthContext); // Saņem autentifikācijas kontekstu
+  const user = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    return (
-        <nav className="navbar">
-            <ul className="navbar-menu">
-                <li className="navbar-item"><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
-                <li className="navbar-item"><NavLink to="/about" activeClassName="active">About</NavLink></li>
-                {/* Parāda "Login" sadaļu tikai tad, ja lietotājs nav ielogojies */}
-                {!isLoggedIn && <li className="navbar-item"><NavLink to="/login" activeClassName="active">Login</NavLink></li>}
-            </ul>
-        </nav>
-    );
-}
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate('/login');
+  };
+
+  return (
+    <nav className="navbar">
+      <ul className="navbar-menu">
+        <li className="navbar-item">
+          <NavLink exact to="/" activeClassName="active">
+            Home
+          </NavLink>
+        </li>
+        <li className="navbar-item">
+          <NavLink to="/about" activeClassName="active">
+            About
+          </NavLink>
+        </li>
+        {!user ? (
+          <li className="navbar-item">
+            <NavLink to="/login" activeClassName="active">
+              Login
+            </NavLink>
+          </li>
+        ) : (
+          <li className="navbar-item">
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
+          </li>
+        )}
+      </ul>
+    </nav>
+  );
+};
 
 export default Navbar;

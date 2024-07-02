@@ -1,156 +1,290 @@
-/* Reset default styles */
+/* Profile.module.css */
+
+/* Vispārējie stili */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-  }
-  
-  /* Background styles */
-  .container {
+}
+
+.profileContainer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    background: url("../../assets/joanna-kosinska-1_CMoFsPfso-unsplash.jpg") rgba(0, 0, 0, 0.671);
-    background-size: cover;
-  }
-  
-  /* Form wrapper styles */
-  .form-wrapper {
-    background: url("../../assets/gameboy.jpg");
-    width: 500px;
-    height: 800px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-size: cover;
-    border-radius: 20px;
-  
-  
-  }
-  
-  
-  /* Form container styles */
-  .form-container {
+    justify-content: center;
     padding: 20px;
-  
-  
-  
-  }
-  
-  .form-header {
-    text-align: center;
-    margin: 0 auto 20px auto;
+    min-height: 100vh; /* Mainīts no height uz min-height, lai ierīkotu saturu, kad ekrāns ir mazāks */
     position: relative;
-    top: -130px;
-    width: 30%;
-  
-  }
-  
-  .form-header h1 {
-    font-size: 24px;
-    color: #e4e584e1;
-    border: 2px solid #b4c556;
-    border-radius: 10px;
-  
-  }
-  
-  /* Input wrapper styles */
-  .input-wrapper {
-    position: relative;
-    margin-bottom: 20px;
-    background-size: cover;
-  }
-  
-  .input-wrapper input {
-    width: 63%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.5s;
-    margin-left: 85px;
-    margin-bottom: 30px;
-    background:url("../../assets/3d-cartoon-background-children.jpg")
-   
-  }
-  .input-wrapper:nth-child(1) {
-    margin-top: -80px; /* Move the first input wrapper up by 10 pixels */
-  }
-  
-  .input-wrapper:nth-child(2) {
-    margin-top: -10px; /* Move the second input wrapper up by 10 pixels */
-  }
-  
-  
-  .input-wrapper input:focus {
-    border-color: #007bff;
-  }
-  
-  .input-wrapper label {
+}
+
+.backgroundContainer {
     position: absolute;
-    top: 50%;
-    left: 10px;
-    margin-top: -15px;
-    margin-left: 85px;
-    transform: translateY(-50%);
-    color: #339733; /* Initial color is gray */
-    transition: all 0.3s, transform 0.3s;
-    pointer-events: none;
-  }
-  
-  .input-wrapper label.active {
-    transform: translateY(-255%) translateX(-5px);
-    color: #339733; /* or any color you prefer */
-  }
-  
-  
-  .input-wrapper input:not(:focus) + label {
-    color: #339733; /* Keep color black when label is inactive */
-  }
-  
-  
-  
-  /* Jump animation for labels */
-  .input-wrapper input:focus + label {
-    transform: translateY(-255%) translateX(-5px);
-    /* Adjust translateY value to control the jump */
-  }
-  
-  
-  
-  /* Submit button styles */
-  .submit-btn {
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 10px;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-size: cover;
+}
+
+.fullName {
+    position: absolute;
+    top: 15%; /* Pielāgots top, lai paceltu fullName */
+    left: 154px;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: white;
+    text-align: center; /* Centrē tekstu, kad ekrāna platums ir mazāks */
+
+}
+
+.profileImageLabel {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.profileImageLabel:hover {
+    opacity: 0.9; /* Mazliet samazina attēla caurspīdību, kad pele ir virs tā */
+}
+
+.deleteButton {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #f44336; /* Sarkanā krāsa */
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 115%; /* Novieto poga zem attēla */
+    left: 28%;
+    transform: translateY(10px); /* Lai pārliecinātos, ka poga ir zem attēla */
+}
+
+.deleteButton:hover {
+    background-color: #d32f2f; /* Tumšāka sarkanā krāsa, kad pele ir virs pogas */
+}
+
+.deleteButton:focus {
+    outline: none; /* Noņem pogas fokusu */
+}
+
+
+.profileImageContainer {
+    position: absolute;
+    top: 35%; /* Pielāgots top, lai paceltu profileImageContainer */
+    left: 6%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileImageWrapper {
+    position: relative; /* Pievienots pozicionēšanai delete pogai */
+}
+
+.profileImage {
+    width: 250px;
+    height: 350px;
+    border-radius: 2%;
+    object-fit: cover;
+    border: 3px solid rgb(242, 255, 222);
+}
+
+.personalDataButton {
+    background-color: rgba(40, 140, 239, 0.82);
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s; /* Pāreja fona krāsai un mērogam */
+}
+
+.personalDataButton:hover {
+    background-color: #218838; /* Tumšāka fona krāsa peldošam efektam */
+    transform: scale(1.05); /* Liels peldošs efekts */
+}
+
+.personalDataContainer {
+    position: absolute;
+    font-size: 16px;
+    top: 1px;
+    left: 120%;
+    height: 416px;
+    width: 355px;
+    background-color: rgba(255, 255, 255, 0.59);
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 3;
+
+}
+
+/* Paziņojumam blakus Save pogai */
+.successMessage {
+    color: #28a745; /* Zaļa krāsa */
+    margin-left: 130px;
+    margin-top: -30px; /* Atstarpe starp pogu un paziņojumu */
+    font-weight: bold; /* Bolds teksts */
+}
+
+.personalDataContainer p {
+    margin: 15px 0;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s; /* Pāreja krāsai */
+}
+
+.closeButton:hover {
+    color: #ffdddd; /* Krāsa aizvērt pogai hover efektā */
+}
+
+.editDataButton {
+    background-color: rgba(40, 140, 239, 0.91);
+    color: white;
+    padding: 10px 20px;
+    margin-top: 15px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 110px;
-    margin-left: 154px;
-    height: 39px;
-    width: 150px;
-  }
-  
-  .submit-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Toggle text styles */
-  .toggle-text {
-    text-align: center;
+    transition: background-color 0.3s, transform 0.3s; /* Pāreja fona krāsai un mērogam */
+}
+
+.editDataButton:hover {
+    background-color: #218838; /* Tumšāka fona krāsa peldošam efektam */
+    transform: scale(1.05); /* Liels peldošs efekts */
+}
+
+.saveButton {
+    background-color: rgba(40, 140, 239, 0.91);
+    font-size: 16px;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 56px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Pāreja fona krāsai un mērogam */
+}
+
+.saveButton:hover {
+    background-color: #218838; /* Tumšāka fona krāsa peldošam efektam */
+    transform: scale(1.05); /* Liels peldošs efekts */
+}
+
+.profileImageLabel {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.profileImageLabel:hover {
+    opacity: 0.8; /* Mazliet samazina attēla caurspīdību, kad pele ir virs tā */
+}
+
+.deleteButton {
     margin-top: 10px;
-    color: #333;
-  }
-  
-  .toggle-text span {
-    color: #007bff;
+    padding: 5px 10px;
+    border: none;
+    background-color: #f44336; /* Sarkanā krāsa */
+    color: white;
+    border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .toggle-text span:hover {
-    text-decoration: underline;
-  }
+}
+
+.deleteButton:hover {
+    background-color: #d32f2f; /* Tumšāka sarkanā krāsa, kad pele ir virs pogas */
+}
+
+.deleteButton:focus {
+    outline: none; /* Noņem pogas fokusu */
+}
+
+@media screen and (max-width: 768px) {
+    .profileContainer {
+        padding: 10px;
+    }
+
+    .fullName {
+        font-size: 20px; /* Mazāks fonta izmērs */
+        top: 10%;
+    }
+
+    .profileImage {
+        width: 120px; /* Mazāks attēls */
+        height: 120px; /* Mazāks attēls */
+    }
+
+    .personalDataButton {
+        padding: 8px 15px; /* Mazāka poga */
+        font-size: 14px; /* Mazāks fonta izmērs */
+    }
+
+    .personalDataContainer {
+        top: 75%; /* Novietots zemāk */
+        width: 95%; /* Platums pielāgots mazākiem ekrāniem */
+    }
+
+    .successMessage {
+        margin-top: 5px; /* Mazāka atstarpe */
+    }
+
+    .fullName h2 {
+        font-size: 18px; /* Mazāks fonta izmērs mazākiem ekrāniem */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profileImage {
+        width: 100px; /* Mazāks attēls */
+        height: 100px; /* Mazāks attēls */
+    }
+
+    .fullName {
+        font-size: 18px; /* Mazāks fonta izmērs */
+        top: 5%;
+    }
+
+    .personalDataButton {
+        padding: 6px 12px; /* Mazāka poga */
+        font-size: 12px; /* Mazāks fonta izmērs */
+    }
+
+    .personalDataContainer {
+        top: 70%; /* Novietots zemāk */
+        width: 100%; /* Platums pielāgots mazākiem ekrāniem */
+    }
+
+    .successMessage {
+        margin-top: 2px; /* Mazāka atstarpe */
+        font-size: 12px; /* Mazāks fonta izmērs */
+    }
+
+    .closeButton {
+        font-size: 16px; /* Mazāks fonta izmērs */
+    }
+
+    .fullName h2 {
+        font-size: 16px; /* Mazāks fonta izmērs vēl mazākiem ekrāniem */
+    }
+}
