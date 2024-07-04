@@ -1,15 +1,15 @@
 import storage from 'redux-persist/lib/storage'; // по умолчанию используется localStorage для веба
-import { default as sessionStorage } from 'redux-persist/lib/storage/session'; // по умолчанию используется sessionStorage для веба
+import { default as sessionStorage } from 'redux-persist/lib/storage/session';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['profile', 'register'], // Сохранять только эти редюсеры между сессиями
+  whitelist: ['profile', 'register'], // Saglabāt šos reducētājus starp sesijām
 };
 
 const authPersistConfig = {
   key: 'auth',
-  storage: sessionStorage, // Использовать sessionStorage для данных аутентификации
+  storage: sessionStorage, // Izmantot sessionStorage datu autentifikācijai
 };
 
 export { persistConfig, authPersistConfig };

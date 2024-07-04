@@ -1,102 +1,211 @@
 /* Galvenais konteiners spēles lapai */
 .gamesContainer {
-    position: relative; /* Relatīvs izvietojums, lai varētu novietot fonu un kartītes */
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Horizontāla centrēšana */
-    justify-content: center; /* Vertikāla centrēšana */
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    min-height: 100vh; /* Minimālā augstuma nodrošināšana, lai aptvertu visu ekrānu */
-    overflow: hidden; /* Novērš, ka pārāk daudz satura iznāk ārpus ekrāna */
+    min-height: 100vh;
+    overflow: hidden;
 }
 
 /* Konteineris fonam */
 .backgroundContainer {
-    position: absolute; /* Fons atrodas aiz visa cita satura */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Fons ir aiz citiem elementiem */
+    z-index: -1;
 }
 
 /* Fona attēls */
 .backgroundImage {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Attēla izkārtojums, lai tas aizņemtu visu ekrānu */
-
+    object-fit: cover;
 }
 
 /* Galvenā kartīte */
+.card-wrapper {
+    perspective: 4000px; /* Papildus perspektīvas dziļums */
+}
+
 .card {
-    background: rgba(255, 255, 255, 0.8); /* Caurspīdīga balta fona krāsa kartītei */
-    padding: 20px; /* 20px atstarpe ap kartītes saturu */
-    border-radius: 8px; /* Stūru mīkstināšana ar 8px rādiusu */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Vieglas ēnas efekts ap kartīti */
-    text-align: center; /* Teksta centrēšana kartītes vidū */
-    color: #333; /* Teksta krāsa tumši pelēka */
-    width: 300px; /* Kartītes platums 300px */
-    height: 200px; /* Kartītes augstums 200px */
-    cursor: pointer; /* Rāda, ka kartīte ir klikšķināma */
-    display: flex; /* Centrē satura elementus */
-    flex-direction: column; /* Vertikāla satura izkārtošana */
-    justify-content: center; /* Centrē satura elementus vertikāli */
-    align-items: center; /* Horizontāla satura izkārtošana */
+    width: 400px;
+    height: 400px;
+    margin-left: 40px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    border: 2px solid rgba(130, 70, 250, 0.65);
+    border-radius: 8px;
+    box-shadow: 5px 15px 20px rgb(0, 0, 0), 10px 25px 30px rgb(0, 0, 0);
+    text-align: center;
+    color: #fbfbfb;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    transform-style: preserve-3d; /* Saglabā 3D transformāciju */
 }
 
-/* Jautājumu kartīšu konteineris */
+/* Hover efekts ar griešanu */
+.card:hover {
+    transform: rotateY(25deg) rotateX(25deg) translateY(-25px) scale(1.05);
+    box-shadow: 15px 25px 40px rgba(0, 0, 0, 0.7), 20px 35px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Kartītes iekšējais teksts */
+.cardContent {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Teksta stils kartītē */
+.geoTitle {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Konteineris kartītēm */
+.cardContainer {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+/* Konteineris jautājumiem */
 .questionsContainer {
-    display: flex; /* Izvieto jautājumu kartītes horizontāli */
-    flex-direction: column; /* Vertikāla izkārtojuma nodrošināšana */
-    align-items: center; /* Centrē jautājumu kartītes */
-    /* Pašreizējais `.questionsContainer` būs centrēts vidū ar `.gamesContainer` */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
 
-/* Atgriešanās pogas */
+/* Atpakaļ poga */
 .backButton {
-    margin-bottom: 20px; /* 20px atstarpe no jautājumu kartītēm */
-    padding: 10px 20px; /* 10px augšā un apakšā, 20px malās */
-    background-color: #007bff; /* Pogas fona krāsa */
-    color: #fff; /* Teksta krāsa */
-    border: none; /* Noņem pogas apmali */
-    border-radius: 5px; /* Pogas stūru mīkstināšana */
-    cursor: pointer; /* Rāda, ka poga ir klikšķināma */
-    transition: background-color 0.3s ease; /* Fona krāsas maiņas animācija */
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-/* Atgriešanās pogas hover efekts */
+/* Atpakaļ pogas hover efekts */
 .backButton:hover {
-    background-color: #0056b3; /* Tumšāka fona krāsa hover stāvoklī */
+    background-color: rgba(255, 255, 255, 1);
 }
 
-/* Jautājumu kartīšu rinda */
-.questionsRow {
-    display: flex; /* Kartīšu izkārtojums horizontāli */
-    flex-wrap: wrap; /* Kartītes ietver arī nākamās rindas, ja nepietiek vietas */
-    justify-content: center; /* Centrē kartītes horizontāli */
-    gap: 10px; /* Atstarpe starp kartītēm */
-    max-width: 100%; /* Nodrošina, ka kartītes nesniedzas ārpus ekrāna */
-}
-
-/* Jautājumu kartīte */
+/* Jautājumu karte */
 .questionCard {
-    background: rgba(255, 255, 255, 0.8); /* Caurspīdīga balta fona krāsa kartītei */
-    padding: 15px; /* 15px atstarpe ap kartītes saturu */
-    border-radius: 8px; /* Stūru mīkstināšana ar 8px rādiusu */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Vieglas ēnas efekts ap kartīti */
-    width: 200px; /* Kartītes platums 200px */
-    text-align: center; /* Teksta centrēšana kartītes vidū */
-    color: #333; /* Teksta krāsa tumši pelēka */
-    cursor: pointer; /* Rāda, ka kartīte ir klikšķināma */
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 600px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
 }
 
-/* Jautājumu kartītes virsraksts */
-.questionCard h2 {
-    margin-bottom: 10px; /* 10px atstarpe apakšā no virsraksta */
+/* Jautājuma saturs */
+.questionContent {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 8px;
 }
 
-/* Jautājumu kartītes teksts */
-.questionCard p {
-    margin: 0; /* Noņem margin, lai teksts būtu tuvu virsrakstam */
+/* Jautājuma attēlojums */
+.questionDisplay {
+    display: flex;
+    align-items: center;
+}
+
+/* Navigācijas pogas */
+.navButton {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* Navigācijas pogas hover efekts */
+.navButton:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Pozicionēšana navigācijas pogām */
+.prev {
+    margin-right: 20px;
+}
+
+.next {
+    margin-left: 20px;
+}
+
+/* Jauns paziņojuma logs */
+.loginPrompt {
+    position: fixed; /* Фиксированное позиционирование окна уведомлений на экране */
+    top: 50%; /* Выравнивание по вертикали в центре экрана */
+    left: 50%; /* Выравнивание по горизонтали в центре экрана */
+    transform: translate(-50%, -50%); /* Центрирование окна */
+    background-color: rgba(255, 255, 255, 0.58); /* Цвет фона окна */
+    padding: 20px; /* Внутренний отступ содержимого окна */
+    border-radius: 10px; /* Закругление углов окна */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тень вокруг окна */
+    text-align: center; /* Выравнивание текста по центру */
+    z-index: 2; /* Закрепление окна над другими элементами */
+}
+
+/* Paziņojuma loga teksta stils */
+.loginPrompt p {
+    margin-bottom: 20px; /* Отступ между текстом и кнопкой */
+}
+
+/* Стиль текста предупреждения */
+.logWarning {
+    font-size: large; /* Размер шрифта */
+    color: #000000; /* Цвет текста */
+}
+
+/* Стиль кнопки в окне уведомлений */
+.loginPrompt button {
+    margin-left: 10px;
+    padding: 10px 25px; /* Внутренний отступ кнопки */
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Без границы */
+    border-radius: 5px; /* Закругление углов кнопки */
+    cursor: pointer; /* Изменение курсора на указатель */
+}
+
+/* Hover эффект для кнопки в окне уведомлений */
+.loginPrompt button:hover {
+    background-color: #0056b3; /* Темный цвет фона при наведении на кнопку */
 }

@@ -3,15 +3,18 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser, logoutUser } from '../../features/auth/authSlice';
+import {useTranslation} from "react-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const user = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate('/login');
+    localStorage.removeItem("isLoggedIn"); // Remove isLoggedIn flag on logout
+    navigate('/login'); // Redirect to login
   };
 
   return (
@@ -20,9 +23,8 @@ const Navbar = () => {
           <li className="navbar-item">
             <NavLink
                 to="/"
-                className={({ isActive }) => (isActive ? 'navbar-item active' : 'navbar-item')}
-            >
-              Home
+                className={({ isActive }) => (isActive ? 'navbar-item active' : 'navbar-item')}>
+              {t('navbar.home')}
             </NavLink>
           </li>
           <li className="navbar-item">
@@ -30,7 +32,7 @@ const Navbar = () => {
                 to="/games"
                 className={({ isActive }) => (isActive ? 'navbar-item active' : 'navbar-item')}
             >
-              Games
+              {t('navbar.games')}
             </NavLink>
           </li>
           <li className="navbar-item">
@@ -38,22 +40,22 @@ const Navbar = () => {
                 to="/about"
                 className={({ isActive }) => (isActive ? 'navbar-item active' : 'navbar-item')}
             >
-              About
+              {t('navbar.about')}
             </NavLink>
           </li>
           {!user ? (
               <li className="navbar-item">
                 <NavLink
-                    to="/login"
+                    to="/login?redirect=games"  // Adding query param to redirect to games after login
                     className={({ isActive }) => (isActive ? 'navbar-item active' : 'navbar-item')}
                 >
-                  Login
+                  {t('navbar.login')}
                 </NavLink>
               </li>
           ) : (
               <li className="navbar-item">
                 <button className="logout-button" onClick={handleLogout}>
-                  Logout
+                  {t('navbar.logout')}
                 </button>
               </li>
           )}

@@ -1,9 +1,12 @@
+// authSlice.js
+
 import { createSlice } from '@reduxjs/toolkit';
 import { updateProfile } from '../profile/profileSlice';
 
 const initialState = {
   user: null,
-  token: null
+  token: null,
+  isLoggedIn: false  // Jaunais stāvoklis, lai pārvaldītu ielogojuma statusu
 };
 
 const authSlice = createSlice({
@@ -11,20 +14,23 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action) => {
-      const { user, accessToken } = action.payload;
-      state.user = user; // Ensure user includes firstName and lastName if needed
-      state.token = accessToken;
+      const { user, token } = action.payload;
+      state.user = user;
+      state.token = token;
+      state.isLoggedIn = true;  // Ielogošanas statusa atjaunināšana uz true
     },
     logoutUser: (state) => {
       state.user = null;
       state.token = null;
+      state.isLoggedIn = false;  // Ielogošanas statusa atjaunināšana uz false pēc iziešanas
     },
   },
   extraReducers: (builder) => {
-    builder
-        .addCase(updateProfile.fulfilled, (state, action) => {
-          state.user = action.payload; // Update the user info after profile update
-        });
+    builder.addCase(updateProfile.fulfilled, (state, action) => {
+      const { firstName, lastName } = action.payload;
+      if (firstName) state.user.firstName = firstName;
+      if (lastName) state.user.lastName = lastName;
+    });
   }
 });
 
@@ -34,3 +40,4 @@ export default authSlice.reducer;
 // Selectors
 export const selectCurrentUser = (state) => state.auth.user;
 export const selectCurrentToken = (state) => state.auth.token;
+export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;  // Selectors for isLoggedIn

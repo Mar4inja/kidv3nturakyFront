@@ -1,19 +1,23 @@
-// Logout.js
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Logout = () => {
-  const dispatch = useDispatch();
+  const { t } = useTranslation(); // Pareizi izmantojam t, lai iegūtu tulkojumu
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(logoutUser());
-    navigate('/');
-  }, [dispatch, navigate]);
+    // Noņemam autorizācijas datus no vietējā krātuves
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('isLoggedIn');
 
-  return null; // Render nothing, as this is just for logging out
+    // Pāradresējam lietotāju uz pieteikšanās lapu
+    navigate('/login');
+  }, [navigate]);
+
+  return null;
 };
 
 export default Logout;

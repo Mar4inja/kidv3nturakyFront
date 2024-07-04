@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { selectCurrentUser } from "../../features/auth/authSlice";
-import { updateProfile, selectUpdateLoading, selectUpdatedProfile } from "../../features/profile/profileSlice";
-import styles from "./Profile.module.css";
-import Navbar from "../../components/navbar/Navbar";
-import profileBackgroundImage from "../../assets/profile.jpg";
-import boyImage from "../../assets/profilePhoto/boy.png";
-import girlImage from "../../assets/profilePhoto/girl.png";
+// src/pages/profile_page/Profile.js
+
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCurrentUser } from '../../features/auth/authSlice';
+import { updateProfile, selectUpdateLoading, selectUpdatedProfile } from '../../features/profile/profileSlice';
+import styles from './Profile.module.css';
+import Navbar from '../../components/navbar/Navbar';
+import profileBackgroundImage from '../../assets/profile.jpg';
+import boyImage from '../../assets/profilePhoto/boy.png';
+import girlImage from '../../assets/profilePhoto/girl.png';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Profile = () => {
+    const { t } = useTranslation();
+
     const dispatch = useDispatch();
     const user = useSelector(selectCurrentUser);
+    const navigate = useNavigate(); // Initialize navigate function
     const loading = useSelector(selectUpdateLoading);
     const updatedProfile = useSelector(selectUpdatedProfile);
 
@@ -18,16 +25,22 @@ const Profile = () => {
     const [editing, setEditing] = useState(false);
 
     const [formData, setFormData] = useState({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        age: user.age,
-        gender: user.gender,
-        email: user.email,
-        profilePhoto: user.profilePhoto || "", // Pievienots profilePhoto
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        age: user.age || '',
+        gender: user.gender || 'male',
+        email: user.email || '',
+        profilePhoto: user.profilePhoto || '',
     });
 
-    const [successMessage, setSuccessMessage] = useState("");
-    const [selectedImage, setSelectedImage] = useState(user.profilePhoto || ""); // Sākotnējā attēla URL
+    const [successMessage, setSuccessMessage] = useState('');
+    const [selectedImage, setSelectedImage] = useState(user.profilePhoto || '');
+
+    useEffect(() => {
+        if (!user) {
+            navigate('/login'); // Redirect to login if user is not authenticated
+        }
+    }, [user, navigate]);
 
     useEffect(() => {
         if (updatedProfile) {
@@ -37,16 +50,16 @@ const Profile = () => {
                 age: updatedProfile.age,
                 gender: updatedProfile.gender,
                 email: updatedProfile.email,
-                profilePhoto: updatedProfile.profilePhoto || "",
+                profilePhoto: updatedProfile.profilePhoto || '',
             });
-            setSelectedImage(updatedProfile.profilePhoto || ""); // Atjaunot izvēlēto attēlu
-            setSuccessMessage("Update successful!");
+            setSelectedImage(updatedProfile.profilePhoto || '');
+            setSuccessMessage(t('profile.updateSuccess'));
             setTimeout(() => {
-                setSuccessMessage("");
+                setSuccessMessage('');
                 setEditing(false);
             }, 1000);
         }
-    }, [updatedProfile]);
+    }, [updatedProfile, t]);
 
     const handleTogglePersonalData = () => {
         setShowPersonalData(!showPersonalData);
@@ -74,7 +87,7 @@ const Profile = () => {
         try {
             await dispatch(updateProfile(formData)).unwrap();
         } catch (error) {
-            console.error('Error updating profile:', error);
+            console.error(t('profile.updateError'), error);
         }
     };
 
@@ -86,20 +99,24 @@ const Profile = () => {
                 setSelectedImage(reader.result);
                 setFormData({
                     ...formData,
-                    profilePhoto: reader.result, // Saglabā attēlu rezultātā base64 formātā
+                    profilePhoto: reader.result,
                 });
             };
-            reader.readAsDataURL(file); // Nolasīt failu kā data URL
+            reader.readAsDataURL(file);
         }
     };
 
     const handleDeleteImage = () => {
-        setSelectedImage("");
+        setSelectedImage('');
         setFormData({
             ...formData,
-            profilePhoto: "", // Dzēst attēlu
+            profilePhoto: '',
         });
     };
+
+    if (!user) {
+        return null; // Or a loading spinner if needed
+    }
 
     return (
         <div className={styles.profileContainer}>
@@ -107,19 +124,19 @@ const Profile = () => {
             <div className={styles.backgroundContainer}>
                 <img
                     src={profileBackgroundImage}
-                    alt="Profile Background"
+                    alt={t('profile.backgroundAlt')}
                     className={styles.backgroundImage}
                 />
             </div>
             <div className={styles.fullName}>
-                <h2>Welcome, {user.firstName} {user.lastName}</h2>
+                <h2>{t('profile.welcome', { firstName: user.firstName, lastName: user.lastName })}</h2>
             </div>
             <div className={styles.profileImageContainer}>
                 <div className={styles.profileImageWrapper}>
                     <label htmlFor="profilePhotoUpload" className={styles.profileImageLabel}>
                         <img
                             src={selectedImage || (user.gender === 'male' ? boyImage : girlImage)}
-                            alt="Profile"
+                            alt={t('profile.profilePhotoAlt')}
                             className={styles.profileImage}
                         />
                     </label>
@@ -128,19 +145,19 @@ const Profile = () => {
                         id="profilePhotoUpload"
                         accept="image/*"
                         onChange={handleImageUpload}
-                        style={{ display: 'none' }} // Slēpt input laukumu
+                        style={{ display: 'none' }}
                     />
                     {selectedImage && (
                         <button
                             onClick={handleDeleteImage}
                             className={styles.deleteButton}
                         >
-                            Delete Picture
+                            {t('profile.deletePicture')}
                         </button>
                     )}
                 </div>
                 <button onClick={handleTogglePersonalData} className={styles.personalDataButton}>
-                    Personal Data
+                    {t('profile.personalData')}
                 </button>
                 {showPersonalData && (
                     <div className={styles.personalDataContainer}>
@@ -150,7 +167,7 @@ const Profile = () => {
                         {editing ? (
                             <form onSubmit={handleSubmit}>
                                 <p>
-                                    <strong>First Name:</strong>{" "}
+                                    <strong>{t('profile.firstName')}:</strong>{" "}
                                     <input
                                         type="text"
                                         name="firstName"
@@ -160,7 +177,7 @@ const Profile = () => {
                                     />
                                 </p>
                                 <p>
-                                    <strong>Last Name:</strong>{" "}
+                                    <strong>{t('profile.lastName')}:</strong>{" "}
                                     <input
                                         type="text"
                                         name="lastName"
@@ -170,7 +187,7 @@ const Profile = () => {
                                     />
                                 </p>
                                 <p>
-                                    <strong>Age:</strong>{" "}
+                                    <strong>{t('profile.age')}:</strong>{" "}
                                     <input
                                         type="number"
                                         name="age"
@@ -180,34 +197,34 @@ const Profile = () => {
                                     />
                                 </p>
                                 <p>
-                                    <strong>Gender:</strong>{" "}
+                                    <strong>{t('profile.gender')}:</strong>{" "}
                                     <select
                                         name="gender"
                                         value={formData.gender}
                                         onChange={handleChange}
                                         required
                                     >
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
+                                        <option value="male">{t('profile.male')}</option>
+                                        <option value="female">{t('profile.female')}</option>
                                     </select>
                                 </p>
                                 <p>
-                                    <strong>Email:</strong>{" "}
+                                    <strong>{t('profile.email')}:</strong>{" "}
                                     {user.email}
                                 </p>
                                 <button type="submit" className={styles.saveButton} disabled={loading}>
-                                    {loading ? 'Saving...' : 'Save'}
+                                    {loading ? t('profile.saving') : t('profile.save')}
                                 </button>
                             </form>
                         ) : (
                             <>
-                                <p><strong>First Name:</strong> {formData.firstName}</p>
-                                <p><strong>Last Name:</strong> {formData.lastName}</p>
-                                <p><strong>Age:</strong> {formData.age}</p>
-                                <p><strong>Gender:</strong> {formData.gender}</p>
-                                <p><strong>Email:</strong> {formData.email}</p>
+                                <p><strong>{t('profile.firstName')}:</strong> {formData.firstName}</p>
+                                <p><strong>{t('profile.lastName')}:</strong> {formData.lastName}</p>
+                                <p><strong>{t('profile.age')}:</strong> {formData.age}</p>
+                                <p><strong>{t('profile.gender')}:</strong> {formData.gender}</p>
+                                <p><strong>{t('profile.email')}:</strong> {formData.email}</p>
                                 <button onClick={handleEditData} className={styles.editDataButton}>
-                                    Edit Data
+                                    {t('profile.editData')}
                                 </button>
                             </>
                         )}

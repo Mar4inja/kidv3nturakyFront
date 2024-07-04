@@ -1,0 +1,38 @@
+/* LanguageSelector.module.css */
+
+/* Konteinera stils */
+.languageSelector {
+    display: flex;
+    justify-content: center; /* Horizontāli centrē */
+    align-items: center; /* Vertikāli centrē */
+    position: absolute; /* Pozicionē absolūti attiecībā pret vecāku elementu */
+    top: 10px; /* Attālums no augšas */
+    right: 10px; /* Attālums no labās malas */
+    z-index: 1000; /* Nodrošina, ka izvēlne ir virs visiem citiem elementiem */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Pusstikls balts fons */
+    border-radius: 5px; /* Noapaļo stūrus */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Pievieno nelielu ēnu */
+}
+
+/* Select elementa stils */
+.select {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff; /* Balts fons izvēlnē */
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Select elementa fokusa stils */
+.select:focus {
+    border-color: #007bff; /* Mēlna malas krāsa fokusa stāvoklī */
+}
+
+/* Option elementu stils */
+.option {
+    font-size: 16px;
+}

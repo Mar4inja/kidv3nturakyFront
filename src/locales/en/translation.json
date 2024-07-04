@@ -1,0 +1,212 @@
+{
+  "login": {
+    "backgroundAlt": "Login page background",
+    "formTitle": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "loggingIn": "Logging in...",
+    "login": "Login",
+    "noResponse": "No response from server.",
+    "missingEmailOrPassword": "Email or password missing",
+    "unauthorized": "Unauthorized",
+    "loginFailed": "Login failed",
+    "noAccount": "No account?",
+    "register": "Register"
+  },
+  "register": {
+    "backgroundAlt": "Registration page background",
+    "formTitle": "Register",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "confirmPasswordPlaceholder": "Confirm Password",
+    "registering": "Registering...",
+    "register": "Register",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login",
+    "registrationFailed": "Registration failed",
+    "passwordMismatch": "Passwords do not match",
+    "success": "Registration successful!"
+  },
+  "games": {
+    "backgroundAlt": "Games background",
+    "loginPrompt": {
+      "message": "Unauthorized users cannot play QUIZ, please login or register!",
+      "login": "Login",
+      "cancel": "Cancel"
+    },
+    "backButton": "Back to categories",
+    "categories": {
+      "geography": "Geography",
+      "math": "Math",
+      "fairytales": "Fairytales"
+    },
+    "geographyQuestions": {
+      "0": {
+        "question": "What shape is the Earth?",
+        "answer": "Round"
+      },
+      "1": {
+        "question": "Which country has a red flag with a white cross?",
+        "answer": "Switzerland"
+      },
+      "2": {
+        "question": "Where do pandas live?",
+        "answer": "China"
+      },
+      "3": {
+        "question": "What color is the sky?",
+        "answer": "Blue"
+      },
+      "4": {
+        "question": "Which country is famous for pizza?",
+        "answer": "Italy"
+      },
+      "5": {
+        "question": "In which country is the Eiffel Tower located?",
+        "answer": "France"
+      },
+      "6": {
+        "question": "What is the capital of England?",
+        "answer": "London"
+      },
+      "7": {
+        "question": "What is the name of our planet?",
+        "answer": "Earth"
+      },
+      "8": {
+        "question": "Where do kangaroos live?",
+        "answer": "Australia"
+      },
+      "9": {
+        "question": "What is the largest animal in the ocean?",
+        "answer": "Whale"
+      }
+    },
+    "mathQuestions": {
+      "0": {
+        "question": "What is 1 + 1?",
+        "answer": "2"
+      },
+      "1": {
+        "question": "What is 2 + 2?",
+        "answer": "4"
+      },
+      "2": {
+        "question": "What is 3 - 1?",
+        "answer": "2"
+      },
+      "3": {
+        "question": "What comes after 5?",
+        "answer": "6"
+      },
+      "4": {
+        "question": "What geometric shape is a square?",
+        "answer": "Square"
+      },
+      "5": {
+        "question": "What is 10 - 5?",
+        "answer": "5"
+      },
+      "6": {
+        "question": "What shape is a ball?",
+        "answer": "Round"
+      },
+      "7": {
+        "question": "How many fingers do you have?",
+        "answer": "10"
+      },
+      "8": {
+        "question": "How many sides does a triangle have?",
+        "answer": "3"
+      },
+      "9": {
+        "question": "What is 5 + 0?",
+        "answer": "5"
+      }
+    },
+    "fairytalesQuestions": {
+      "0": {
+        "question": "Who wears a glass slipper?",
+        "answer": "Cinderella"
+      },
+      "1": {
+        "question": "Who is friends with seven dwarfs?",
+        "answer": "Snow White"
+      },
+      "2": {
+        "question": "Who wears a red hood?",
+        "answer": "Little Red Riding Hood"
+      },
+      "3": {
+        "question": "Who has long golden hair?",
+        "answer": "Rapunzel"
+      },
+      "4": {
+        "question": "Who lives in a house made of candy?",
+        "answer": "Hansel and Gretel"
+      },
+      "5": {
+        "question": "Who wakes up with a kiss?",
+        "answer": "Sleeping Beauty"
+      },
+      "6": {
+        "question": "Who can talk to animals?",
+        "answer": "Snow White"
+      },
+      "7": {
+        "question": "Who flies on a magic carpet?",
+        "answer": "Aladdin"
+      },
+      "8": {
+        "question": "Who is the beast in 'Beauty and the Beast'?",
+        "answer": "The Beast"
+      },
+      "9": {
+        "question": "Who has a fairy godmother?",
+        "answer": "Cinderella"
+      }
+    }
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "login": "Login",
+    "register": "Register",
+    "games": "Games",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "footer": {
+    "contact": "Contact",
+    "privacy": "Privacy Policy"
+  },
+  "welcome": "Welcome to our site!",
+  "about": {
+    "backgroundAlt": "About us background image",
+    "header1": "About Us",
+    "text1": "KidVenturaKi is the perfect online platform for children, offering educational games and quizzes. Our mission is to make learning a fun and exciting adventure through interactive and educational content. We offer a variety of quizzes and games suitable for different age groups and interests, including math, science, geography, and more. Our interactive quizzes help reinforce classroom learning and introduce children to new concepts in a fun and memorable way. Each quiz aligns with educational standards, ensuring relevance and value. To motivate children, we have included a virtual reward system where they can earn rewards for their achievements. Our leaderboard system encourages healthy competition, motivating children to improve their scores and strive for excellence. KidVenturaKi is designed with user-friendliness and vibrant graphics to attract and hold the attention of young learners. Parents and educators can be confident that all content is thoroughly vetted and child-friendly. We aim to create a safe and enriching environment where children can explore and learn.",
+    "header2": "Our Future Plans",
+    "text2": "KidVenturaKi is constantly looking for ways to improve and expand its offerings to provide the best educational opportunities for children. Our future plans include developing new and exciting games that cover an even wider range of topics and age groups. We are working on implementing augmented reality (AR) and artificial intelligence (AI) technologies to create even more immersive and interactive learning materials. Additionally, we plan to create more opportunities for collaboration among children, fostering teamwork and collective problem-solving. Our goal is to create a global educational platform where children from all over the world can learn together, share their achievements, and inspire each other. The virtual reward system and leaderboards will be expanded to give children even more ways to showcase their skills. We plan to introduce special themed weeks and monthly challenges to capture children's attention and encourage regular participation on the platform. Collaboration with schools and educational institutions is also a priority for us. We want KidVenturaKi to become a valuable resource for educators, offering specialized materials and tools to integrate our games and quizzes into the curriculum. Our vision is to become the leading platform for educational games and quizzes, making learning an integral and enjoyable part of children's daily lives. We believe that with innovative solutions and engaging content, we can ignite a love for learning in children and help them reach their full potential."
+  },
+  "profile": {
+    "backgroundAlt": "Profile background",
+    "welcome": "Hello, {{firstName}} {{lastName}}",
+    "profilePhotoAlt": "Profile photo",
+    "deletePicture": "Delete photo",
+    "personalData": "Personal Data",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "age": "Age",
+    "gender": "Gender",
+    "email": "Email",
+    "male": "Male",
+    "female": "Female",
+    "saving": "Saving...",
+    "save": "Save",
+    "editData": "Edit Data",
+    "updateSuccess": "Update successful!",
+    "updateError": "Profile update error"
+  }
+}
+
+

@@ -1,5 +1,3 @@
-// redux/store.js
-
 import { combineReducers } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import { persistConfig, authPersistConfig } from './persistConfig';
@@ -8,6 +6,7 @@ import authReducer from '../features/auth/authSlice';
 import registerReducer from '../features/register/RegisterSlice';
 import profileReducer from '../features/profile/profileSlice';
 
+
 import { configureStore } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({
@@ -15,6 +14,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   register: registerReducer,
   profile: profileReducer,
+
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

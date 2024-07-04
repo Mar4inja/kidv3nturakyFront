@@ -5,7 +5,8 @@
   flex-direction: column; /* Novieto ielogošanās formu un reģistrācijas saiti vertikāli */
   align-items: center; /* Centrē elementus vertikāli */
   height: 100vh; /* Iestata konteineri, lai aizņemtu visu ekrāna augstumu */
-  margin-left: -55px;
+  margin-left: -136px;
+
 }
 
 .background-container {
@@ -29,9 +30,9 @@
 .register-form {
   width: 300px; /* Iestata reģistrācijas formas platumu */
   padding: 20px; /* Pievieno iekšējo atstarpju reģistrācijas formai */
-  background-color: #f4f4f4; /* Iestata fona krāsu reģistrācijas formai */
+  background-color: rgba(244, 244, 244, 0.8); /* Iestata fona krāsu reģistrācijas formai */
   border-radius: 8px; /* Iestata reģistrācijas formas ierobežojuma radiusu */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Pievieno ēnas efektu reģistrācijas formai */
+  box-shadow: 0 10px 15px rgb(0, 0, 0); /* Pievieno ēnas efektu reģistrācijas formai */
 }
 
 /* Stilizē reģistrācijas formas virsrakstu */
@@ -86,4 +87,23 @@ input[type='number'] {
 
 .register-btn:hover {
   background-color: #0056b3; /* Maina fona krāsu uz tumšāku hover stāvoklī */
+}
+
+.registerLink {
+  margin-top: 15px;
+  color: white;
+}
+
+.registerLink a {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 2px;
+  border-radius: 5px;
+  background: rgba(105, 143, 230, 0.63);
+
+}
+
+.registerLink a:hover {
+  color: #5bd13a;
 }

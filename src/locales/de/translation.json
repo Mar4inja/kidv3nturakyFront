@@ -1,0 +1,212 @@
+{
+  "login": {
+    "backgroundAlt": "Login-Seiten-Hintergrund",
+    "formTitle": "Anmeldung",
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Passwort",
+    "loggingIn": "Anmelden...",
+    "login": "Anmelden",
+    "noResponse": "Keine Antwort vom Server.",
+    "missingEmailOrPassword": "E-Mail oder Passwort fehlt",
+    "unauthorized": "Unbefugt",
+    "loginFailed": "Anmeldung fehlgeschlagen",
+    "noAccount": "Kein Konto?",
+    "register": "Registrieren"
+  },
+  "games": {
+    "backgroundAlt": "Spiele-Hintergrund",
+    "loginPrompt": {
+      "message": "Unbefugte Benutzer können QUIZ nicht spielen, bitte melden Sie sich an oder registrieren Sie sich!",
+      "login": "Anmelden",
+      "cancel": "Abbrechen"
+    },
+    "backButton": "Zurück zu den Kategorien",
+    "categories": {
+      "geography": "Geographie",
+      "math": "Mathematik",
+      "fairytales": "Märchen"
+    },
+    "geographyQuestions": {
+      "0": {
+        "question": "Welche Form hat die Erde?",
+        "answer": "Rund"
+      },
+      "1": {
+        "question": "Welches Land hat eine rote Flagge mit einem weißen Kreuz?",
+        "answer": "Schweiz"
+      },
+      "2": {
+        "question": "Wo leben Pandas?",
+        "answer": "China"
+      },
+      "3": {
+        "question": "Welche Farbe hat der Himmel?",
+        "answer": "Blau"
+      },
+      "4": {
+        "question": "Welches Land ist berühmt für Pizza?",
+        "answer": "Italien"
+      },
+      "5": {
+        "question": "In welchem Land befindet sich der Eiffelturm?",
+        "answer": "Frankreich"
+      },
+      "6": {
+        "question": "Was ist die Hauptstadt von England?",
+        "answer": "London"
+      },
+      "7": {
+        "question": "Wie heißt unser Planet?",
+        "answer": "Erde"
+      },
+      "8": {
+        "question": "Wo leben Kängurus?",
+        "answer": "Australien"
+      },
+      "9": {
+        "question": "Was ist das größte Tier im Ozean?",
+        "answer": "Wal"
+      }
+    },
+    "mathQuestions": {
+      "0": {
+        "question": "Was ist 1 + 1?",
+        "answer": "2"
+      },
+      "1": {
+        "question": "Was ist 2 + 2?",
+        "answer": "4"
+      },
+      "2": {
+        "question": "Was ist 3 - 1?",
+        "answer": "2"
+      },
+      "3": {
+        "question": "Was kommt nach 5?",
+        "answer": "6"
+      },
+      "4": {
+        "question": "Welche geometrische Form hat ein Quadrat?",
+        "answer": "Quadrat"
+      },
+      "5": {
+        "question": "Was ist 10 - 5?",
+        "answer": "5"
+      },
+      "6": {
+        "question": "Welche Form hat ein Ball?",
+        "answer": "Rund"
+      },
+      "7": {
+        "question": "Wie viele Finger hast du?",
+        "answer": "10"
+      },
+      "8": {
+        "question": "Wie viele Seiten hat ein Dreieck?",
+        "answer": "3"
+      },
+      "9": {
+        "question": "Was ist 5 + 0?",
+        "answer": "5"
+      }
+    },
+    "fairytalesQuestions": {
+      "0": {
+        "question": "Wer trägt einen Glasschuh?",
+        "answer": "Aschenputtel"
+      },
+      "1": {
+        "question": "Wer ist mit sieben Zwergen befreundet?",
+        "answer": "Schneewittchen"
+      },
+      "2": {
+        "question": "Wer trägt ein rotes Käppchen?",
+        "answer": "Rotkäppchen"
+      },
+      "3": {
+        "question": "Wer hat langes goldenes Haar?",
+        "answer": "Rapunzel"
+      },
+      "4": {
+        "question": "Wer lebt in einem Haus aus Süßigkeiten?",
+        "answer": "Hänsel und Gretel"
+      },
+      "5": {
+        "question": "Wer wacht mit einem Kuss auf?",
+        "answer": "Dornröschen"
+      },
+      "6": {
+        "question": "Wer kann mit Tieren sprechen?",
+        "answer": "Schneewittchen"
+      },
+      "7": {
+        "question": "Wer fliegt auf einem Zauberteppich?",
+        "answer": "Aladdin"
+      },
+      "8": {
+        "question": "Wer ist das Biest in 'Die Schöne und das Biest'?",
+        "answer": "Das Biest"
+      },
+      "9": {
+        "question": "Wer hat eine gute Fee?",
+        "answer": "Aschenputtel"
+      }
+    }
+  },
+  "navbar": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "games": "Spiele",
+    "profile": "Profil",
+    "logout": "Abmelden"
+  },
+  "footer": {
+    "contact": "Kontakt",
+    "privacy": "Datenschutzbestimmungen"
+  },
+  "welcome": "Willkommen auf unserer Website!",
+  "about": {
+    "backgroundAlt": "Über uns Hintergrundbild",
+    "header1": "Über uns",
+    "text1": "KidVenturaKi ist die perfekte Online-Plattform für Kinder, die Bildungs- und Quizspiele anbietet. Unsere Mission ist es, Lernen zu einem unterhaltsamen und aufregenden Abenteuer zu machen, indem wir interaktive und pädagogische Inhalte bereitstellen. Wir bieten eine Vielzahl von Quiz- und Spieloptionen, die für verschiedene Altersgruppen und Interessen geeignet sind, einschließlich Mathematik, Wissenschaft, Geographie und mehr. Unsere interaktiven Quizze helfen dabei, das im Klassenzimmer Gelernte zu festigen und Kinder auf unterhaltsame und einprägsame Weise mit neuen Konzepten vertraut zu machen. Jedes Quiz entspricht den Bildungsstandards, um Relevanz und Wert sicherzustellen. Um Kinder zu motivieren, haben wir ein virtuelles Belohnungssystem integriert, mit dem sie Belohnungen für ihre Leistungen verdienen können. Unser Ranglistensystem fördert einen gesunden Wettbewerb und motiviert die Kinder, ihre Ergebnisse zu verbessern und nach Exzellenz zu streben. KidVenturaKi ist benutzerfreundlich gestaltet und verfügt über lebendige Grafiken, um die Aufmerksamkeit junger Lernender zu erregen und zu halten. Eltern und Lehrer können sich darauf verlassen, dass alle Inhalte gründlich geprüft und kindgerecht sind. Wir wollen eine sichere und bereichernde Umgebung schaffen, in der Kinder erkunden und lernen können.",
+    "header2": "Unsere Zukunftspläne",
+    "text2": "KidVenturaKi sucht ständig nach Möglichkeiten, seine Angebote zu verbessern und zu erweitern, um den Kindern die besten Bildungsmöglichkeiten zu bieten. Unsere Zukunftspläne umfassen die Entwicklung neuer und spannender Spiele, die ein noch breiteres Themenspektrum und Altersgruppen abdecken. Wir arbeiten daran, Augmented-Reality- (AR) und künstliche Intelligenz- (KI) Technologien zu implementieren, um noch immersivere und interaktive Lernmaterialien zu erstellen. Darüber hinaus planen wir, mehr Möglichkeiten für die Zusammenarbeit unter den Kindern zu schaffen, um Teamarbeit und kollektive Problemlösungen zu fördern. Unser Ziel ist es, eine globale Bildungsplattform zu schaffen, auf der Kinder aus aller Welt gemeinsam lernen, ihre Leistungen teilen und sich gegenseitig inspirieren können. Das virtuelle Belohnungssystem und die Ranglisten werden erweitert, um den Kindern noch mehr Möglichkeiten zu geben, ihre Fähigkeiten zu zeigen. Wir planen, spezielle Themenwochen und monatliche Herausforderungen einzuführen, um die Aufmerksamkeit der Kinder zu fesseln und ihre regelmäßige Teilnahme an der Plattform zu fördern. Die Zusammenarbeit mit Schulen und Bildungseinrichtungen ist ebenfalls eine Priorität für uns. Wir möchten, dass KidVenturaKi eine wertvolle Ressource für Lehrer wird, indem wir spezialisierte Materialien und Werkzeuge anbieten, um unsere Spiele und Quizze in den Lehrplan zu integrieren. Unsere Vision ist es, die führende Plattform für Bildungs- und Quizspiele zu werden und Lernen zu einem integralen und angenehmen Teil des Alltags der Kinder zu machen. Wir glauben, dass wir mit innovativen Lösungen und fesselnden Inhalten die Liebe zum Lernen bei Kindern wecken und ihnen helfen können, ihr volles Potenzial zu entfalten."
+  },
+  "profile": {
+    "backgroundAlt": "Profilhintergrund",
+    "welcome": "Hallo, {{firstName}} {{lastName}}",
+    "profilePhotoAlt": "Profilfoto",
+    "deletePicture": "Foto löschen",
+    "personalData": "Persönliche Daten",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "age": "Alter",
+    "gender": "Geschlecht",
+    "email": "E-Mail",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "saving": "Speichern...",
+    "save": "Speichern",
+    "editData": "Daten bearbeiten",
+    "updateSuccess": "Aktualisierung erfolgreich!",
+    "updateError": "Fehler beim Aktualisieren des Profils"
+  },
+  "register": {
+    "backgroundAlt": "Registrierungsseite Hintergrund",
+    "formTitle": "Registrieren",
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Passwort",
+    "confirmPasswordPlaceholder": "Passwort bestätigen",
+    "registering": "Registrieren...",
+    "register": "Registrieren",
+    "alreadyHaveAccount": "Bereits ein Konto?",
+    "login": "Anmelden",
+    "registrationFailed": "Registrierung fehlgeschlagen",
+    "passwordMismatch": "Passwörter stimmen nicht überein",
+    "success": "Registrierung erfolgreich!"
+  }
+}
+
+

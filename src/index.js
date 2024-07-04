@@ -5,6 +5,7 @@ import App from "./App";
 import { store, persistor } from "./app/store";  // Pārliecinies, ka ceļš uz 'store' ir pareizs
 import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './i18n'; // Importējiet i18n konfigurāciju
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
