@@ -5,18 +5,20 @@ import gamesBackgroundImage from '../../assets/games/games3.jpg';
 import geographyImage from '../../assets/games/geography.jpg';
 import mathImage from '../../assets/games/math.jpg';
 import fairytalesImage from '../../assets/games/fairytail1.jpg';
-import geographyQuestionImage from '../../assets/games/geoGREEN.jpg';
-import mathQuestionImage from '../../assets/games/mathBLUE.jpg';
-import fairytalesQuestionImage from '../../assets/games/fairytaleVIOLET.jpg';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+
+import preschoolImage from '../../assets/ageGroups/kindergarten.jpg';  // Добавьте изображение для дошкольников
+import earlySchoolImage from '../../assets/ageGroups/firstClasses.jpg';  // Добавьте изображение для младших школьников
+import middleSchoolImage from '../../assets/ageGroups/middleClasses.jpg';  // Добавьте изображение для средних школьников
+import highSchoolImage from '../../assets/ageGroups/teenagers.jpg';  // Добавьте изображение для старших школьников
+
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const Games = () => {
-    const { t } = useTranslation();  // Pareizi izmantojam t
-    const [showQuestions, setShowQuestions] = useState(false);
+    const { t } = useTranslation();
+    const [showCategories, setShowCategories] = useState(true);
+    const [showAgeGroups, setShowAgeGroups] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [showLoginPrompt, setShowLoginPrompt] = useState(false);
     const navigate = useNavigate();
 
@@ -31,7 +33,8 @@ const Games = () => {
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         if (isLoggedIn) {
             setSelectedCategory(category);
-            setShowQuestions(true);
+            setShowCategories(false);
+            setShowAgeGroups(true);
         } else {
             setShowLoginPrompt(true);
         }
@@ -45,59 +48,16 @@ const Games = () => {
         setShowLoginPrompt(false);
     };
 
+    const handleAgeGroupClick = (ageGroup) => {
+        // Логика для выбора возрастной группы
+        console.log(`Выбран возрастной группы: ${ageGroup}`);
+        // Вы можете добавить код для перехода к следующему экрану или выполнения других действий
+    };
+
     const handleBackClick = () => {
-        setShowQuestions(false);
+        setShowCategories(true);
+        setShowAgeGroups(false);
         setSelectedCategory('');
-        setCurrentQuestionIndex(0);
-    };
-
-    const handleNextQuestion = () => {
-        setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions[selectedCategory].length);
-    };
-
-    const handlePreviousQuestion = () => {
-        setCurrentQuestionIndex((prevIndex) =>
-            (prevIndex - 1 + questions[selectedCategory].length) % questions[selectedCategory].length
-        );
-    };
-
-    const questions = {
-        geography: [
-            { question: t('games.geographyQuestions.0.question'), answer: t('games.geographyQuestions.0.answer') },
-            { question: t('games.geographyQuestions.1.question'), answer: t('games.geographyQuestions.1.answer') },
-            { question: t('games.geographyQuestions.2.question'), answer: t('games.geographyQuestions.2.answer') },
-            { question: t('games.geographyQuestions.3.question'), answer: t('games.geographyQuestions.3.answer') },
-            { question: t('games.geographyQuestions.4.question'), answer: t('games.geographyQuestions.4.answer') },
-            { question: t('games.geographyQuestions.5.question'), answer: t('games.geographyQuestions.5.answer') },
-            { question: t('games.geographyQuestions.6.question'), answer: t('games.geographyQuestions.6.answer') },
-            { question: t('games.geographyQuestions.7.question'), answer: t('games.geographyQuestions.7.answer') },
-            { question: t('games.geographyQuestions.8.question'), answer: t('games.geographyQuestions.8.answer') },
-            { question: t('games.geographyQuestions.9.question'), answer: t('games.geographyQuestions.9.answer') },
-        ],
-        math: [
-            { question: t('games.mathQuestions.0.question'), answer: t('games.mathQuestions.0.answer') },
-            { question: t('games.mathQuestions.1.question'), answer: t('games.mathQuestions.1.answer') },
-            { question: t('games.mathQuestions.2.question'), answer: t('games.mathQuestions.2.answer') },
-            { question: t('games.mathQuestions.3.question'), answer: t('games.mathQuestions.3.answer') },
-            { question: t('games.mathQuestions.4.question'), answer: t('games.mathQuestions.4.answer') },
-            { question: t('games.mathQuestions.5.question'), answer: t('games.mathQuestions.5.answer') },
-            { question: t('games.mathQuestions.6.question'), answer: t('games.mathQuestions.6.answer') },
-            { question: t('games.mathQuestions.7.question'), answer: t('games.mathQuestions.7.answer') },
-            { question: t('games.mathQuestions.8.question'), answer: t('games.mathQuestions.8.answer') },
-            { question: t('games.mathQuestions.9.question'), answer: t('games.mathQuestions.9.answer') },
-        ],
-        fairytales: [
-            { question: t('games.fairytalesQuestions.0.question'), answer: t('games.fairytalesQuestions.0.answer') },
-            { question: t('games.fairytalesQuestions.1.question'), answer: t('games.fairytalesQuestions.1.answer') },
-            { question: t('games.fairytalesQuestions.2.question'), answer: t('games.fairytalesQuestions.2.answer') },
-            { question: t('games.fairytalesQuestions.3.question'), answer: t('games.fairytalesQuestions.3.answer') },
-            { question: t('games.fairytalesQuestions.4.question'), answer: t('games.fairytalesQuestions.4.answer') },
-            { question: t('games.fairytalesQuestions.5.question'), answer: t('games.fairytalesQuestions.5.answer') },
-            { question: t('games.fairytalesQuestions.6.question'), answer: t('games.fairytalesQuestions.6.answer') },
-            { question: t('games.fairytalesQuestions.7.question'), answer: t('games.fairytalesQuestions.7.answer') },
-            { question: t('games.fairytalesQuestions.8.question'), answer: t('games.fairytalesQuestions.8.answer') },
-            { question: t('games.fairytalesQuestions.9.question'), answer: t('games.fairytalesQuestions.9.answer') },
-        ],
     };
 
     const renderCard = (category, image) => (
@@ -112,11 +72,23 @@ const Games = () => {
         </div>
     );
 
+    const renderAgeGroupCard = (ageGroup, image) => (
+        <div
+            className={styles.card}
+            onClick={() => handleAgeGroupClick(ageGroup)}
+            style={{ backgroundImage: `url(${image})` }}
+        >
+            <div className={styles.cardContent}>
+                <span className={styles.geoTitle}>{t(`games.ageGroups.${ageGroup}`)}</span>
+            </div>
+        </div>
+    );
+
     return (
         <div className={styles.gamesContainer}>
-            <Navbar />
+            <Navbar/>
             <div className={styles.backgroundContainer}>
-                <img src={gamesBackgroundImage} alt={t('games.backgroundAlt')} className={styles.backgroundImage} />
+                <img src={gamesBackgroundImage} alt={t('games.backgroundAlt')} className={styles.backgroundImage}/>
             </div>
 
             {showLoginPrompt && (
@@ -127,44 +99,54 @@ const Games = () => {
                 </div>
             )}
 
-            {!showQuestions && !showLoginPrompt && (
-                <div className={styles.cardContainer}>
-                    {renderCard('geography', geographyImage)}
-                    {renderCard('math', mathImage)}
-                    {renderCard('fairytales', fairytalesImage)}
+
+            {showCategories && !showLoginPrompt && (
+                <div className={styles.categoriesContainer}>
+                    <h1>{t('games.categoriesHeader')}</h1>
+                    <div className={styles.cardContainer}>
+                        {renderCard('geography', geographyImage)}
+                        {renderCard('math', mathImage)}
+                        {renderCard('fairytales', fairytalesImage)}
+                    </div>
                 </div>
             )}
 
-            {showQuestions && (
-                <div className={styles.questionsContainer}>
+            {showAgeGroups && !showLoginPrompt && (
+                <div className={styles.cardContainer}>
                     <button className={styles.backButton} onClick={handleBackClick}>
                         {t('games.backButton')}
                     </button>
-                    <div className={styles.questionDisplay}>
-                        <button className={`${styles.navButton} ${styles.prev}`} onClick={handlePreviousQuestion}>
-                            <FaArrowLeft />
-                        </button>
-                        <div
-                            className={styles.questionCard}
-                            style={{
-                                backgroundImage: `url(${
-                                    selectedCategory === 'geography'
-                                        ? geographyQuestionImage
-                                        : selectedCategory === 'math'
-                                            ? mathQuestionImage
-                                            : fairytalesQuestionImage
-                                })`
-                            }}
-                        >
-                            <div className={styles.questionContent}>
-                                <h2>{questions[selectedCategory][currentQuestionIndex].question}</h2>
-                                <p>{questions[selectedCategory][currentQuestionIndex].answer}</p>
-                            </div>
-                        </div>
-                        <button className={`${styles.navButton} ${styles.next}`} onClick={handleNextQuestion}>
-                            <FaArrowRight />
-                        </button>
-                    </div>
+
+                    {selectedCategory === 'geography' && (
+                        <>
+
+                            {renderAgeGroupCard('4 - 7 years', preschoolImage)}
+                            {renderAgeGroupCard('7 - 10 years', earlySchoolImage)}
+                            {renderAgeGroupCard('10 - 13 years', middleSchoolImage)}
+                            {renderAgeGroupCard('13 - 16 years', highSchoolImage)}
+
+                        </>
+                    )}
+                    {selectedCategory === 'math' && (
+                        <>
+
+                            {renderAgeGroupCard('4 - 7 years', preschoolImage)}
+                            {renderAgeGroupCard('7 - 10 years', earlySchoolImage)}
+                            {renderAgeGroupCard('10 - 13 years', middleSchoolImage)}
+                            {renderAgeGroupCard('13 - 16 years', highSchoolImage)}
+
+                        </>
+                    )}
+                    {selectedCategory === 'fairytales' && (
+                        <>
+
+                            {renderAgeGroupCard('4 - 7 years', preschoolImage)}
+                            {renderAgeGroupCard('7 - 10 years', earlySchoolImage)}
+                            {renderAgeGroupCard('10 - 13 years', middleSchoolImage)}
+                            {renderAgeGroupCard('13 - 16 years', highSchoolImage)}
+
+                        </>
+                    )}
                 </div>
             )}
         </div>

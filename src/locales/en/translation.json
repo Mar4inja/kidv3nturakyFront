@@ -35,10 +35,17 @@
       "cancel": "Cancel"
     },
     "backButton": "Back to categories",
+    "categoriesHeader": "Categories",
     "categories": {
       "geography": "Geography",
       "math": "Math",
       "fairytales": "Fairytales"
+    },
+    "ageGroups": {
+      "4 - 7 years": "4 - 7 years",
+      "7 - 10 years": "7 - 10 years",
+      "10 - 13 years": "10 - 13 years",
+      "13 - 16 years": "13 - 16 years"
     },
     "geographyQuestions": {
       "0": {
@@ -208,5 +215,3 @@
     "updateError": "Profile update error"
   }
 }
-
-

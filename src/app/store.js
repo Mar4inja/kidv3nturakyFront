@@ -5,6 +5,7 @@ import { apiSlice } from './api/apiSlice';
 import authReducer from '../features/auth/authSlice';
 import registerReducer from '../features/register/RegisterSlice';
 import profileReducer from '../features/profile/profileSlice';
+import gamesReducer from '../features/games/gameSlice';
 
 
 import { configureStore } from '@reduxjs/toolkit';
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   register: registerReducer,
   profile: profileReducer,
+  games: gamesReducer,
 
 });
 
