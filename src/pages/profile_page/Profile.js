@@ -1,9 +1,7 @@
-// src/pages/profile_page/Profile.js
-
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser } from '../../features/auth/authSlice';
-import { selectUpdateLoading, selectUpdatedProfile, setProfilePhoto } from '../../features/profile/profileSlice';
+import { selectUpdateLoading, selectUpdatedProfile, setProfilePhoto, updateProfile } from '../../features/profile/profileSlice';
 import { useUpdateProfileMutation } from '../../app/api/apiSlice';
 import styles from './Profile.module.css';
 import Navbar from '../../components/navbar/Navbar';
@@ -22,22 +20,22 @@ const Profile = () => {
     const loading = useSelector(selectUpdateLoading);
     const updatedProfile = useSelector(selectUpdatedProfile);
 
-    const [updateProfile, { isLoading }] = useUpdateProfileMutation();
+    const [updateProfileApi] = useUpdateProfileMutation();
 
     const [showPersonalData, setShowPersonalData] = useState(false);
     const [editing, setEditing] = useState(false);
 
     const [formData, setFormData] = useState({
-        firstName: user.firstName || '',
-        lastName: user.lastName || '',
-        age: user.age || '',
-        gender: user.gender || 'male',
-        email: user.email || '',
-        profilePhoto: user.profilePhoto || '',
+        firstName: user?.firstName || '',
+        lastName: user?.lastName || '',
+        age: user?.age || '',
+        gender: user?.gender || 'male',
+        email: user?.email || '',
+        profilePhoto: user?.profilePhoto || '',
     });
 
     const [successMessage, setSuccessMessage] = useState('');
-    const [selectedImage, setSelectedImage] = useState(user.profilePhoto || '');
+    const [selectedImage, setSelectedImage] = useState(user?.profilePhoto || '');
 
     useEffect(() => {
         if (!user) {
@@ -47,6 +45,7 @@ const Profile = () => {
 
     useEffect(() => {
         if (updatedProfile) {
+            console.log('Profile updated:', updatedProfile);
             setFormData({
                 firstName: updatedProfile.firstName,
                 lastName: updatedProfile.lastName,
@@ -60,7 +59,7 @@ const Profile = () => {
             setTimeout(() => {
                 setSuccessMessage('');
                 setEditing(false);
-            }, 1000);
+            }, 2000); // Show message for 2 seconds
         }
     }, [updatedProfile, t]);
 
@@ -88,7 +87,9 @@ const Profile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await updateProfile(formData).unwrap();
+            const response = await updateProfileApi(formData).unwrap();
+            console.log('Profile update response:', response);
+            dispatch(updateProfile(response)); // Dispatch the action to update the Redux store
         } catch (error) {
             console.error(t('profile.updateError'), error);
         }
@@ -218,8 +219,8 @@ const Profile = () => {
                                     </select>
                                 </div>
                                 <p><strong>{t('profile.email')}:</strong> {user.email}</p>
-                                <button type="submit" className={styles.saveButton} disabled={isLoading}>
-                                    {isLoading ? t('profile.saving') : t('profile.save')}
+                                <button type="submit" className={styles.saveButton} disabled={loading}>
+                                    {loading ? t('profile.saving') : t('profile.save')}
                                 </button>
                             </form>
                         ) : (

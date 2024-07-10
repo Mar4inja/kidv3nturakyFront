@@ -226,25 +226,20 @@ body {
     background-color: #f0f0f0;
 }
 
-.saveButton {
-    background-color: rgba(40, 140, 239, 0.91);
-    font-size: 16px;
+/* styles.css or any CSS file */
+.save-button {
+    padding: 5px 10px;
+    font-size: 12px;
+
+    background-color: #4CAF50; /* Green */
     color: white;
-    padding: 10px 20px;
-    margin-top: 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s; /* Pāreja fona krāsai un mērogam */
-    height: 50px; /* Fiksēta pogas augstums */
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.saveButton:hover {
-    background-color: #218838; /* Tumšāks zaļš pie hover */
-    transform: scale(1.05); /* Liels peldošs efekts */
+.save-button:hover {
+    background-color: #45a049;
 }
 
 /* Reaģēt uz mazākiem ekrāniem */
@@ -273,9 +268,20 @@ body {
         width: 95%; /* Platums pielāgots mazākiem ekrāniem */
     }
 
+    /* Profile.module.css */
+
     .successMessage {
-        margin-top: 5px; /* Mazāka atstarpe */
+        padding: 10px;
+        background-color: #4CAF50; /* Green background */
+        color: white; /* White text */
+        border-radius: 5px;
+        text-align: center;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
     }
+
 
     .fullName h2 {
         font-size: 18px; /* Mazāks fonta izmērs mazākiem ekrāniem */
