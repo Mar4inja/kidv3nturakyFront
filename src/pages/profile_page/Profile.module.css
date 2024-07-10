@@ -43,7 +43,7 @@ body {
     left: 154px;
     transform: translate(-50%, -50%);
     z-index: 1;
-    color: white;
+    color: #fdfdfd;
     text-align: center; /* Centrē tekstu, kad ekrāna platums ir mazāks */
 
 }
@@ -124,19 +124,36 @@ body {
     font-size: 16px;
     top: 1px;
     left: 120%;
-    height: 416px;
-    width: 355px;
-    background-color: rgba(255, 255, 255, 0.59);
+    height: 700px;
+    width: 1200px;
+    background-size: cover;
     border-radius: 10px;
     padding: 20px;
     z-index: 3;
+    overflow: hidden; /* Pārliecinās, ka ::before elements nepārplūst ārpus konteineram */
+}
 
+.personalDataContainer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: beige;
+    background-size: cover;
+    opacity: 0.8;
+    z-index: -1; /* Nodrošina, ka attēls ir aiz satura */
+}
+
+.personalDataContainer > p {
+  color: #000000;
 }
 
 /* Paziņojumam blakus Save pogai */
 .successMessage {
     color: #28a745; /* Zaļa krāsa */
-    margin-left: 130px;
+    margin-left: 200px;
     margin-top: -30px; /* Atstarpe starp pogu un paziņojumu */
     font-weight: bold; /* Bolds teksts */
 }
@@ -146,6 +163,7 @@ body {
 }
 
 .closeButton {
+    color: #000000;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -157,14 +175,14 @@ body {
 }
 
 .closeButton:hover {
-    color: #ffdddd; /* Krāsa aizvērt pogai hover efektā */
+    color: #ffffff; /* Krāsa aizvērt pogai hover efektā */
 }
 
 .editDataButton {
     background-color: rgba(40, 140, 239, 0.91);
     color: white;
     padding: 10px 20px;
-    margin-top: 15px;
+    margin-top: 181px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -176,21 +194,39 @@ body {
     transform: scale(1.05); /* Liels peldošs efekts */
 }
 
+.displayDataRow {
+    display: flex;
+    gap: 150px;
+
+}
+
+.fName, .lName, .pAge, .pGender, .pEmail {
+    border: 1px solid #ddd; /* Pelēks border */
+    padding: 10px; /* Atstarpe iekšpuses */
+    border-radius: 5px; /* Noapaļoti stūri */
+    background-color: #f9f9f9; /* Gaiši pelēks fons */
+}
+
 .saveButton {
     background-color: rgba(40, 140, 239, 0.91);
     font-size: 16px;
     color: white;
     padding: 10px 20px;
-    margin-top: 56px;
+    margin-top: 65px;
+    margin-left: 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s; /* Pāreja fona krāsai un mērogam */
+    transition: background-color 0.3s, transform 0.3s; /* Переход для фона и масштаба */
+    height: 50px; /* Фиксированная высота кнопки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .saveButton:hover {
-    background-color: #218838; /* Tumšāka fona krāsa peldošam efektam */
-    transform: scale(1.05); /* Liels peldošs efekts */
+    background-color: #218838; /* Темно-зеленый цвет при наведении */
+    transform: scale(1.05); /* Увеличение при наведении */
 }
 
 .profileImageLabel {

@@ -46,14 +46,13 @@ const Login = () => {
                 navigate('/profile');
             }
         } catch (error) {
-            if (!error?.originalStatus) {
-                setErrorMessage(t('login.noResponse'));  // Aizvietots ar tulkoto tekstu
-            } else if (error.originalStatus === 400) {
-                setErrorMessage(t('login.missingEmailOrPassword'));  // Aizvietots ar tulkoto tekstu
-            } else if (error.originalStatus === 401) {
-                setErrorMessage(t('login.unauthorized'));  // Aizvietots ar tulkoto tekstu
+            // Parādīt "wrong email or password" ziņojumu, ja kļūda ir 401
+            if (error?.status === 401) {
+                setErrorMessage(t('login.wrongEmailOrPassword'));  // Ja 401, tad kļūda: "wrong email or password"
+            } else if (!error?.status) {
+                setErrorMessage(t('login.noResponse'));  // Ja nav atbildes no servera
             } else {
-                setErrorMessage(t('login.loginFailed'));  // Aizvietots ar tulkoto tekstu
+                setErrorMessage(t('login.loginFailed'));  // Visām citām kļūdām
             }
             errRef.current?.scrollIntoView({ behavior: "smooth" });
         }
@@ -68,16 +67,16 @@ const Login = () => {
             <div className={styles['background-container']}>
                 <img
                     src={loginBackgroundImage}
-                    alt={t('login.backgroundAlt')}  // Aizvietots ar tulkoto tekstu
+                    alt={t('login.backgroundAlt')}
                     className={styles['background-image']}
                 />
             </div>
             <form className={styles['login-form']} onSubmit={handleSubmit}>
-                <h2 className={styles['form-title']}>{t('login.formTitle')}</h2>  {/* Aizvietots ar tulkoto tekstu */}
+                <h2 className={styles['form-title']}>{t('login.formTitle')}</h2>
                 <div className={styles['form-group']}>
                     <input
                         type="email"
-                        placeholder={t('login.emailPlaceholder')}  // Aizvietots ar tulkoto tekstu
+                        placeholder={t('login.emailPlaceholder')}
                         ref={userRef}
                         value={email}
                         onChange={handleUserInput}
@@ -87,7 +86,7 @@ const Login = () => {
                 <div className={styles['form-group']}>
                     <input
                         type="password"
-                        placeholder={t('login.passwordPlaceholder')}  // Aizvietots ar tulkoto tekstu
+                        placeholder={t('login.passwordPlaceholder')}
                         value={password}
                         onChange={handlePasswordInput}
                         required
@@ -98,17 +97,17 @@ const Login = () => {
                     className={styles['login-btn']}
                     disabled={isLoading}
                 >
-                    {isLoading ? t('login.loggingIn') : t('login.login')}  {/* Aizvietots ar tulkoto tekstu */}
+                    {isLoading ? t('login.loggingIn') : t('login.login')}
                 </button>
                 {errorMessage && (
                     <p ref={errRef} className={styles['error']} aria-live="assertive">
-                        {errorMessage}  {/* Kļūdas ziņojums paliek dinamisks */}
+                        {errorMessage}
                     </p>
                 )}
             </form>
             <div className={styles['register-link']}>
                 <p>
-                    {t('login.noAccount')} <Link to="/register">{t('login.register')}</Link>  {/* Aizvietots ar tulkoto tekstu */}
+                    {t('login.noAccount')} <Link to="/register">{t('login.register')}</Link>
                 </p>
             </div>
         </div>

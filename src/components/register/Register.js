@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../../features/register/RegisterSlice";
+import { registerUser, clearError } from "../../features/register/RegisterSlice";
 import styles from "./Register.module.css";
 import Navbar from "../navbar/Navbar";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+import { Link, useNavigate } from "react-router-dom";
 import registerBackgroundImage from "../../assets/login/login.jpg";
 import { selectRegisterLoading, selectRegisterError } from "../../features/register/RegisterSlice";
 import { useTranslation } from "react-i18next";
@@ -15,7 +15,7 @@ const Register = () => {
     firstName: "",
     lastName: "",
     age: 0,
-    gender: "", // Added gender field initialization
+    gender: "",
     email: "",
     password: "",
   });
@@ -25,13 +25,21 @@ const Register = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectRegisterLoading);
   const error = useSelector(selectRegisterError);
-  const navigate = useNavigate(); // Use useNavigate hook
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Notīrīt kļūdu, kad komponents tiek atvienots vai formData mainās
+    return () => {
+      dispatch(clearError());
+    };
+  }, [dispatch, formData]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerUser(formData)).then(() => {
-      // After successful registration navigate to login page
-      navigate("/login");
+    dispatch(registerUser(formData)).then((action) => {
+      if (!action.error) {
+        navigate("/login");
+      }
     });
   };
 
@@ -45,7 +53,7 @@ const Register = () => {
         <div className={styles["background-container"]}>
           <img
               src={registerBackgroundImage}
-              alt={t("login.backgroundAlt")} // Translate alt text
+              alt={t("login.backgroundAlt")}
               className={styles["background-image"]}
           />
         </div>
@@ -121,7 +129,7 @@ const Register = () => {
           >
             {loading ? t("login.loggingIn") : t("register.formTitle")}
           </button>
-          {error && <p className={styles.error}>{t("register.registerError")}</p>}
+          {error && <p className={styles.error}>{error}</p>}
         </form>
         <div className={styles.registerLink}>
           <p>

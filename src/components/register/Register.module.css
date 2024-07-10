@@ -89,6 +89,12 @@ input[type='number'] {
   background-color: #0056b3; /* Maina fona krāsu uz tumšāku hover stāvoklī */
 }
 
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+
 .registerLink {
   margin-top: 15px;
   color: white;

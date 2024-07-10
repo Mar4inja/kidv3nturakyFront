@@ -14,6 +14,10 @@ export const registerUser = createAsyncThunk(
         body: JSON.stringify(formData),
       });
 
+      if (response.status === 409) {
+        return rejectWithValue('Email already exists');
+      }
+
       if (!response.ok) {
         throw new Error('Failed to register');
       }

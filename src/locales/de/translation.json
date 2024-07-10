@@ -193,6 +193,49 @@
     "header1": "Über uns",
     "text1": "KidVenturaKi ist die perfekte Online-Plattform für Kinder, die Bildungs-Spiele und Quizze anbietet. Unser Ziel ist es, das Lernen zu einem spannenden Abenteuer zu machen, indem wir interaktive und lehrreiche Inhalte bereitstellen. Wir bieten eine Vielzahl von Quizzen und Spielen für verschiedene Altersgruppen und Interessen an, darunter Mathematik, Wissenschaft, Geografie und vieles mehr. Unsere interaktiven Quizze helfen dabei, das im Unterricht Gelernte zu festigen und Kindern neue Konzepte auf eine unterhaltsame und einprägsame Weise näherzubringen. Jedes Quiz entspricht Bildungsstandards, um die Relevanz und den Wert des Materials sicherzustellen. Um Kinder zu motivieren, haben wir ein virtuelles Belohnungssystem integriert, bei dem sie Punkte für ihre Erfolge sammeln können. Unser Ranglistensystem fördert gesunden Wettbewerb und motiviert Kinder, ihre Ergebnisse zu verbessern und ihr Bestes zu geben. KidVenturaKi wurde mit dem Fokus auf Benutzerfreundlichkeit und ansprechender Grafik entwickelt, um die Aufmerksamkeit junger Lerner zu gewinnen und zu halten. Eltern und Lehrer können sich darauf verlassen, dass alle Inhalte sorgfältig geprüft und für Kinder geeignet sind. Unser Ziel ist es, eine sichere und anregende Umgebung zu schaffen, in der Kinder entdecken und lernen können.",
     "header2": "Unsere Zukunftspläne",
-    "text2": "KidVenturaKi ist ständig auf der Suche nach Möglichkeiten, seine Angebote zu verbessern und zu erweitern, um die besten Bildungsressourcen für Kinder zu bieten. Unsere Zukunftspläne umfassen die Entwicklung neuer und spannender Spiele, die ein noch breiteres Themenspektrum und Altersgruppen abdecken. Wir arbeiten an der Integration von Augmented Reality (AR) und Künstlicher Intelligenz (KI), um noch fesselndere und interaktive Lernmaterialien zu schaffen. Außerdem planen wir, mehr Möglichkeiten für Kooperationen unter Kindern zu schaffen, um Teamarbeit und gemeinsames Problemlösen zu fördern. Unser Ziel ist es, eine globale Bildungsplattform zu schaffen, auf der Kinder aus der ganzen Welt gemeinsam lernen, ihre Erfolge teilen und sich gegenseitig inspirieren können. Mit KidVenturaKi werden Ihre Kinder auf dem Weg zu erfolgreichem Lernen und spannenden Entdeckungen sein!"
+    "text2": "KidVenturaKi ist ständig auf der Suche nach Möglichkeiten, seine Angebote zu verbessern und zu erweitern, um die besten Bildungsressourcen für Kinder zu bieten. Unsere Zukunftspläne umfassen die Entwicklung neuer und spannender Spiele, die ein noch breiteres Themenspektrum und Altersgruppen abdecken. Wir arbeiten an der Integration von Augmented Reality (AR) und Künstlicher Intelligenz (KI), um noch fesselndere und interaktive Lernmaterialien zu schaffen. Außerdem planen wir, mehr Möglichkeiten für Kooperationen unter Kindern zu schaffen, um Teamarbeit und gemeinsames Problemlösen zu fördern. Unser Ziel ist es, eine globale Bildungsplattform zu schaffen, auf der Kinder aus der ganzen Welt gemeinsam lernen, ihre Erfolge teilen und sich gegenseitig inspirieren können. Mit KidVenturaKi werden Ihre Kinder auf dem Weg zu erfolgreichem Lernen und spannenden Entdeckungen begleitet!"
+  },
+  "profile": {
+    "backgroundAlt": "Hintergrundbild des Profils",
+    "welcome": "Hallo, {{firstName}} {{lastName}}",
+    "profilePhotoAlt": "Profilfoto",
+    "deletePicture": "Foto löschen",
+    "personalData": "Persönliche Daten",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail",
+    "gender": "Geschlecht",
+    "genderOptions": {
+      "male": "Männlich",
+      "female": "Weiblich"
+    },
+    "age": "Alter",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "agePlaceholder": "Alter eingeben",
+    "updateProfile": "Profil aktualisieren",
+    "changePassword": "Passwort ändern",
+    "currentPassword": "Aktuelles Passwort",
+    "newPassword": "Neues Passwort",
+    "confirmNewPassword": "Neues Passwort bestätigen",
+    "passwordChangeFailed": "Passwortänderung fehlgeschlagen",
+    "passwordChanged": "Passwort erfolgreich geändert",
+    "profileUpdateFailed": "Profilaktualisierung fehlgeschlagen",
+    "profileUpdated": "Profil erfolgreich aktualisiert",
+    "deleteAccount": "Konto löschen",
+    "deleteAccountConfirmation": "Bist du sicher, dass du dein Konto löschen möchtest? Dies kann nicht rückgängig gemacht werden.",
+    "accountDeleted": "Konto erfolgreich gelöscht",
+    "deleteAccountFailed": "Fehler beim Löschen des Kontos",
+    "updateSuccess": "Profil erfolgreich aktualisiert!",
+    "changePhoto": "Foto ändern",
+    "changePhotoSuccess": "Foto erfolgreich geändert",
+    "changePhotoFailed": "Fehler beim Ändern des Fotos",
+    "editData": "Persönliche Daten bearbeiten",
+    "viewAchievements": "Erfolge ansehen",
+    "achievements": {
+      "title": "Deine Erfolge",
+      "noAchievements": "Du hast noch keine Erfolge erreicht.",
+      "viewAll": "Alle Erfolge ansehen"
+    }
   }
 }

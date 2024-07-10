@@ -208,10 +208,15 @@
     "email": "Email",
     "male": "Male",
     "female": "Female",
+    "deleteAccount": "Delete Account",
     "saving": "Saving...",
     "save": "Save",
     "editData": "Edit Data",
     "updateSuccess": "Update successful!",
-    "updateError": "Profile update error"
+    "updateError": "Profile update error",
+    "genderOptions": {
+      "male": "Male",
+      "female": "Female"
+    }
   }
 }
