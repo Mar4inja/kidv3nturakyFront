@@ -1,8 +1,10 @@
 // src/redux/api/apiSlice.js
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { setCredentials, logoutUser as logoutUserAction } from '../../features/auth/authSlice';
+import { setCredentials } from '../../features/auth/authSlice';
+import { logoutUser as logoutUserAction } from '../../features/logout/logoutSlice';
 
+// Define the base query with the re-auth logic
 const baseQuery = fetchBaseQuery({
     baseUrl: 'http://localhost:8080',
     credentials: 'include',
@@ -26,20 +28,33 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
             api.dispatch(setCredentials({ ...refreshResult.data, user }));
             result = await baseQuery(args, api, extraOptions);
         } else {
-            api.dispatch(logoutUserAction());  // Izsauc `logoutUser` akciju, lai atzīmētu lietotāju kā izrakstītu
+            api.dispatch(logoutUserAction()); // Dispatch the logoutUser action to log the user out
         }
+    } else if (result?.error?.status === 401) {
+        api.dispatch(logoutUserAction()); // Dispatch the logoutUser action to log the user out
     }
+
     return result;
 };
 
+// Create the API slice
 export const apiSlice = createApi({
     baseQuery: baseQueryWithReauth,
     endpoints: builder => ({
+        // Login endpoint
         login: builder.mutation({
             query: credentials => ({
                 url: '/api/users/login',
                 method: 'POST',
                 body: credentials
+            })
+        }),
+        // Update user profile
+        updateProfile: builder.mutation({
+            query: userData => ({
+                url: '/api/users/auth/me',
+                method: 'PUT',
+                body: userData
             })
         }),
         // Endpoint for deleting a user account
@@ -49,17 +64,8 @@ export const apiSlice = createApi({
                 method: 'DELETE'
             })
         }),
-        // Endpoint for updating user profile
-        updateProfile: builder.mutation({
-            query: (userData) => ({
-                url: '/api/users/auth/profile',
-                method: 'PUT',
-                body: userData
-            })
-        }),
-        // Add other endpoints as needed
     })
 });
 
-// Eksportējiet hooks no `apiSlice`
-export const { useLoginMutation, useDeleteUserAccountMutation, useUpdateProfileMutation } = apiSlice;
+// Export hooks from `apiSlice`
+export const { useLoginMutation, useUpdateProfileMutation, useDeleteUserAccountMutation } = apiSlice;

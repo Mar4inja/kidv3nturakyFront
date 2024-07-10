@@ -3,10 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser } from '../../features/auth/authSlice';
-import { updateProfile, selectUpdateLoading, selectUpdatedProfile } from '../../features/profile/profileSlice';
+import { selectUpdateLoading, selectUpdatedProfile, setProfilePhoto } from '../../features/profile/profileSlice';
+import { useUpdateProfileMutation } from '../../app/api/apiSlice';
 import styles from './Profile.module.css';
 import Navbar from '../../components/navbar/Navbar';
-import profileBackgroundImage from '../../assets/profile.jpg';
+import profileBackgroundImage from '../../assets/profilePhoto/profMain.jpg';
 import boyImage from '../../assets/profilePhoto/boy.png';
 import girlImage from '../../assets/profilePhoto/girl.png';
 import { useNavigate } from 'react-router-dom';
@@ -17,9 +18,11 @@ const Profile = () => {
 
     const dispatch = useDispatch();
     const user = useSelector(selectCurrentUser);
-    const navigate = useNavigate(); // Initialize navigate function
+    const navigate = useNavigate();
     const loading = useSelector(selectUpdateLoading);
     const updatedProfile = useSelector(selectUpdatedProfile);
+
+    const [updateProfile, { isLoading }] = useUpdateProfileMutation();
 
     const [showPersonalData, setShowPersonalData] = useState(false);
     const [editing, setEditing] = useState(false);
@@ -38,7 +41,7 @@ const Profile = () => {
 
     useEffect(() => {
         if (!user) {
-            navigate('/login'); // Redirect to login if user is not authenticated
+            navigate('/login');
         }
     }, [user, navigate]);
 
@@ -85,7 +88,7 @@ const Profile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await dispatch(updateProfile(formData)).unwrap();
+            await updateProfile(formData).unwrap();
         } catch (error) {
             console.error(t('profile.updateError'), error);
         }
@@ -101,6 +104,7 @@ const Profile = () => {
                     ...formData,
                     profilePhoto: reader.result,
                 });
+                dispatch(setProfilePhoto(reader.result));
             };
             reader.readAsDataURL(file);
         }
@@ -112,10 +116,11 @@ const Profile = () => {
             ...formData,
             profilePhoto: '',
         });
+        dispatch(setProfilePhoto(''));
     };
 
     if (!user) {
-        return null; // Or a loading spinner if needed
+        return null;
     }
 
     return (
@@ -143,9 +148,9 @@ const Profile = () => {
                     <input
                         type="file"
                         id="profilePhotoUpload"
+                        className={styles.fileInput}
                         accept="image/*"
                         onChange={handleImageUpload}
-                        style={{ display: 'none' }}
                     />
                     {selectedImage && (
                         <button
@@ -165,41 +170,45 @@ const Profile = () => {
                             &times;
                         </button>
                         {editing ? (
-                            <form onSubmit={handleSubmit}>
-                                <p>
-                                    <strong>{t('profile.firstName')}:</strong>{" "}
+                            <form onSubmit={handleSubmit} className={styles.profileForm}>
+                                <div className={styles.formGroup}>
+                                    <label htmlFor="firstName">{t('profile.firstName')}:</label>
                                     <input
                                         type="text"
                                         name="firstName"
+                                        id="firstName"
                                         value={formData.firstName}
                                         onChange={handleChange}
                                         required
                                     />
-                                </p>
-                                <p>
-                                    <strong>{t('profile.lastName')}:</strong>{" "}
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label htmlFor="lastName">{t('profile.lastName')}:</label>
                                     <input
                                         type="text"
                                         name="lastName"
+                                        id="lastName"
                                         value={formData.lastName}
                                         onChange={handleChange}
                                         required
                                     />
-                                </p>
-                                <p>
-                                    <strong>{t('profile.age')}:</strong>{" "}
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label htmlFor="age">{t('profile.age')}:</label>
                                     <input
                                         type="number"
                                         name="age"
+                                        id="age"
                                         value={formData.age}
                                         onChange={handleChange}
                                         required
                                     />
-                                </p>
-                                <p>
-                                    <strong>{t('profile.gender')}:</strong>{" "}
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label htmlFor="gender">{t('profile.gender')}:</label>
                                     <select
                                         name="gender"
+                                        id="gender"
                                         value={formData.gender}
                                         onChange={handleChange}
                                         required
@@ -207,13 +216,10 @@ const Profile = () => {
                                         <option value="male">{t('profile.male')}</option>
                                         <option value="female">{t('profile.female')}</option>
                                     </select>
-                                </p>
-                                <p>
-                                    <strong>{t('profile.email')}:</strong>{" "}
-                                    {user.email}
-                                </p>
-                                <button type="submit" className={styles.saveButton} disabled={loading}>
-                                    {loading ? t('profile.saving') : t('profile.save')}
+                                </div>
+                                <p><strong>{t('profile.email')}:</strong> {user.email}</p>
+                                <button type="submit" className={styles.saveButton} disabled={isLoading}>
+                                    {isLoading ? t('profile.saving') : t('profile.save')}
                                 </button>
                             </form>
                         ) : (

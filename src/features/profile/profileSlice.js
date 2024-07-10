@@ -2,11 +2,11 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// Async thunks for profile updates
+// Async thunk for profile updates
 export const updateProfile = createAsyncThunk('profile/updateProfile', async (formData, thunkAPI) => {
     try {
         // Simulate a backend request
-        // You can replace this with an actual API call
+        // Replace this with an actual API call if needed
         return formData; // Simulating a successful response
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data);
@@ -47,12 +47,10 @@ const profileSlice = createSlice({
 
 export const { setProfilePhoto } = profileSlice.actions;
 
-export const selectCurrentUser = (state) => state.profile;
-
 export const selectUpdateLoading = (state) => state.profile.updateLoading;
-
 export const selectUpdatedProfile = (state) => state.profile.updatedProfile;
-
 export const selectProfilePhoto = (state) => state.profile.profilePhoto;
 
 export default profileSlice.reducer;
+
+
