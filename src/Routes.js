@@ -7,12 +7,13 @@ import About from "./pages/about_page/About";
 import Register from "./components/register/Register";
 import Logout from "./components/logout/Logout";
 import Games from "./components/games/Games";
-import { selectCurrentUser } from "./features/auth/authSlice";
+import { selectCurrentUser, selectIsLoggedIn } from "./features/auth/authSlice";
 import Profile from "./pages/profile_page/Profile";
 import { useTranslation } from 'react-i18next';
 
 const MyRoutes = () => {
     const user = useSelector(selectCurrentUser);
+    const isLoggedIn = useSelector(selectIsLoggedIn);
     const { t } = useTranslation();
 
     return (
@@ -23,8 +24,8 @@ const MyRoutes = () => {
             <Route path="/about" element={<About />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/games" element={<Games />} />
-            <Route path="/profile" element={user ? <Profile /> : <Login />} />
-            {!user && <Route path="*" element={<Login />} />}
+            <Route path="/profile" element={isLoggedIn ? <Profile /> : <Login />} />
+            {!isLoggedIn && <Route path="*" element={<Login />} />}
         </Routes>
     );
 };

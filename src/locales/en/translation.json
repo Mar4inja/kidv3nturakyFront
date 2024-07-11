@@ -47,131 +47,32 @@
       "10 - 13 years": "10 - 13 years",
       "13 - 16 years": "13 - 16 years"
     },
-    "geographyQuestions": {
-      "0": {
-        "question": "What shape is the Earth?",
-        "answer": "Round"
+    "filters": {
+      "ageGroup": "Age Group",
+      "difficulty": "Difficulty",
+      "gameType": "Game Type",
+      "apply": "Apply",
+      "chooseYourOption": "Choose your option",
+      "ageGroupOptions": {
+        "4-7": "4 - 7 years",
+        "7-10": "7 - 10 years",
+        "10-13": "10 - 13 years",
+        "13-16": "13 - 16 years"
       },
-      "1": {
-        "question": "Which country has a red flag with a white cross?",
-        "answer": "Switzerland"
+      "difficultyOptions": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
       },
-      "2": {
-        "question": "Where do pandas live?",
-        "answer": "China"
-      },
-      "3": {
-        "question": "What color is the sky?",
-        "answer": "Blue"
-      },
-      "4": {
-        "question": "Which country is famous for pizza?",
-        "answer": "Italy"
-      },
-      "5": {
-        "question": "In which country is the Eiffel Tower located?",
-        "answer": "France"
-      },
-      "6": {
-        "question": "What is the capital of England?",
-        "answer": "London"
-      },
-      "7": {
-        "question": "What is the name of our planet?",
-        "answer": "Earth"
-      },
-      "8": {
-        "question": "Where do kangaroos live?",
-        "answer": "Australia"
-      },
-      "9": {
-        "question": "What is the largest animal in the ocean?",
-        "answer": "Whale"
+      "gameTypeOptions": {
+        "educational": "Educational",
+        "fun": "Fun",
+        "both": "Both"
       }
     },
-    "mathQuestions": {
-      "0": {
-        "question": "What is 1 + 1?",
-        "answer": "2"
-      },
-      "1": {
-        "question": "What is 2 + 2?",
-        "answer": "4"
-      },
-      "2": {
-        "question": "What is 3 - 1?",
-        "answer": "2"
-      },
-      "3": {
-        "question": "What comes after 5?",
-        "answer": "6"
-      },
-      "4": {
-        "question": "What geometric shape is a square?",
-        "answer": "Square"
-      },
-      "5": {
-        "question": "What is 10 - 5?",
-        "answer": "5"
-      },
-      "6": {
-        "question": "What shape is a ball?",
-        "answer": "Round"
-      },
-      "7": {
-        "question": "How many fingers do you have?",
-        "answer": "10"
-      },
-      "8": {
-        "question": "How many sides does a triangle have?",
-        "answer": "3"
-      },
-      "9": {
-        "question": "What is 5 + 0?",
-        "answer": "5"
-      }
-    },
-    "fairytalesQuestions": {
-      "0": {
-        "question": "Who wears a glass slipper?",
-        "answer": "Cinderella"
-      },
-      "1": {
-        "question": "Who is friends with seven dwarfs?",
-        "answer": "Snow White"
-      },
-      "2": {
-        "question": "Who wears a red hood?",
-        "answer": "Little Red Riding Hood"
-      },
-      "3": {
-        "question": "Who has long golden hair?",
-        "answer": "Rapunzel"
-      },
-      "4": {
-        "question": "Who lives in a house made of candy?",
-        "answer": "Hansel and Gretel"
-      },
-      "5": {
-        "question": "Who wakes up with a kiss?",
-        "answer": "Sleeping Beauty"
-      },
-      "6": {
-        "question": "Who can talk to animals?",
-        "answer": "Snow White"
-      },
-      "7": {
-        "question": "Who flies on a magic carpet?",
-        "answer": "Aladdin"
-      },
-      "8": {
-        "question": "Who is the beast in 'Beauty and the Beast'?",
-        "answer": "The Beast"
-      },
-      "9": {
-        "question": "Who has a fairy godmother?",
-        "answer": "Cinderella"
-      }
+    "question": {
+      "header": "Quiz Questions",
+      "prompt": "Please answer the following questions:"
     }
   },
   "navbar": {

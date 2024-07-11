@@ -1,12 +1,10 @@
-// authSlice.js
-
 import { createSlice } from '@reduxjs/toolkit';
 import { updateProfile } from '../profile/profileSlice';
 
 const initialState = {
   user: null,
   token: null,
-  isLoggedIn: false
+  isLoggedIn: false,
 };
 
 const authSlice = createSlice({

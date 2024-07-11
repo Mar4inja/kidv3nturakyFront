@@ -47,131 +47,32 @@
       "10 - 13 years": "10 - 13 Jahre",
       "13 - 16 years": "13 - 16 Jahre"
     },
-    "geographyQuestions": {
-      "0": {
-        "question": "Welche Form hat die Erde?",
-        "answer": "Rund"
+    "filters": {
+      "ageGroup": "Altersgruppe",
+      "difficulty": "Schwierigkeitsgrad",
+      "gameType": "Spieltyp",
+      "apply": "Anwenden",
+      "chooseYourOption": "Wählen Sie Ihre Option",
+      "ageGroupOptions": {
+        "4-7": "4 - 7 Jahre",
+        "7-10": "7 - 10 Jahre",
+        "10-13": "10 - 13 Jahre",
+        "13-16": "13 - 16 Jahre"
       },
-      "1": {
-        "question": "In welchem Land gibt es eine rote Flagge mit einem weißen Kreuz?",
-        "answer": "Schweiz"
+      "difficultyOptions": {
+        "easy": "Einfach",
+        "medium": "Mittel",
+        "hard": "Schwierig"
       },
-      "2": {
-        "question": "Wo leben Pandas?",
-        "answer": "China"
-      },
-      "3": {
-        "question": "Welche Farbe hat der Himmel?",
-        "answer": "Blau"
-      },
-      "4": {
-        "question": "Welches Land ist bekannt für Pizza?",
-        "answer": "Italien"
-      },
-      "5": {
-        "question": "In welchem Land steht der Eiffelturm?",
-        "answer": "Frankreich"
-      },
-      "6": {
-        "question": "Was ist die Hauptstadt von England?",
-        "answer": "London"
-      },
-      "7": {
-        "question": "Wie heißt unser Planet?",
-        "answer": "Erde"
-      },
-      "8": {
-        "question": "Wo leben Kängurus?",
-        "answer": "Australien"
-      },
-      "9": {
-        "question": "Welches ist das größte Tier im Ozean?",
-        "answer": "Wal"
+      "gameTypeOptions": {
+        "educational": "Bildend",
+        "fun": "Spaß",
+        "both": "Beides"
       }
     },
-    "mathQuestions": {
-      "0": {
-        "question": "Wie viel ist 1 + 1?",
-        "answer": "2"
-      },
-      "1": {
-        "question": "Wie viel ist 2 + 2?",
-        "answer": "4"
-      },
-      "2": {
-        "question": "Wie viel ist 3 - 1?",
-        "answer": "2"
-      },
-      "3": {
-        "question": "Was kommt nach 5?",
-        "answer": "6"
-      },
-      "4": {
-        "question": "Welche geometrische Form hat ein Quadrat?",
-        "answer": "Quadrat"
-      },
-      "5": {
-        "question": "Wie viel ist 10 - 5?",
-        "answer": "5"
-      },
-      "6": {
-        "question": "Welche Form hat eine Kugel?",
-        "answer": "Rund"
-      },
-      "7": {
-        "question": "Wie viele Finger hast du an deinen Händen?",
-        "answer": "10"
-      },
-      "8": {
-        "question": "Wie viele Seiten hat ein Dreieck?",
-        "answer": "3"
-      },
-      "9": {
-        "question": "Wie viel ist 5 + 0?",
-        "answer": "5"
-      }
-    },
-    "fairytalesQuestions": {
-      "0": {
-        "question": "Wer trägt einen Glaspantoffel?",
-        "answer": "Aschenputtel"
-      },
-      "1": {
-        "question": "Wer freundet sich mit sieben Zwergen an?",
-        "answer": "Schneewittchen"
-      },
-      "2": {
-        "question": "Wer trägt eine rote Kapuze?",
-        "answer": "Rotkäppchen"
-      },
-      "3": {
-        "question": "Wer hat lange goldene Haare?",
-        "answer": "Rapunzel"
-      },
-      "4": {
-        "question": "Wer lebt in einem Haus aus Süßigkeiten?",
-        "answer": "Hänsel und Gretel"
-      },
-      "5": {
-        "question": "Wer erwacht durch einen Kuss?",
-        "answer": "Dornröschen"
-      },
-      "6": {
-        "question": "Wer kann mit Tieren sprechen?",
-        "answer": "Schneewittchen"
-      },
-      "7": {
-        "question": "Wer fliegt auf einem Zauberteppich?",
-        "answer": "Aladdin"
-      },
-      "8": {
-        "question": "Wer ist das Ungeheuer in „Die Schöne und das Biest“?",
-        "answer": "Das Biest"
-      },
-      "9": {
-        "question": "Wer hat eine gute Fee?",
-        "answer": "Aschenputtel"
-      }
+    "question": {
+      "header": "Quiz Fragen",
+      "prompt": "Bitte beantworten Sie die folgenden Fragen:"
     }
   },
   "navbar": {
@@ -203,15 +104,13 @@
     "personalData": "Persönliche Daten",
     "firstName": "Vorname",
     "lastName": "Nachname",
-    "email": "E-Mail",
+    "age": "Alter",
     "gender": "Geschlecht",
     "genderOptions": {
       "male": "Männlich",
       "female": "Weiblich"
     },
-    "age": "Alter",
-    "male": "Männlich",
-    "female": "Weiblich",
+    "email": "E-Mail",
     "agePlaceholder": "Alter eingeben",
     "updateProfile": "Profil aktualisieren",
     "changePassword": "Passwort ändern",
@@ -237,5 +136,16 @@
       "noAchievements": "Du hast noch keine Erfolge erreicht.",
       "viewAll": "Alle Erfolge ansehen"
     }
+  },
+  "common": {
+    "error": {
+      "network": "Netzwerkfehler. Bitte versuchen Sie es später noch einmal.",
+      "form": "Fehler beim Absenden des Formulars. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut."
+    },
+    "success": {
+      "form": "Formular erfolgreich abgesendet!"
+    },
+    "loading": "Laden...",
+    "notFound": "Seite nicht gefunden"
   }
 }

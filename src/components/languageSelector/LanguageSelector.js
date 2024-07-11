@@ -1,10 +1,12 @@
 // src/components/LanguageSelector.js
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './LanguageSelector.module.css';
+import { FaGlobe } from 'react-icons/fa'; // Importējiet Globe ikonu no react-icons
 
 const LanguageSelector = () => {
     const { i18n } = useTranslation();
+    const [isOpen, setIsOpen] = useState(false);
 
     const changeLanguage = async (lng) => {
         try {
@@ -16,15 +18,16 @@ const LanguageSelector = () => {
 
     return (
         <div className={styles.languageSelector}>
-            <select
-                className={styles.select}
-                onChange={(e) => changeLanguage(e.target.value)}
-                value={i18n.language}
-            >
-                <option value="en">English</option>
-                <option value="ru">Русский</option>
-                <option value="de">Deutsch</option>
-            </select>
+            <button className={styles.iconButton} onClick={() => setIsOpen(!isOpen)}>
+                <FaGlobe className={styles.icon} />
+            </button>
+            {isOpen && (
+                <div className={styles.dropdownMenu}>
+                    <button className={styles.dropdownItem} onClick={() => changeLanguage('en')}>English</button>
+                    <button className={styles.dropdownItem} onClick={() => changeLanguage('ru')}>Русский</button>
+                    <button className={styles.dropdownItem} onClick={() => changeLanguage('de')}>Deutsch</button>
+                </div>
+            )}
         </div>
     );
 };

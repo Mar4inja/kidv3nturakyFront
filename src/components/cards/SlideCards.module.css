@@ -82,7 +82,7 @@ header a{
     border: none;
     background-color: #eee;
     letter-spacing: 3px;
-    font-family: Poppins;
+    font-family: Poppins, sans-serif;
     font-weight: 500;
 }
 .carousel .list .item .buttons button:nth-child(2){

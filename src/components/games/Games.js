@@ -6,18 +6,14 @@ import geographyImage from '../../assets/games/geography.jpg';
 import mathImage from '../../assets/games/math.jpg';
 import fairytalesImage from '../../assets/games/fairytail1.jpg';
 
-import preschoolImage from '../../assets/ageGroups/kindergarten.jpg';  // Добавьте изображение для дошкольников
-import earlySchoolImage from '../../assets/ageGroups/firstClasses.jpg';  // Добавьте изображение для младших школьников
-import middleSchoolImage from '../../assets/ageGroups/middleClasses.jpg';  // Добавьте изображение для средних школьников
-import highSchoolImage from '../../assets/ageGroups/teenagers.jpg';  // Добавьте изображение для старших школьников
-
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import Clock from "../clock/Clock";
 
 const Games = () => {
     const { t } = useTranslation();
     const [showCategories, setShowCategories] = useState(true);
-    const [showAgeGroups, setShowAgeGroups] = useState(false);
+    const [showFilterForm, setShowFilterForm] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [showLoginPrompt, setShowLoginPrompt] = useState(false);
     const navigate = useNavigate();
@@ -34,7 +30,7 @@ const Games = () => {
         if (isLoggedIn) {
             setSelectedCategory(category);
             setShowCategories(false);
-            setShowAgeGroups(true);
+            setShowFilterForm(true);
         } else {
             setShowLoginPrompt(true);
         }
@@ -48,47 +44,27 @@ const Games = () => {
         setShowLoginPrompt(false);
     };
 
-    const handleAgeGroupClick = (ageGroup) => {
-        // Логика для выбора возрастной группы
-        console.log(`Выбран возрастной группы: ${ageGroup}`);
-        // Вы можете добавить код для перехода к следующему экрану или выполнения других действий
+    const handleFilterSubmit = (event) => {
+        event.preventDefault();
+        console.log("Filter submitted:", {
+            ageGroup: event.target.ageGroup.value,
+            difficulty: event.target.difficulty.value,
+            gameType: event.target.gameType.value
+        });
     };
 
     const handleBackClick = () => {
         setShowCategories(true);
-        setShowAgeGroups(false);
+        setShowFilterForm(false);
         setSelectedCategory('');
     };
 
-    const renderCard = (category, image) => (
-        <div
-            className={styles.card}
-            onClick={() => handleCardClick(category)}
-            style={{ backgroundImage: `url(${image})` }}
-        >
-            <div className={styles.cardContent}>
-                <span className={styles.geoTitle}>{t(`games.categories.${category}`)}</span>
-            </div>
-        </div>
-    );
-
-    const renderAgeGroupCard = (ageGroup, image) => (
-        <div
-            className={styles.card}
-            onClick={() => handleAgeGroupClick(ageGroup)}
-            style={{ backgroundImage: `url(${image})` }}
-        >
-            <div className={styles.cardContent}>
-                <span className={styles.geoTitle}>{t(`games.ageGroups.${ageGroup}`)}</span>
-            </div>
-        </div>
-    );
-
     return (
         <div className={styles.gamesContainer}>
-            <Navbar/>
+            <Navbar />
+            <Clock />
             <div className={styles.backgroundContainer}>
-                <img src={gamesBackgroundImage} alt={t('games.backgroundAlt')} className={styles.backgroundImage}/>
+                <img src={gamesBackgroundImage} alt={t('games.backgroundAlt')} className={styles.backgroundImage} />
             </div>
 
             {showLoginPrompt && (
@@ -99,54 +75,72 @@ const Games = () => {
                 </div>
             )}
 
-
             {showCategories && !showLoginPrompt && (
                 <div className={styles.categoriesContainer}>
                     <h1>{t('games.categoriesHeader')}</h1>
                     <div className={styles.cardContainer}>
-                        {renderCard('geography', geographyImage)}
-                        {renderCard('math', mathImage)}
-                        {renderCard('fairytales', fairytalesImage)}
+                        <div className={styles.cardWrapper}>
+                            <div className={styles.card} onClick={() => handleCardClick('geography')} style={{ backgroundImage: `url(${geographyImage})` }}>
+                                <div className={styles.cardContent}>
+                                    <span className={styles.geoTitle}>{t('games.categories.geography')}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.cardWrapper}>
+                            <div className={styles.card} onClick={() => handleCardClick('math')} style={{ backgroundImage: `url(${mathImage})` }}>
+                                <div className={styles.cardContent}>
+                                    <span className={styles.geoTitle}>{t('games.categories.math')}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.cardWrapper}>
+                            <div className={styles.card} onClick={() => handleCardClick('fairytales')} style={{ backgroundImage: `url(${fairytalesImage})` }}>
+                                <div className={styles.cardContent}>
+                                    <span className={styles.geoTitle}>{t('games.categories.fairytales')}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}
 
-            {showAgeGroups && !showLoginPrompt && (
-                <div className={styles.cardContainer}>
+            {showFilterForm && !showLoginPrompt && (
+                <div className={styles.filterFormContainer}>
                     <button className={styles.backButton} onClick={handleBackClick}>
                         {t('games.backButton')}
                     </button>
-
-                    {selectedCategory === 'geography' && (
-                        <>
-
-                            {renderAgeGroupCard('4 - 7 years', preschoolImage)}
-                            {renderAgeGroupCard('7 - 10 years', earlySchoolImage)}
-                            {renderAgeGroupCard('10 - 13 years', middleSchoolImage)}
-                            {renderAgeGroupCard('13 - 16 years', highSchoolImage)}
-
-                        </>
-                    )}
-                    {selectedCategory === 'math' && (
-                        <>
-
-                            {renderAgeGroupCard('4 - 7 years', preschoolImage)}
-                            {renderAgeGroupCard('7 - 10 years', earlySchoolImage)}
-                            {renderAgeGroupCard('10 - 13 years', middleSchoolImage)}
-                            {renderAgeGroupCard('13 - 16 years', highSchoolImage)}
-
-                        </>
-                    )}
-                    {selectedCategory === 'fairytales' && (
-                        <>
-
-                            {renderAgeGroupCard('4 - 7 years', preschoolImage)}
-                            {renderAgeGroupCard('7 - 10 years', earlySchoolImage)}
-                            {renderAgeGroupCard('10 - 13 years', middleSchoolImage)}
-                            {renderAgeGroupCard('13 - 16 years', highSchoolImage)}
-
-                        </>
-                    )}
+                    <h2 className={styles.categoryHeader}>{t(`games.categories.${selectedCategory}`)}</h2>
+                    <form onSubmit={handleFilterSubmit}>
+                        <div className={styles.filterGroup}>
+                            <label className={styles.upperLabel} htmlFor="ageGroup">{t('games.filters.ageGroup')}</label>
+                            <select id="ageGroup" name="ageGroup">
+                                <option value="">{t('games.filters.chooseYourOption')}</option>
+                                <option value="4-7">{t('games.filters.ageGroupOptions.4-7')}</option>
+                                <option value="7-10">{t('games.filters.ageGroupOptions.7-10')}</option>
+                                <option value="10-13">{t('games.filters.ageGroupOptions.10-13')}</option>
+                                <option value="13-16">{t('games.filters.ageGroupOptions.13-16')}</option>
+                            </select>
+                        </div>
+                        <div className={styles.filterGroup}>
+                            <label className={styles.upperLabel} htmlFor="difficulty">{t('games.filters.difficulty')}</label>
+                            <select id="difficulty" name="difficulty">
+                                <option value="">{t('games.filters.chooseYourOption')}</option>
+                                <option value="easy">{t('games.filters.difficultyOptions.easy')}</option>
+                                <option value="medium">{t('games.filters.difficultyOptions.medium')}</option>
+                                <option value="hard">{t('games.filters.difficultyOptions.hard')}</option>
+                            </select>
+                        </div>
+                        <div className={styles.filterGroup}>
+                            <label className={styles.upperLabel} htmlFor="gameType">{t('games.filters.gameType')}</label>
+                            <select id="gameType" name="gameType">
+                                <option value="">{t('games.filters.chooseYourOption')}</option>
+                                <option value="educational">{t('games.filters.gameTypeOptions.educational')}</option>
+                                <option value="fun">{t('games.filters.gameTypeOptions.fun')}</option>
+                                <option value="both">{t('games.filters.gameTypeOptions.both')}</option>
+                            </select>
+                        </div>
+                        <button type="submit">{t('games.filters.apply')}</button>
+                    </form>
                 </div>
             )}
         </div>

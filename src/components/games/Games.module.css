@@ -69,16 +69,9 @@
 }
 
 .card:hover {
-    /*transform: rotateY(25deg) rotateX(25deg) translateY(-25px) scale(1.05);*/
-
-    transform: scale(2.00);
+    transform: scale(1.05); /* Pieaugt, bet ne pārāk lielā mērā */
     z-index: 10;
-
-    /*transform: rotateY(25deg) rotateX(25deg) translateY(-25px) scale(2.00);*/
-    /*z-index: 10;*/
-
 }
-
 
 .card:hover::after {
     opacity: 1; /* Show shadow on hover */
@@ -195,52 +188,54 @@
 
 /* Jauns paziņojuma logs */
 .loginPrompt {
-    position: fixed; /* Фиксированное позиционирование окна уведомлений на экране */
-    top: 50%; /* Выравнивание по вертикали в центре экрана */
-    left: 50%; /* Выравнивание по горизонтали в центре экрана */
-    transform: translate(-50%, -50%); /* Центрирование окна */
-    background-color: rgba(255, 255, 255, 0.58); /* Цвет фона окна */
-    padding: 20px; /* Внутренний отступ содержимого окна */
-    border-radius: 10px; /* Закругление углов окна */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тень вокруг окна */
-    text-align: center; /* Выравнивание текста по центру */
-    z-index: 2; /* Закрепление окна над другими элементами */
+    position: fixed; /* Fiksēta pozicionēšana logam uz ekrāna */
+    top: 50%; /* Vertikāli centrēts */
+    left: 50%; /* Horizontāli centrēts */
+    transform: translate(-50%, -50%); /* Centrēšana */
+    background-color: rgba(255, 255, 255, 0.58); /* Fona krāsa */
+    padding: 20px; /* iekšējais atstatums */
+    border-radius: 10px; /* Leņķu noapaļošana */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Apmales ēna */
+    text-align: center; /* Teksta centrēšana */
+    z-index: 2; /* Virs citiem elementiem */
 }
 
 /* Paziņojuma loga teksta stils */
 .loginPrompt p {
-    margin-bottom: 20px; /* Отступ между текстом и кнопкой */
+    margin-bottom: 20px; /* Atstatums starp tekstu un pogu */
 }
 
-/* Стиль текста предупреждения */
+/* Teksta stils brīdinājumam */
 .logWarning {
-    font-size: large; /* Размер шрифта */
-    color: #000000; /* Цвет текста */
+    font-size: large; /* Fonta izmērs */
+    color: #000000; /* Teksta krāsa */
 }
 
-/* Стиль кнопки в окне уведомлений */
+/* Stils pogai paziņojuma logā */
 .loginPrompt button {
     margin-left: 10px;
-    padding: 10px 25px; /* Внутренний отступ кнопки */
-    background-color: #007bff; /* Цвет фона кнопки */
-    color: white; /* Цвет текста кнопки */
-    border: none; /* Без границы */
-    border-radius: 5px; /* Закругление углов кнопки */
-    cursor: pointer; /* Изменение курсора на указатель */
+    padding: 10px 25px; /* iekšējais atstatums */
+    background-color: #007bff; /* Pogas fons */
+    color: white; /* Teksta krāsa */
+    border: none; /* Bez malas */
+    border-radius: 5px; /* Leņķu noapaļošana */
+    cursor: pointer; /* Rādītājs uz pogas */
 }
 
-/* Hover эффект для кнопки в окне уведомлений */
+/* Hover efekts pogai paziņojuma logā */
 .loginPrompt button:hover {
-    background-color: #0056b3; /* Темный цвет фона при наведении на кнопку */
+    background-color: #0056b3; /* Tumšāks fona krāsa */
 }
 
+/* Kategoriju konteiners */
 .categoriesContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -300px; /* Отступ сверху для контейнера */
+    margin-top: -300px; /* Augšpusē attālums */
 }
 
+/* Kategoriju virsraksta stils */
 .categoriesContainer h1 {
     font-family: Poppins, serif;
     background-color: #6209f0;
@@ -248,9 +243,10 @@
     border-radius: 10px;
     font-size: 2rem;
     color: #ffffff;
-    margin-bottom: 150px; /* Отступ снизу для заголовка */
+    margin-bottom: 150px; /* Apakšpusē attālums */
 }
 
+/* Kategoriju kartītes konteiners */
 .cardContainer {
     display: flex;
     flex-wrap: wrap;
@@ -258,3 +254,94 @@
     justify-content: center;
 }
 
+.filterFormContainer {
+    text-align: center;
+    background: rgba(245, 245, 220, 0.73);
+    position: absolute;
+    height: auto; /* Atstājiet automātiski pielāgojamu */
+    width: 500px;
+    border-radius: 20px;
+    padding: 20px; /* Pievienota atstarpe iekšpusē */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Neliela ēna ap formu */
+}
+
+.backButton {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 40px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.backButton:hover {
+    background-color: #0056b3;
+}
+
+.categoryHeader {
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+    font-weight: 600; /* Uzsvērts fonts */
+    margin-bottom: 20px; /* Atstarpe zem virsraksta */
+}
+
+.filterGroup {
+    padding: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Noņem izvēlņu pelēko noformējumu */
+select {
+    background: #fff;
+    color: #333;
+    appearance: none;
+   background-color: beige;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px 8px;
+}
+
+/* Select elementu atbalsta hover un fokusa stili */
+select:hover,
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button[type="submit"],
+button {
+    padding: 12px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.upperLabel {
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    color: #000000;
+}

@@ -1,38 +1,57 @@
 /* LanguageSelector.module.css */
 
-/* Konteinera stils */
 .languageSelector {
     display: flex;
-    justify-content: center; /* Horizontāli centrē */
-    align-items: center; /* Vertikāli centrē */
-    position: absolute; /* Pozicionē absolūti attiecībā pret vecāku elementu */
-    top: 10px; /* Attālums no augšas */
-    right: 10px; /* Attālums no labās malas */
-    z-index: 1000; /* Nodrošina, ka izvēlne ir virs visiem citiem elementiem */
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8); /* Pusstikls balts fons */
-    border-radius: 5px; /* Noapaļo stūrus */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Pievieno nelielu ēnu */
+    align-items: center; /* Vertikāli centrē ikonu un izvēlni */
+    margin-left: auto; /* Pārvietot uz labo pusi */
+    padding-right: 20px; /* Attālums no labās malas */
 }
 
-/* Select elementa stils */
-.select {
-    font-size: 16px;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #fff; /* Balts fons izvēlnē */
+.iconButton {
+    background: none;
+    border: none;
     cursor: pointer;
-    outline: none;
-    transition: border-color 0.3s ease;
+    color: rgb(255, 254, 254); /* Ikonas krāsa */
+    font-size: 20px; /* Ikonas izmērs */
+    transition: color 0.3s;
 }
 
-/* Select elementa fokusa stils */
-.select:focus {
-    border-color: #007bff; /* Mēlna malas krāsa fokusa stāvoklī */
+.iconButton:hover {
+    color: #b3ff00; /* Ikonas krāsa peles pārvirzot */
 }
 
-/* Option elementu stils */
-.option {
-    font-size: 16px;
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #01000794; /* Fona krāsa dropdown izvēlnei */
+    border: 1px solid rgb(119, 112, 18); /* Rāmja krāsa */
+    border-radius: 10px; /* Stūru noapaļojums */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Nokritiena efekts */
+    z-index: 1000;
+    min-width: 120px; /* Minimālais platums */
+    padding: 5px 0; /* Samazināts iekšējais attālums */
+}
+
+.dropdownItem {
+    background: none;
+    border: none;
+    color: rgb(255, 254, 254); /* Teksta krāsa */
+    padding: 8px 10px; /* Samazināts iekšējais attālums */
+    text-align: left;
+    font-size: 14px; /* Samazināts teksta lielums */
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    font-family: Poppins, sans-serif; /* Fonta ģimene */
+}
+
+.dropdownItem:hover {
+    background-color: #b3ff00; /* Fona krāsa peles pārvirzot */
+    color: #01000794; /* Teksta krāsa peles pārvirzot */
 }
