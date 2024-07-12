@@ -11,6 +11,9 @@ import girlImage from '../../assets/profilePhoto/girl.png';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+
+
+
 const Profile = () => {
     const { t } = useTranslation();
 
@@ -127,6 +130,7 @@ const Profile = () => {
     return (
         <div className={styles.profileContainer}>
             <Navbar />
+
             <div className={styles.backgroundContainer}>
                 <img
                     src={profileBackgroundImage}
