@@ -1,0 +1,137 @@
+:root {
+    --x: 0;
+    --y: 0;
+    --i: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Papildus CSS stili */
+.dotMenu {
+    position: fixed; /* Fiksē DotMenu ekrāna apakšā */
+    bottom: 20px; /* Attālums no apakšas malas */
+    right: 20px; /* Attālums no labās malas */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000; /* Augstāks z-index, lai tas būtu virs citiem elementiem */
+}
+
+.dotButton {
+    background: #3498db; /* Zilā krāsa fonam */
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    width: 40px; /* Piemērota izmēra pogas */
+    height: 40px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Viegls ēnas efekts */
+}
+
+.dotButton:hover {
+    background: #2980b9; /* Tumšāks zils uz hover */
+}
+
+
+/* Papildus stili navigācijai */
+.main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 170px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.navigation {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    z-index: 0; /* Nodrošina, ka navigation ir virs fona attēla */
+}
+
+.navigation span {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    transform: translate(calc(14px * var(--x)), calc(14px * var(--y)));
+    transition: transform 0.5s, width 0.5s, height 0.5s, background 0.5s;
+    transition-delay: calc(0.1s * var(--i));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* Nodrošina, ka ikoni ir virs fona attēla */
+}
+
+.navigation.active span {
+    width: 45px;
+    height: 45px;
+    background: #37384f;
+    transform: translate(calc(60px * var(--x)), calc(60px * var(--y)));
+}
+
+.navigation span ion-icon {
+    transition: 0.5s;
+    font-size: 0em;
+    color: #fff;
+}
+
+.navigation.active span ion-icon {
+    font-size: 1.35em;
+}
+
+.navigation.active span:hover ion-icon {
+    color: #2dfc52;
+    filter: drop-shadow(0 0 2px #2dfc52) drop-shadow(0 0 5px #2dfc52) drop-shadow(0 0 15px #2dfc52);
+}
+
+.close {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    transition: 0.5s;
+    transition-delay: 0.4s;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3; /* Nodrošina, ka close ikona ir virs navigation un fona attēla */
+}
+
+.showClose {
+    width: 40px;
+    height: 40px;
+    pointer-events: initial;
+    transition-delay: 0.8s;
+    background: #2dfc52;
+}
+
+.showClose ion-icon {
+    font-size: 2em;
+    scale: 0;
+    color: #10131c;
+    transition: 0.5s;
+}
+
+.showClose ion-icon {
+    scale: 1;
+    transition-delay: 1s;
+}

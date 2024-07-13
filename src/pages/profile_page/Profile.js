@@ -3,14 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser } from '../../features/auth/authSlice';
 import { selectUpdateLoading, selectUpdatedProfile, setProfilePhoto, updateProfile } from '../../features/profile/profileSlice';
 import { useUpdateProfileMutation } from '../../app/api/apiSlice';
-import styles from './Profile.module.css';
-import Navbar from '../../components/navbar/Navbar';
+import styles from './profile.module.css';
+
 import profileBackgroundImage from '../../assets/profilePhoto/profMain.jpg';
 import boyImage from '../../assets/profilePhoto/boy.png';
 import girlImage from '../../assets/profilePhoto/girl.png';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
+import Navbar from "../../components/navbar/Navbar";
 
 
 
@@ -129,8 +129,6 @@ const Profile = () => {
 
     return (
         <div className={styles.profileContainer}>
-            <Navbar />
-
             <div className={styles.backgroundContainer}>
                 <img
                     src={profileBackgroundImage}
@@ -139,7 +137,7 @@ const Profile = () => {
                 />
             </div>
             <div className={styles.fullName}>
-                <h2>{t('profile.welcome', { firstName: user.firstName, lastName: user.lastName })}</h2>
+                <h2>{t('profile.welcome', {firstName: user.firstName, lastName: user.lastName})}</h2>
             </div>
             <div className={styles.profileImageContainer}>
                 <div className={styles.profileImageWrapper}>

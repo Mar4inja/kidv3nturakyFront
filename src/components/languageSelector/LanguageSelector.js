@@ -1,7 +1,7 @@
 // src/components/LanguageSelector.js
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import styles from './LanguageSelector.module.css';
+import styles from './languageSelector.module.css';
 import { FaGlobe } from 'react-icons/fa'; // Importējiet Globe ikonu no react-icons
 
 const LanguageSelector = () => {

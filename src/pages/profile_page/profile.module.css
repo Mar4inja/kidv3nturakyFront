@@ -1,4 +1,4 @@
-/* Profile.module.css */
+/* profile.module.css */
 
 /* Vispārējie stili */
 body {
@@ -13,8 +13,9 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    min-height: 100vh; /* Mainīts no height uz min-height, lai ierīkotu saturu, kad ekrāns ir mazāks */
-    position: relative;
+    min-height: 100vh; /* Aizņem visu redzamo lapas augstumu */
+    position: relative; /* Ļauj DotMenu būt virs ProfileContainer */
+    z-index: 0; /* Nodrošina, ka ProfileContainer ir pirmajā slānī */
 }
 
 .backgroundContainer {
@@ -24,7 +25,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -1;
+    z-index: -1; /* Nodrošina, ka backgroundImage ir aiz satura */
 }
 
 .backgroundImage {
@@ -268,7 +269,7 @@ body {
         width: 95%; /* Platums pielāgots mazākiem ekrāniem */
     }
 
-    /* Profile.module.css */
+    /* profile.module.css */
 
     .successMessage {
         padding: 10px;
@@ -321,4 +322,9 @@ body {
     .fullName h2 {
         font-size: 16px; /* Mazāks fonta izmērs vēl mazākiem ekrāniem */
     }
+
+    .navHeader {
+
+    }
+
 }

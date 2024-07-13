@@ -1,15 +1,15 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setCredentials } from '../../features/auth/authSlice';
-import { useLoginMutation } from '../../features/auth/authApiSlice';
-import styles from './Login.module.css';
-import Navbar from '../navbar/Navbar';
+import React, {useRef, useState, useEffect} from 'react';
+import {Link, useNavigate, useLocation} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {setCredentials} from '../../features/auth/authSlice';
+import {useLoginMutation} from '../../features/auth/authApiSlice';
+import styles from './login.module.css';
 import loginBackgroundImage from '../../assets/login/login.jpg';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+
 
 const Login = () => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const userRef = useRef();
     const errRef = useRef();
@@ -18,7 +18,7 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
-    const [login, { isLoading }] = useLoginMutation();
+    const [login, {isLoading}] = useLoginMutation();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const userData = await login({ email, password }).unwrap();
+            const userData = await login({email, password}).unwrap();
             dispatch(setCredentials(userData));
             setEmail("");
             setPassword("");
@@ -54,7 +54,7 @@ const Login = () => {
             } else {
                 setErrorMessage(t('login.loginFailed'));  // Visām citām kļūdām
             }
-            errRef.current?.scrollIntoView({ behavior: "smooth" });
+            errRef.current?.scrollIntoView({behavior: "smooth"});
         }
     };
 
@@ -63,7 +63,6 @@ const Login = () => {
 
     return (
         <div className={styles['login-container']}>
-            <Navbar />
             <div className={styles['background-container']}>
                 <img
                     src={loginBackgroundImage}

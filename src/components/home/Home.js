@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
-import styles from "./Home.module.css"; // Importējiet CSS moduli
-
-import Navbar from "../navbar/Navbar";
+import React, {useEffect} from "react";
+import styles from "./home.module.css"; // Importējiet CSS moduli
 import SlideCards from "../cards/SlideCards";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
+
 
 const Home = () => {
-    const { t } = useTranslation();  // Tulkotāja funkcija
+    const {t} = useTranslation();  // Tulkotāja funkcija
 
     useEffect(() => {
         document.body.style.overflow = "hidden";
@@ -19,8 +18,7 @@ const Home = () => {
 
     return (
         <div className={styles.homeContainer}>
-            <Navbar />
-            <SlideCards />
+            <SlideCards/>
             <div className={styles.card}>
                 <div className={styles.image_box}></div>
                 <div className={styles.content}>
@@ -29,6 +27,7 @@ const Home = () => {
                     <p>{t('home.description')}</p>
                 </div>
             </div>
+
         </div>
     );
 };

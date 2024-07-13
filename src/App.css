@@ -7,3 +7,7 @@
 body {
   background: rgb(236, 236, 236);
 }
+.appContainer {
+  position: relative; /* Ļauj DotMenu būt virs visiem citiem elementiem */
+  min-height: 100vh; /* Nodrošina, ka appContainer aizņem vismaz ekrāna augstumu */
+}

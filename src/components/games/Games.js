@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Games.module.css';
-import Navbar from '../navbar/Navbar';
+import styles from './games.module.css';
+
 import gamesBackgroundImage from '../../assets/games/games3.jpg';
 import geographyImage from '../../assets/games/geography.jpg';
 import mathImage from '../../assets/games/math.jpg';
@@ -61,7 +61,6 @@ const Games = () => {
 
     return (
         <div className={styles.gamesContainer}>
-            <Navbar />
             <Clock />
             <div className={styles.backgroundContainer}>
                 <img src={gamesBackgroundImage} alt={t('games.backgroundAlt')} className={styles.backgroundImage} />

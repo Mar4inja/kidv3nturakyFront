@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import styles from "./SlideCards.module.css"; // Import the CSS module
+import styles from "./slideCards.module.css"; // Import the CSS module
 import img1 from "../../assets/quiz/math.jpg";
 import img2 from "../../assets/quiz/colors.jpg";    //shapes, fairytail, read
 import img3 from "../../assets/quiz/geography.jpg";

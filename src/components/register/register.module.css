@@ -5,7 +5,7 @@
   flex-direction: column; /* Novieto ielogošanās formu un reģistrācijas saiti vertikāli */
   align-items: center; /* Centrē elementus vertikāli */
   height: 100vh; /* Iestata konteineri, lai aizņemtu visu ekrāna augstumu */
-  margin-left: -136px;
+
 
 }
 
@@ -64,7 +64,7 @@ input[type='number'] {
 }
 
 
-/* Register.module.css */
+/* register.module.css */
 .form-group select {
   width: 100%;
   padding: 10px;
@@ -106,7 +106,8 @@ input[type='number'] {
   transition: color 0.3s ease;
   padding: 2px;
   border-radius: 5px;
-  background: rgba(105, 143, 230, 0.63);
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
 
 }
 

@@ -3,7 +3,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import { persistConfig, authPersistConfig } from './persistConfig';
 import { apiSlice } from './api/apiSlice';
 import authReducer from '../features/auth/authSlice';
-import registerReducer from '../features/register/RegisterSlice';
+import registerReducer from '../features/register/registerSlice';
 import profileReducer from '../features/profile/profileSlice';
 import gamesReducer from '../features/games/gameSlice';
 
