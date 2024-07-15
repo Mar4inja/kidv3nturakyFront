@@ -1,20 +1,34 @@
 {
+  "welcome": "Welcome to our website!",
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "login": "Login",
+    "register": "Register",
+    "games": "Games",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "footer": {
+    "contact": "Contact",
+    "privacy": "Privacy Policy"
+  },
   "login": {
-    "backgroundAlt": "Login page background",
+    "backgroundAlt": "Login page background image",
     "formTitle": "Login",
     "emailPlaceholder": "Email",
     "passwordPlaceholder": "Password",
     "loggingIn": "Logging in...",
     "login": "Login",
     "noResponse": "No response from server.",
-    "missingEmailOrPassword": "Email or password missing",
+    "missingEmailOrPassword": "Email or password is missing",
     "unauthorized": "Unauthorized",
     "loginFailed": "Login failed",
     "noAccount": "No account?",
     "register": "Register"
   },
   "register": {
-    "backgroundAlt": "Registration page background",
+    "backgroundAlt": "Registration page background image",
     "formTitle": "Register",
     "emailPlaceholder": "Email",
     "passwordPlaceholder": "Password",
@@ -28,31 +42,34 @@
     "success": "Registration successful!"
   },
   "games": {
-    "backgroundAlt": "Games background",
+    "backgroundAlt": "Games background image",
     "loginPrompt": {
       "message": "Unauthorized users cannot play QUIZ, please login or register!",
       "login": "Login",
       "cancel": "Cancel"
     },
-    "backButton": "Back to categories",
     "categoriesHeader": "Categories",
     "categories": {
       "geography": "Geography",
       "math": "Math",
       "fairytales": "Fairytales"
     },
+    "ageGroupsHeader": "Age Groups",
     "ageGroups": {
-      "4 - 7 years": "4 - 7 years",
-      "7 - 10 years": "7 - 10 years",
-      "10 - 13 years": "10 - 13 years",
-      "13 - 16 years": "13 - 16 years"
+      "4-7": "4 - 7 years",
+      "7-10": "7 - 10 years",
+      "10-13": "10 - 13 years",
+      "13-16": "13 - 16 years",
+      "age4": "From 4 years",
+      "age6": "From 6 years",
+      "backButton": "Back to Categories"
     },
     "filters": {
       "ageGroup": "Age Group",
       "difficulty": "Difficulty",
       "gameType": "Game Type",
       "apply": "Apply",
-      "chooseYourOption": "Choose your option",
+      "chooseYourOption": "Choose Your Option",
       "ageGroupOptions": {
         "4-7": "4 - 7 years",
         "7-10": "7 - 10 years",
@@ -73,31 +90,29 @@
     "question": {
       "header": "Quiz Questions",
       "prompt": "Please answer the following questions:"
+    },
+    "addNewGameButton": "Add New Game",
+    "addNewGameModal": {
+      "title": "Add New Game",
+      "titleLabel": "Game Title",
+      "descriptionLabel": "Description",
+      "difficultyLabel": "Difficulty Level",
+      "typeLabel": "Game Type",
+      "contentLabel": "Game Content",
+      "correctAnswerLabel": "Correct Answer",
+      "submitButton": "Add Game",
+      "cancelButton": "Cancel"
     }
   },
-  "navbar": {
-    "home": "Home",
-    "about": "About Us",
-    "login": "Login",
-    "register": "Register",
-    "games": "Games",
-    "profile": "Profile",
-    "logout": "Logout"
-  },
-  "footer": {
-    "contact": "Contact",
-    "privacy": "Privacy Policy"
-  },
-  "welcome": "Welcome to our site!",
   "about": {
-    "backgroundAlt": "About us background image",
+    "backgroundAlt": "About Us background image",
     "header1": "About Us",
-    "text1": "KidVenturaKi is the perfect online platform for children, offering educational games and quizzes. Our mission is to make learning a fun and exciting adventure through interactive and educational content. We offer a variety of quizzes and games suitable for different age groups and interests, including math, science, geography, and more. Our interactive quizzes help reinforce classroom learning and introduce children to new concepts in a fun and memorable way. Each quiz aligns with educational standards, ensuring relevance and value. To motivate children, we have included a virtual reward system where they can earn rewards for their achievements. Our leaderboard system encourages healthy competition, motivating children to improve their scores and strive for excellence. KidVenturaKi is designed with user-friendliness and vibrant graphics to attract and hold the attention of young learners. Parents and educators can be confident that all content is thoroughly vetted and child-friendly. We aim to create a safe and enriching environment where children can explore and learn.",
+    "text1": "KidVenturaKi is the perfect online platform for children, offering educational games and quizzes. Our goal is to make learning an exciting adventure by providing interactive and educational content. We offer a variety of quizzes and games for different age groups and interests, including math, science, geography, and more. Our interactive quizzes help reinforce classroom learning and introduce new concepts to children in a fun and memorable way. Each quiz meets educational standards to ensure the relevance and value of the material. To motivate children, we have integrated a virtual reward system where they can earn points for their achievements. Our leaderboard system promotes healthy competition and motivates children to improve their results and do their best. KidVenturaKi is designed with a focus on user-friendliness and engaging graphics to capture and hold young learners' attention. Parents and teachers can trust that all content is carefully reviewed and suitable for children. Our goal is to create a safe and stimulating environment where children can discover and learn.",
     "header2": "Our Future Plans",
-    "text2": "KidVenturaKi is constantly looking for ways to improve and expand its offerings to provide the best educational opportunities for children. Our future plans include developing new and exciting games that cover an even wider range of topics and age groups. We are working on implementing augmented reality (AR) and artificial intelligence (AI) technologies to create even more immersive and interactive learning materials. Additionally, we plan to create more opportunities for collaboration among children, fostering teamwork and collective problem-solving. Our goal is to create a global educational platform where children from all over the world can learn together, share their achievements, and inspire each other. The virtual reward system and leaderboards will be expanded to give children even more ways to showcase their skills. We plan to introduce special themed weeks and monthly challenges to capture children's attention and encourage regular participation on the platform. Collaboration with schools and educational institutions is also a priority for us. We want KidVenturaKi to become a valuable resource for educators, offering specialized materials and tools to integrate our games and quizzes into the curriculum. Our vision is to become the leading platform for educational games and quizzes, making learning an integral and enjoyable part of children's daily lives. We believe that with innovative solutions and engaging content, we can ignite a love for learning in children and help them reach their full potential."
+    "text2": "KidVenturaKi is constantly looking for ways to improve and expand its offerings to provide the best educational resources for children. Our future plans include developing new and exciting games that cover an even broader range of topics and age groups. We are working on integrating Augmented Reality (AR) and Artificial Intelligence (AI) to create even more immersive and interactive learning materials. Additionally, we plan to create more opportunities for collaboration among children to foster teamwork and cooperative problem-solving. Our goal is to create a global educational platform where children from all over the world can learn together, share their achievements, and inspire each other. With KidVenturaKi, your children will be guided on their journey to successful learning and exciting discoveries!"
   },
   "profile": {
-    "backgroundAlt": "Profile background",
+    "backgroundAlt": "Profile background image",
     "welcome": "Hello, {{firstName}} {{lastName}}",
     "profilePhotoAlt": "Profile photo",
     "deletePicture": "Delete photo",
@@ -107,17 +122,79 @@
     "age": "Age",
     "gender": "Gender",
     "email": "Email",
-    "male": "Male",
-    "female": "Female",
+    "agePlaceholder": "Enter age",
+    "updateProfile": "Update Profile",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "passwordChangeFailed": "Password change failed",
+    "passwordChanged": "Password successfully changed",
+    "profileUpdateFailed": "Profile update failed",
+    "profileUpdated": "Profile successfully updated",
     "deleteAccount": "Delete Account",
-    "saving": "Saving...",
-    "save": "Save",
-    "editData": "Edit Data",
-    "updateSuccess": "Update successful!",
-    "updateError": "Profile update error",
-    "genderOptions": {
-      "male": "Male",
-      "female": "Female"
+    "deleteAccountConfirmation": "Are you sure you want to delete your account? This cannot be undone.",
+    "accountDeleted": "Account successfully deleted",
+    "deleteAccountFailed": "Failed to delete account",
+    "updateSuccess": "Profile successfully updated!",
+    "changePhoto": "Change Photo",
+    "changePhotoSuccess": "Photo successfully changed",
+    "changePhotoFailed": "Failed to change photo",
+    "editData": "Edit Personal Data",
+    "viewAchievements": "View Achievements",
+    "achievements": {
+      "title": "Your Achievements",
+      "noAchievements": "You have not achieved any achievements yet.",
+      "viewAll": "View All Achievements"
+    }
+  },
+  "common": {
+    "error": {
+      "network": "Network error. Please try again later.",
+      "form": "Error submitting form. Please check your inputs and try again."
+    },
+    "success": {
+      "form": "Form successfully submitted!"
+    },
+    "loading": "Loading...",
+    "notFound": "Page not found"
+  },
+  "categoriesHeader": "Select a Category",
+  "ageGroupsHeader": "Select an Age Group",
+  "loginPrompt": {
+    "message": "You must be logged in to access this feature.",
+    "login": "Login",
+    "cancel": "Cancel"
+  },
+  "games": {
+    "categoriesHeader": "Categories",
+    "loginPrompt": {
+      "message": "You need to be logged in to access this feature.",
+      "login": "Login",
+      "cancel": "Cancel"
+    },
+    "ageGroupsHeader": "Select Age Group",
+    "addNewGameButton": "Add New Game",
+    "addNewGameModal": {
+      "title": "Add New Game",
+      "titleLabel": "Game Title",
+      "descriptionLabel": "Description",
+      "difficultyLabel": "Difficulty Level",
+      "typeLabel": "Game Type",
+      "contentLabel": "Game Content",
+      "correctAnswerLabel": "Correct Answer",
+      "submitButton": "Add Game",
+      "cancelButton": "Cancel"
+    },
+    "categories": {
+      "geography": "Geography",
+      "math": "Math",
+      "fairytales": "Fairytales"
+    },
+    "ageGroups": {
+      "age4": "4+",
+      "age6": "6+",
+      "backButton": "Back"
     }
   }
 }

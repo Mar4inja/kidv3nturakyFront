@@ -2,148 +2,140 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Define the base URL for the API
-const baseUrl = 'http://localhost:8080/api/tasks';
+const baseUrl = 'http://localhost:8080/api/games';
 
+// Helper function to get the token from localStorage
+const getToken = () => localStorage.getItem('token');
 
 // Async thunks for each backend method
-export const fetchAllTasks = createAsyncThunk('tasks/fetchAllTasks', async () => {
-    const response = await axios.get(`${baseUrl}/getAllTasks`);
+export const fetchAllGames = createAsyncThunk('games/fetchAllGames', async () => {
+    const response = await axios.get(baseUrl);
     return response.data;
 });
 
-export const fetchTaskById = createAsyncThunk('tasks/fetchTaskById', async (id) => {
+export const fetchGameById = createAsyncThunk('games/fetchGameById', async (id) => {
     const response = await axios.get(`${baseUrl}/${id}`);
     return response.data;
 });
 
-export const fetchTasksByDifficulty = createAsyncThunk('tasks/fetchTasksByDifficulty', async (difficulty) => {
-    const response = await axios.get(`${baseUrl}/difficulty`, { params: { difficulty } });
-    return response.data;
+export const createGame = createAsyncThunk('games/createGame', async (game, { rejectWithValue }) => {
+    try {
+        const response = await axios.post(`${baseUrl}/create`, game, {
+            headers: {
+                'Authorization': `Bearer ${getToken()}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
 });
 
-export const fetchTasksByType = createAsyncThunk('tasks/fetchTasksByType', async (type) => {
-    const response = await axios.get(`${baseUrl}/type`, { params: { type } });
-    return response.data;
+export const updateGame = createAsyncThunk('games/updateGame', async ({ id, game }, { rejectWithValue }) => {
+    try {
+        const response = await axios.put(`${baseUrl}/update/${id}`, game, {
+            headers: {
+                'Authorization': `Bearer ${getToken()}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
 });
 
-export const createTask = createAsyncThunk('tasks/createTask', async (task) => {
-    const response = await axios.post(`${baseUrl}/create`, task);
-    return response.data;
-});
-
-export const updateTask = createAsyncThunk('tasks/updateTask', async ({ id, task }) => {
-    const response = await axios.put(`${baseUrl}/update/${id}`, task);
-    return response.data;
-});
-
-export const deleteTask = createAsyncThunk('tasks/deleteTask', async (id) => {
-    await axios.delete(`${baseUrl}/delete/${id}`);
-    return id;
+export const deleteGame = createAsyncThunk('games/deleteGame', async (id, { rejectWithValue }) => {
+    try {
+        await axios.delete(`${baseUrl}/delete/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${getToken()}`,
+            },
+        });
+        return id;
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
 });
 
 // Initial state
 const initialState = {
-    tasks: [],
-    task: null,
+    games: [],
+    game: null,
     status: 'idle',
     error: null,
 };
 
 // Slice
-const tasksSlice = createSlice({
-    name: 'tasks',
+const gamesSlice = createSlice({
+    name: 'games',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-            // Fetch all tasks
-            .addCase(fetchAllTasks.pending, (state) => {
+            // Fetch all games
+            .addCase(fetchAllGames.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchAllTasks.fulfilled, (state, action) => {
+            .addCase(fetchAllGames.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.tasks = action.payload;
+                state.games = action.payload;
             })
-            .addCase(fetchAllTasks.rejected, (state, action) => {
+            .addCase(fetchAllGames.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })
-            // Fetch task by ID
-            .addCase(fetchTaskById.pending, (state) => {
+            // Fetch game by ID
+            .addCase(fetchGameById.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchTaskById.fulfilled, (state, action) => {
+            .addCase(fetchGameById.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.task = action.payload;
+                state.game = action.payload;
             })
-            .addCase(fetchTaskById.rejected, (state, action) => {
+            .addCase(fetchGameById.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })
-            // Fetch tasks by difficulty
-            .addCase(fetchTasksByDifficulty.pending, (state) => {
+            // Create game
+            .addCase(createGame.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchTasksByDifficulty.fulfilled, (state, action) => {
+            .addCase(createGame.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.tasks = action.payload;
+                state.games.push(action.payload);
             })
-            .addCase(fetchTasksByDifficulty.rejected, (state, action) => {
+            .addCase(createGame.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.error.message;
+                state.error = action.payload ? action.payload.message : action.error.message;
             })
-            // Fetch tasks by type
-            .addCase(fetchTasksByType.pending, (state) => {
+            // Update game
+            .addCase(updateGame.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchTasksByType.fulfilled, (state, action) => {
+            .addCase(updateGame.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.tasks = action.payload;
-            })
-            .addCase(fetchTasksByType.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message;
-            })
-            // Create task
-            .addCase(createTask.pending, (state) => {
-                state.status = 'loading';
-            })
-            .addCase(createTask.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                state.tasks.push(action.payload);
-            })
-            .addCase(createTask.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message;
-            })
-            // Update task
-            .addCase(updateTask.pending, (state) => {
-                state.status = 'loading';
-            })
-            .addCase(updateTask.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                const index = state.tasks.findIndex(task => task.id === action.payload.id);
+                const index = state.games.findIndex(game => game.id === action.payload.id);
                 if (index !== -1) {
-                    state.tasks[index] = action.payload;
+                    state.games[index] = action.payload;
                 }
             })
-            .addCase(updateTask.rejected, (state, action) => {
+            .addCase(updateGame.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.error.message;
+                state.error = action.payload ? action.payload.message : action.error.message;
             })
-            // Delete task
-            .addCase(deleteTask.pending, (state) => {
+            // Delete game
+            .addCase(deleteGame.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(deleteTask.fulfilled, (state, action) => {
+            .addCase(deleteGame.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.tasks = state.tasks.filter(task => task.id !== action.payload);
+                state.games = state.games.filter(game => game.id !== action.payload);
             })
-            .addCase(deleteTask.rejected, (state, action) => {
+            .addCase(deleteGame.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.error.message;
+                state.error = action.payload ? action.payload.message : action.error.message;
             });
     },
 });
 
-export default tasksSlice.reducer;
+export default gamesSlice.reducer;

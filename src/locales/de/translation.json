@@ -1,4 +1,18 @@
 {
+  "welcome": "Willkommen auf unserer Website!",
+  "navbar": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "games": "Spiele",
+    "profile": "Profil",
+    "logout": "Abmelden"
+  },
+  "footer": {
+    "contact": "Kontakt",
+    "privacy": "Datenschutz"
+  },
   "login": {
     "backgroundAlt": "Hintergrundbild der Anmeldeseite",
     "formTitle": "Anmelden",
@@ -41,12 +55,6 @@
       "math": "Mathematik",
       "fairytales": "Märchen"
     },
-    "ageGroups": {
-      "4 - 7 years": "4 - 7 Jahre",
-      "7 - 10 years": "7 - 10 Jahre",
-      "10 - 13 years": "10 - 13 Jahre",
-      "13 - 16 years": "13 - 16 Jahre"
-    },
     "filters": {
       "ageGroup": "Altersgruppe",
       "difficulty": "Schwierigkeitsgrad",
@@ -75,20 +83,6 @@
       "prompt": "Bitte beantworten Sie die folgenden Fragen:"
     }
   },
-  "navbar": {
-    "home": "Startseite",
-    "about": "Über uns",
-    "login": "Anmelden",
-    "register": "Registrieren",
-    "games": "Spiele",
-    "profile": "Profil",
-    "logout": "Abmelden"
-  },
-  "footer": {
-    "contact": "Kontakt",
-    "privacy": "Datenschutz"
-  },
-  "welcome": "Willkommen auf unserer Website!",
   "about": {
     "backgroundAlt": "Hintergrundbild über uns",
     "header1": "Über uns",
@@ -106,10 +100,6 @@
     "lastName": "Nachname",
     "age": "Alter",
     "gender": "Geschlecht",
-    "genderOptions": {
-      "male": "Männlich",
-      "female": "Weiblich"
-    },
     "email": "E-Mail",
     "agePlaceholder": "Alter eingeben",
     "updateProfile": "Profil aktualisieren",
