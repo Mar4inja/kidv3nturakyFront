@@ -121,80 +121,82 @@
     "lastName": "Last Name",
     "age": "Age",
     "gender": "Gender",
-    "email": "Email",
-    "agePlaceholder": "Enter age",
-    "updateProfile": "Update Profile",
-    "changePassword": "Change Password",
-    "currentPassword": "Current Password",
-    "newPassword": "New Password",
-    "confirmNewPassword": "Confirm New Password",
-    "passwordChangeFailed": "Password change failed",
-    "passwordChanged": "Password successfully changed",
-    "profileUpdateFailed": "Profile update failed",
-    "profileUpdated": "Profile successfully updated",
-    "deleteAccount": "Delete Account",
-    "deleteAccountConfirmation": "Are you sure you want to delete your account? This cannot be undone.",
-    "accountDeleted": "Account successfully deleted",
-    "deleteAccountFailed": "Failed to delete account",
-    "updateSuccess": "Profile successfully updated!",
-    "changePhoto": "Change Photo",
-    "changePhotoSuccess": "Photo successfully changed",
-    "changePhotoFailed": "Failed to change photo",
-    "editData": "Edit Personal Data",
-    "viewAchievements": "View Achievements",
-    "achievements": {
-      "title": "Your Achievements",
-      "noAchievements": "You have not achieved any achievements yet.",
-      "viewAll": "View All Achievements"
-    }
-  },
-  "common": {
-    "error": {
-      "network": "Network error. Please try again later.",
-      "form": "Error submitting form. Please check your inputs and try again."
-    },
-    "success": {
-      "form": "Form successfully submitted!"
-    },
-    "loading": "Loading...",
-    "notFound": "Page not found"
-  },
-  "categoriesHeader": "Select a Category",
-  "ageGroupsHeader": "Select an Age Group",
-  "loginPrompt": {
-    "message": "You must be logged in to access this feature.",
-    "login": "Login",
-    "cancel": "Cancel"
-  },
-  "games": {
-    "categoriesHeader": "Categories",
-    "loginPrompt": {
-      "message": "You need to be logged in to access this feature.",
-      "login": "Login",
-      "cancel": "Cancel"
-    },
-    "ageGroupsHeader": "Select Age Group",
-    "addNewGameButton": "Add New Game",
-    "addNewGameModal": {
-      "title": "Add New Game",
-      "titleLabel": "Game Title",
-      "descriptionLabel": "Description",
-      "difficultyLabel": "Difficulty Level",
-      "typeLabel": "Game Type",
-      "contentLabel": "Game Content",
-      "correctAnswerLabel": "Correct Answer",
-      "submitButton": "Add Game",
-      "cancelButton": "Cancel"
-    },
-    "categories": {
-      "geography": "Geography",
-      "math": "Math",
-      "fairytales": "Fairytales"
-    },
-    "ageGroups": {
-      "age4": "4+",
-      "age6": "6+",
-      "backButton": "Back"
-    }
+    "male": "male",
+    "female": "female",
+  "email": "Email",
+  "agePlaceholder": "Enter age",
+  "updateProfile": "Update Profile",
+  "changePassword": "Change Password",
+  "currentPassword": "Current Password",
+  "newPassword": "New Password",
+  "confirmNewPassword": "Confirm New Password",
+  "passwordChangeFailed": "Password change failed",
+  "passwordChanged": "Password successfully changed",
+  "profileUpdateFailed": "Profile update failed",
+  "profileUpdated": "Profile successfully updated",
+  "deleteAccount": "Delete Account",
+  "deleteAccountConfirmation": "Are you sure you want to delete your account? This cannot be undone.",
+  "accountDeleted": "Account successfully deleted",
+  "deleteAccountFailed": "Failed to delete account",
+  "updateSuccess": "Profile successfully updated!",
+  "changePhoto": "Change Photo",
+  "changePhotoSuccess": "Photo successfully changed",
+  "changePhotoFailed": "Failed to change photo",
+  "editData": "Edit Personal Data",
+  "viewAchievements": "View Achievements",
+  "achievements": {
+    "title": "Your Achievements",
+    "noAchievements": "You have not achieved any achievements yet.",
+    "viewAll": "View All Achievements"
   }
+},
+"common": {
+"error": {
+"network": "Network error. Please try again later.",
+"form": "Error submitting form. Please check your inputs and try again."
+},
+"success": {
+"form": "Form successfully submitted!"
+},
+"loading": "Loading...",
+"notFound": "Page not found"
+},
+"categoriesHeader": "Select a Category",
+"ageGroupsHeader": "Select an Age Group",
+"loginPrompt": {
+"message": "You must be logged in to access this feature.",
+"login": "Login",
+"cancel": "Cancel"
+},
+"games": {
+"categoriesHeader": "Categories",
+"loginPrompt": {
+"message": "You need to be logged in to access this feature.",
+"login": "Login",
+"cancel": "Cancel"
+},
+"ageGroupsHeader": "Select Age Group",
+"addNewGameButton": "Add New Game",
+"addNewGameModal": {
+"title": "Add New Game",
+"titleLabel": "Game Title",
+"descriptionLabel": "Description",
+"difficultyLabel": "Difficulty Level",
+"typeLabel": "Game Type",
+"contentLabel": "Game Content",
+"correctAnswerLabel": "Correct Answer",
+"submitButton": "Add Game",
+"cancelButton": "Cancel"
+},
+"categories": {
+"geography": "Geography",
+"math": "Math",
+"fairytales": "Fairytales"
+},
+"ageGroups": {
+"age4": "4+",
+"age6": "6+",
+"backButton": "Back"
+}
+}
 }

@@ -10,6 +10,8 @@ import age6Image from '../../assets/ageGroups/6+.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Clock from "../clock/Clock";
+import { useDispatch } from 'react-redux'; // Importējam useDispatch
+import { createGame } from '../../features/games/gameSlice'; // Importējam createGame akciju
 
 const Games = () => {
     const { t } = useTranslation();
@@ -17,7 +19,7 @@ const Games = () => {
     const [showAgeGroups, setShowAgeGroups] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [showLoginPrompt, setShowLoginPrompt] = useState(false);
-    const [showAddGameModal, setShowAddGameModal] = useState(false);  // Jauns stāvokļa mainīgais
+    const [showAddGameModal, setShowAddGameModal] = useState(false);
     const [newGame, setNewGame] = useState({
         title: '',
         description: '',
@@ -25,8 +27,9 @@ const Games = () => {
         type: '',
         content: '',
         correctAnswer: ''
-    });  // Jaunas spēles dati
+    });
     const navigate = useNavigate();
+    const dispatch = useDispatch();  // Izveidojam dispatch funkciju
 
     useEffect(() => {
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -80,19 +83,22 @@ const Games = () => {
         }));
     };
 
-    const handleAddGameSubmit = (e) => {
+    const handleAddGameSubmit = async (e) => {
         e.preventDefault();
-        // Šeit varat veikt AJAX pieprasījumu, lai saglabātu spēles datus
-        console.log(newGame);
-        setNewGame({
-            title: '',
-            description: '',
-            difficulty: '',
-            type: '',
-            content: '',
-            correctAnswer: ''
-        });
-        setShowAddGameModal(false);
+        try {
+            await dispatch(createGame(newGame)).unwrap();
+            setNewGame({
+                title: '',
+                description: '',
+                difficulty: '',
+                type: '',
+                content: '',
+                correctAnswer: ''
+            });
+            setShowAddGameModal(false);
+        } catch (error) {
+            console.error('Failed to add the new game:', error);
+        }
     };
 
     return (
