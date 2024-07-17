@@ -1,16 +1,14 @@
-import React, {useRef, useState, useEffect} from 'react';
-import {Link, useNavigate, useLocation} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
-import {setCredentials} from '../../features/auth/authSlice';
-import {useLoginMutation} from '../../features/auth/authApiSlice';
+import React, { useRef, useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from '../../features/auth/authSlice';
+import { useLoginMutation } from '../../features/auth/authApiSlice';
 import styles from './login.module.css';
 import loginBackgroundImage from '../../assets/login/login.jpg';
-import {useTranslation} from 'react-i18next';
-
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
-    const {t} = useTranslation();
-
+    const { t } = useTranslation();
     const userRef = useRef();
     const errRef = useRef();
     const [email, setEmail] = useState("");
@@ -18,7 +16,7 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
-    const [login, {isLoading}] = useLoginMutation();
+    const [login, { isLoading }] = useLoginMutation();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -33,28 +31,45 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const userData = await login({email, password}).unwrap();
+            // Izsauc login funkciju un iegūst lietotāja datus
+            const userData = await login({ email, password }).unwrap();
             dispatch(setCredentials(userData));
             setEmail("");
             setPassword("");
             localStorage.setItem("isLoggedIn", "true");
 
             const redirect = new URLSearchParams(location.search).get('redirect');
-            if (redirect === 'games') {
-                navigate('/profile');
-            } else {
-                navigate('/profile');
-            }
+            navigate(redirect === 'games' ? '/profile' : '/profile');
+
         } catch (error) {
-            // Parādīt "wrong email or password" ziņojumu, ja kļūda ir 401
+            console.log("Error details:", error);  // Pārbaudiet, vai `error` satur `status` un `data`
+
+            // Iegūstiet kļūdas ziņojumu no `error.data`
+            const errorMessage = error?.data?.message || t('login.defaultError');  // Iegūstiet kļūdas ziņojumu no `error.data.message` vai tulkojiet kļūdu ziņojumu
+
             if (error?.status === 401) {
-                setErrorMessage(t('login.wrongEmailOrPassword'));  // Ja 401, tad kļūda: "wrong email or password"
+                // Apstrādā servera atbildes ziņojumus
+                switch (errorMessage) {
+                    case "Email is incorrect.":
+                        setErrorMessage(t('login.emailIncorrect'));  // **401** kļūda: "Email is incorrect."
+                        break;
+                    case "Password is incorrect.":
+                        setErrorMessage(t('login.passwordIncorrect'));  // **401** kļūda: "Password is incorrect."
+                        break;
+                    case "Email confirmation was not completed.":
+                        setErrorMessage(t('login.emailNotConfirmed'));  // **401** kļūda: "Email confirmation was not completed."
+                        break;
+                    default:
+                        setErrorMessage(t('login.wrongEmailOrPassword'));  // Ja citi **401** kļūdu scenāriji
+                }
+            } else if (error?.status === 500) {
+                setErrorMessage(t('login.serverError'));  // **500** kļūda: "Server error, please try again later."
             } else if (!error?.status) {
                 setErrorMessage(t('login.noResponse'));  // Ja nav atbildes no servera
             } else {
-                setErrorMessage(t('login.loginFailed'));  // Visām citām kļūdām
+                setErrorMessage(t('login.loginFailed'));  // Citas kļūdas: "Login failed, please try again."
             }
-            errRef.current?.scrollIntoView({behavior: "smooth"});
+            errRef.current?.scrollIntoView({ behavior: "smooth" });
         }
     };
 

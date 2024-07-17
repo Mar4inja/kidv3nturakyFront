@@ -1,5 +1,3 @@
-// src/redux/api/apiSlice.js
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { setCredentials } from '../../features/auth/authSlice';
 import { logoutUser as logoutUserAction } from '../../features/logout/logoutSlice';
@@ -21,8 +19,8 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions);
 
     if (result?.error?.status === 403) {
-        console.log('sending refresh token');
-        const refreshResult = await baseQuery('/api/users/refresh', api, extraOptions);
+        console.log('Sending refresh token');
+        const refreshResult = await baseQuery('/api/users/access', api, extraOptions);  // Corrected endpoint for refreshing tokens
         if (refreshResult?.data) {
             const user = api.getState().auth.user;
             api.dispatch(setCredentials({ ...refreshResult.data, user }));
@@ -31,7 +29,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
             api.dispatch(logoutUserAction()); // Dispatch the logoutUser action to log the user out
         }
     } else if (result?.error?.status === 401) {
-        api.dispatch(logoutUserAction()); // Dispatch the logoutUser action to log the user out
+        api.dispatch(logoutUserAction()); // Log the user out for unauthorized errors
     }
 
     return result;

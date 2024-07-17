@@ -23,9 +23,14 @@
     "noResponse": "No response from server.",
     "missingEmailOrPassword": "Email or password is missing",
     "unauthorized": "Unauthorized",
-    "loginFailed": "Login failed",
     "noAccount": "No account?",
-    "register": "Register"
+    "register": "Register",
+    "emailIncorrect": "Email is incorrect.",
+    "passwordIncorrect": "Password is incorrect.",
+    "emailNotConfirmed": "Email confirmation was not completed.",
+    "wrongEmailOrPassword": "Incorrect email or password. Please try again.",
+    "serverError": "Server error, please try again later.",
+    "loginFailed": "Login failed, please try again."
   },
   "register": {
     "backgroundAlt": "Registration page background image",
@@ -48,18 +53,14 @@
       "login": "Login",
       "cancel": "Cancel"
     },
-    "categoriesHeader": "Categories",
+    "categoriesHeader": "Select a Category",
     "categories": {
       "geography": "Geography",
       "math": "Math",
       "fairytales": "Fairytales"
     },
-    "ageGroupsHeader": "Age Groups",
+    "ageGroupsHeader": "Select an Age Group",
     "ageGroups": {
-      "4-7": "4 - 7 years",
-      "7-10": "7 - 10 years",
-      "10-13": "10 - 13 years",
-      "13-16": "13 - 16 years",
       "age4": "From 4 years",
       "age6": "From 6 years",
       "backButton": "Back to Categories"
@@ -102,6 +103,11 @@
       "correctAnswerLabel": "Correct Answer",
       "submitButton": "Add Game",
       "cancelButton": "Cancel"
+    },
+    "playGamesHeader": "Play {{category}} Games for {{ageGroup}}",
+    "playGames": {
+      "addNewGameButton": "Add New Game",
+      "backButton": "Back to Age Groups"
     }
   },
   "about": {
@@ -121,82 +127,44 @@
     "lastName": "Last Name",
     "age": "Age",
     "gender": "Gender",
-    "male": "male",
-    "female": "female",
-  "email": "Email",
-  "agePlaceholder": "Enter age",
-  "updateProfile": "Update Profile",
-  "changePassword": "Change Password",
-  "currentPassword": "Current Password",
-  "newPassword": "New Password",
-  "confirmNewPassword": "Confirm New Password",
-  "passwordChangeFailed": "Password change failed",
-  "passwordChanged": "Password successfully changed",
-  "profileUpdateFailed": "Profile update failed",
-  "profileUpdated": "Profile successfully updated",
-  "deleteAccount": "Delete Account",
-  "deleteAccountConfirmation": "Are you sure you want to delete your account? This cannot be undone.",
-  "accountDeleted": "Account successfully deleted",
-  "deleteAccountFailed": "Failed to delete account",
-  "updateSuccess": "Profile successfully updated!",
-  "changePhoto": "Change Photo",
-  "changePhotoSuccess": "Photo successfully changed",
-  "changePhotoFailed": "Failed to change photo",
-  "editData": "Edit Personal Data",
-  "viewAchievements": "View Achievements",
-  "achievements": {
-    "title": "Your Achievements",
-    "noAchievements": "You have not achieved any achievements yet.",
-    "viewAll": "View All Achievements"
+    "male": "Male",
+    "female": "Female",
+    "email": "Email",
+    "agePlaceholder": "Enter age",
+    "updateProfile": "Update Profile",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "passwordChangeFailed": "Password change failed",
+    "passwordChanged": "Password successfully changed",
+    "profileUpdateFailed": "Profile update failed",
+    "profileUpdated": "Profile successfully updated",
+    "deleteAccount": "Delete Account",
+    "deleteAccountConfirmation": "Are you sure you want to delete your account? This cannot be undone.",
+    "accountDeleted": "Account successfully deleted",
+    "deleteAccountFailed": "Failed to delete account",
+    "updateSuccess": "Profile successfully updated!",
+    "changePhoto": "Change Photo",
+    "changePhotoSuccess": "Photo successfully changed",
+    "changePhotoFailed": "Failed to change photo",
+    "editData": "Edit Personal Data",
+    "viewAchievements": "View Achievements",
+    "achievements": {
+      "title": "Your Achievements",
+      "noAchievements": "You have not achieved any achievements yet.",
+      "viewAll": "View All Achievements"
+    }
+  },
+  "common": {
+    "error": {
+      "network": "Network error. Please try again later.",
+      "form": "Error submitting form. Please check your inputs and try again."
+    },
+    "success": {
+      "form": "Form successfully submitted!"
+    },
+    "loading": "Loading...",
+    "notFound": "Page not found"
   }
-},
-"common": {
-"error": {
-"network": "Network error. Please try again later.",
-"form": "Error submitting form. Please check your inputs and try again."
-},
-"success": {
-"form": "Form successfully submitted!"
-},
-"loading": "Loading...",
-"notFound": "Page not found"
-},
-"categoriesHeader": "Select a Category",
-"ageGroupsHeader": "Select an Age Group",
-"loginPrompt": {
-"message": "You must be logged in to access this feature.",
-"login": "Login",
-"cancel": "Cancel"
-},
-"games": {
-"categoriesHeader": "Categories",
-"loginPrompt": {
-"message": "You need to be logged in to access this feature.",
-"login": "Login",
-"cancel": "Cancel"
-},
-"ageGroupsHeader": "Select Age Group",
-"addNewGameButton": "Add New Game",
-"addNewGameModal": {
-"title": "Add New Game",
-"titleLabel": "Game Title",
-"descriptionLabel": "Description",
-"difficultyLabel": "Difficulty Level",
-"typeLabel": "Game Type",
-"contentLabel": "Game Content",
-"correctAnswerLabel": "Correct Answer",
-"submitButton": "Add Game",
-"cancelButton": "Cancel"
-},
-"categories": {
-"geography": "Geography",
-"math": "Math",
-"fairytales": "Fairytales"
-},
-"ageGroups": {
-"age4": "4+",
-"age6": "6+",
-"backButton": "Back"
-}
-}
 }

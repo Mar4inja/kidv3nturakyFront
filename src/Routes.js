@@ -10,6 +10,7 @@ import Games from "./components/games/Games";
 import { selectCurrentUser, selectIsLoggedIn } from "./features/auth/authSlice";
 import Profile from "./pages/profile_page/Profile";
 import { useTranslation } from 'react-i18next';
+import Calculator from "./components/calculator/Calculator";
 
 const MyRoutes = () => {
     const user = useSelector(selectCurrentUser);
@@ -23,7 +24,9 @@ const MyRoutes = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/about" element={<About />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/" element={<Calculator />} />
             <Route path="/games" element={<Games />} />
+            <Route path="/games/:category/:ageGroup" element={<Games />} />
             <Route path="/profile" element={isLoggedIn ? <Profile /> : <Login />} />
             {!isLoggedIn && <Route path="*" element={<Login />} />}
         </Routes>

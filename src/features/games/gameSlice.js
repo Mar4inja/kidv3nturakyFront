@@ -13,6 +13,11 @@ export const fetchAllGames = createAsyncThunk('games/fetchAllGames', async () =>
     return response.data;
 });
 
+export const fetchGamesByCategoryAndAge = createAsyncThunk('games/fetchGamesByCategoryAndAge', async ({ category, ageGroup }) => {
+    const response = await axios.get(`${baseUrl}?category=${category}&age=${ageGroup}`);
+    return response.data;
+});
+
 export const fetchGameById = createAsyncThunk('games/fetchGameById', async (id) => {
     const response = await axios.get(`${baseUrl}/${id}`);
     return response.data;
@@ -81,6 +86,18 @@ const gamesSlice = createSlice({
                 state.games = action.payload;
             })
             .addCase(fetchAllGames.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            })
+            // Fetch games by category and age group
+            .addCase(fetchGamesByCategoryAndAge.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchGamesByCategoryAndAge.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.games = action.payload;
+            })
+            .addCase(fetchGamesByCategoryAndAge.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })

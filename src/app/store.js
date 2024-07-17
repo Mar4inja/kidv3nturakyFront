@@ -6,6 +6,7 @@ import authReducer from '../features/auth/authSlice';
 import registerReducer from '../features/register/registerSlice';
 import profileReducer from '../features/profile/profileSlice';
 import gamesReducer from '../features/games/gameSlice';
+import calculatorReducer from '../features/calculatorSlice/calculatorSlice';
 
 
 import { configureStore } from '@reduxjs/toolkit';
@@ -16,7 +17,7 @@ const rootReducer = combineReducers({
   register: registerReducer,
   profile: profileReducer,
   games: gamesReducer,
-
+  calculator: calculatorReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

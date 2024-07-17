@@ -2,8 +2,8 @@
 .backButtonContainer {
     width: 100%;
     display: flex;
-    justify-content: center; /* Centrs horizontāli */
-    margin-bottom: 20px; /* Attālums zem pogas */
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 /* Atpakaļ pogas stils */
@@ -15,7 +15,7 @@
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
-    margin-top: 20px; /* Attālums virs pogas */
+    margin-top: 20px;
 }
 
 /* Atpakaļ pogas hover efekts */
@@ -52,10 +52,9 @@
     object-fit: cover;
 }
 
-
 /* Galvenā kartīte */
 .card-wrapper {
-    perspective: 4000px; /* Papildus perspektīvas dziļums */
+    perspective: 4000px;
 }
 
 .card {
@@ -77,17 +76,17 @@
     align-items: center;
     transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
     overflow: hidden;
-    transform-style: preserve-3d; /* Saglabā 3D transformāciju */
+    transform-style: preserve-3d;
     position: relative;
 }
 
 .card:hover {
-    transform: scale(1.80); /* Pieaugt, bet ne pārāk lielā mērā */
+    transform: scale(1.80);
     z-index: 10;
 }
 
 .card:hover::after {
-    opacity: 1; /* Show shadow on hover */
+    opacity: 1;
 }
 
 /* Kartītes iekšējais teksts */
@@ -124,7 +123,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30px; /* Attālums virs vecuma grupām */
+    margin-top: 30px;
     text-align: center;
 }
 
@@ -148,9 +147,9 @@
     align-items: center;
     transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
     overflow: hidden;
-    transform-style: preserve-3d; /* Saglabā 3D transformāciju */
+    transform-style: preserve-3d;
     position: relative;
-    z-index: 1; /* Pamatā z-index */
+    z-index: 1;
 }
 
 /* Vecuma grupu kartītes konteiners */
@@ -169,25 +168,24 @@
 .ageCard::after {
     content: '';
     position: absolute;
-    bottom: -20px; /* Adjust this value to position the shadow */
+    bottom: -20px;
     left: 0;
     width: 100%;
-    height: 50px; /* Adjust this value to control the shadow's height */
+    height: 50px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s; /* Transition for hover effect */
+    opacity: 0;
+    transition: opacity 0.3s;
     pointer-events: none;
 }
 
 .ageCard:hover {
-    transform: scale(1.80); /* Papildinājums ar rotāciju */
+    transform: scale(1.80);
     z-index: 20;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4); /* Papildus ēnas efekts */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 
-/* Shadow efekts uz hover */
 .ageCard:hover::after {
-    opacity: 1; /* Parādīt ēnu uz hover */
+    opacity: 1;
 }
 
 /* Vecuma grupas kartītes iekšējais teksts */
@@ -210,39 +208,12 @@
     font-weight: bold;
 }
 
-
-/* Atpakaļ pogas konteiners */
-.backButtonContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center; /* Centrs horizontāli */
-    margin-bottom: 20px; /* Attālums zem pogas */
-}
-
-/* Atpakaļ pogas stils */
-.backButton {
-    padding: 10px 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    margin-top: 20px; /* Attālums virs pogas */
-}
-
-/* Atpakaļ pogas hover efekts */
-.backButton:hover {
-    background-color: rgba(255, 255, 255, 1);
-}
-
-
 /* Kategoriju konteiners */
 .categoriesContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -300px; /* Augšpusē attālums */
+    margin-top: -300px;
 }
 
 /* Kategoriju virsraksta stils */
@@ -253,10 +224,10 @@
     border-radius: 10px;
     font-size: 1.5rem;
     color: #ffffff;
-    margin-bottom: 30px; /* Attālums zem virsraksta */
-    position: relative; /* Lai izmantotu top un left īpašības */
-    left: -88%; /* Piešķir virsrakstu kreisās malas */
-    top: -90px; /* Izmanto šo, lai paceltu virsrakstu uz augšu */
+    margin-bottom: 30px;
+    position: relative;
+    left: -88%;
+    top: -90px;
 }
 
 .ageGroupsContainer h2 {
@@ -266,149 +237,165 @@
     border-radius: 10px;
     font-size: 1.5rem;
     color: #ffffff;
-    margin-bottom: 30px; /* Attālums zem virsraksta */
-    /* Izmantojiet kādu no šiem paņēmieniem */
-    position: relative; /* Vai izmantot šo, lai paceltu h2 elementu */
-    top: -400px; /* Izmantojiet šo, lai paceltu virsrakstu */
+    margin-bottom: 30px;
+    position: relative;
+    top: -400px;
     left: -284px;
-
-}
-
-/* Kategoriju kartītes konteiners */
-.cardContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
 }
 
 /* Filtra formas konteiners - izņemts, jo vairs netiks izmantots */
 .filterFormContainer {
-    display: none; /* Slēpt filtra formu */
+    display: none;
 }
 
 /* Jauns paziņojuma logs */
 .loginPrompt {
-    position: fixed; /* Fiksēta pozicionēšana logam uz ekrāna */
-    top: 50%; /* Vertikāli centrēts */
-    left: 50%; /* Horizontāli centrēts */
-    transform: translate(-50%, -50%); /* Centrēšana */
-    background-color: rgba(255, 255, 255, 0.58); /* Fona krāsa */
-    padding: 20px; /* iekšējais atstatums */
-    border-radius: 10px; /* Leņķu noapaļošana */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Apmale */
-    backdrop-filter: blur(10px); /* Apmales ēna */
-    text-align: center; /* Teksta centrēšana */
-    z-index: 2; /* Virs citiem elementiem */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.58);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    z-index: 2;
 }
 
 /* Paziņojuma loga teksta stils */
 .loginPrompt p {
-    margin-bottom: 20px; /* Atstarps starp tekstu un pogu */
+    margin-bottom: 20px;
 }
 
 /* Teksta stils brīdinājumam */
 .logWarning {
-    font-size: large; /* Fonta izmērs */
-    color: #000000; /* Teksta krāsa */
+    font-size: large;
+    color: #000000;
 }
 
 /* Stils pogai paziņojuma logā */
 .loginPrompt button {
     margin-left: 10px;
-    padding: 10px 25px; /* iekšējais atstatums */
-    background-color: #007bff; /* Pogas fons */
-    color: white; /* Teksta krāsa */
-    border: none; /* Bez malas */
-    border-radius: 5px; /* Leņķu noapaļošana */
-    cursor: pointer; /* Rādītājs uz pogas */
+    padding: 10px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Hover efekts pogai paziņojuma logā */
 .loginPrompt button:hover {
-    background-color: #0056b3; /* Tumšāks fona krāsa */
+    background-color: #0056b3;
 }
 
-/* games.module.css */
-
-/* Pievieno “Add New Game” pogu */
-.addGameButton {
-    background-color: #4CAF50; /* Zaļš */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.addGameButton:hover {
-    background-color: #45a049; /* Tumšāks zaļš */
-}
-
-/* Modalitātes stili */
+/* AddGameModal */
 .addGameModal {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.modalContent {
-    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
-    width: 80%;
-    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 10;
 }
 
-/* Forma */
+/* AddGameModal satura stils */
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* AddGameModal formas grupas stils */
 .formGroup {
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input, textarea {
+/* AddGameModal ievades lauka stils */
+.formGroup input,
+.formGroup textarea {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    border: 1px solid #ddd;
 }
 
-textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
+/* AddGameModal pogas stils */
+.addGameModal button {
     padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
 }
 
-button:hover {
-    background-color: #45a049;
+/* AddGameModal pogas hover efekts */
+.addGameModal button:hover {
+    background-color: #0056b3;
 }
 
-button + button {
-    background-color: #f44336;
+/* AddGameButton */
+.addGameButton {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
 }
 
-button + button:hover {
-    background-color: #e53935;
+.addGameButton:hover {
+    background-color: #218838;
+}
+
+.playGamesContainer {
+    padding: 20px;
+    text-align: center;
+}
+
+.playGamesCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.playGameCard {
+    width: 150px;
+    height: 150px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.playGameCardContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Additional margins for consistency */
+.addGameButton {
+    margin-top: 20px;
+}
+
+.backButton {
+    margin-top: 10px;
 }
