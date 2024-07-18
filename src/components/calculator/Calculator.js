@@ -1,8 +1,7 @@
-// src/components/Calculator.js
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOperation, setInput, calculateResult, clear } from '../../features/calculatorSlice/calculatorSlice';
-import './calculator.module.css';
+import styles from './calculator.module.css'; // Correct import statement for CSS module
 
 const Calculator = () => {
     const dispatch = useDispatch();
@@ -21,13 +20,13 @@ const Calculator = () => {
     };
 
     return (
-        <div className="calculator">
-            <div className="display">
+        <div className={styles.calculator}> {/* Use styles.calculator here */}
+            <div className={styles.display}>
                 <div>{input || '0'}</div>
                 <div>{operation}</div>
                 <div>{result}</div>
             </div>
-            <div className="buttons">
+            <div className={styles.buttons}>
                 <button onClick={() => handleButtonClick('C')}>C</button>
                 <button onClick={() => handleButtonClick('/')}>/</button>
                 <button onClick={() => handleButtonClick('*')}>*</button>
