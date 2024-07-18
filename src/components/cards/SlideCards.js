@@ -16,7 +16,7 @@ const SlideCards = () => {
     const nextDom = nextDomRef.current;
     const prevDom = prevDomRef.current;
     const carouselDom = carouselDomRef.current;
-    const timeDom = timeDomRef.current;
+  
 
     if (!carouselDom) {
       console.error("Carousel DOM element not found");

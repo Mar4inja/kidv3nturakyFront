@@ -6,7 +6,6 @@ import Navbar from "./components/navbar/Navbar";
 
 
 const App = () => {
-    const { t } = useTranslation();
 
     return (
         <div className="appContainer">

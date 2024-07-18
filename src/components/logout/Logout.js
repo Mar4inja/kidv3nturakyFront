@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+
 
 const Logout = () => {
-  const { t } = useTranslation(); // Pareizi izmantojam t, lai iegūtu tulkojumu
+
 
   const navigate = useNavigate();
 

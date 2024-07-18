@@ -1,6 +1,5 @@
 import storage from 'redux-persist/lib/storage'; // по умолчанию используется localStorage для веба
 import { default as sessionStorage } from 'redux-persist/lib/storage/session';
-import games from "../components/games/Games";
 
 const persistConfig = {
   key: 'root',
