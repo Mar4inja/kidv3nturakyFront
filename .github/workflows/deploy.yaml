@@ -1,24 +1,29 @@
-name: Deploy to Production
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - master
+      - main  # Замените на вашу ветку
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'  # Замените на версию Node.js, которую вы используете
       - name: Install dependencies
         run: npm install
-
-      - name: Build and deploy
+      - name: Build
+        run: npm run build
+      - name: Configure Git
         run: |
-          npm run build
-          npm run deploy
+          git config --global user.name "Mar4inja"
+          git config --global user.email "mar4inja19@gmail.com"
+          git remote add origin https://github.com/Mar4inja/kidv3nturakyFront.git
+      - name: Deploy
+        run: npm run deploy-gh-pages
         env:
-          NODE_ENV: production
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
