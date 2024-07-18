@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
@@ -13,23 +13,24 @@ import { useTranslation } from 'react-i18next';
 import Calculator from "./components/calculator/Calculator";
 
 const MyRoutes = () => {
-    const user = useSelector(selectCurrentUser);
     const isLoggedIn = useSelector(selectIsLoggedIn);
     const { t } = useTranslation();
 
     return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/" element={<Calculator />} />
-            <Route path="/games" element={<Games />} />
-            <Route path="/games/:category/:ageGroup" element={<Games />} />
-            <Route path="/profile" element={isLoggedIn ? <Profile /> : <Login />} />
-            {!isLoggedIn && <Route path="*" element={<Login />} />}
-        </Routes>
+        <Router basename="/kidv3nturaky"> {/* Adjust basename as per your repo name */}
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/calculator" element={<Calculator />} />
+                <Route path="/games" element={<Games />} />
+                <Route path="/games/:category/:ageGroup" element={<Games />} />
+                <Route path="/profile" element={isLoggedIn ? <Profile /> : <Login />} />
+                {!isLoggedIn && <Route path="*" element={<Login />} />}
+            </Routes>
+        </Router>
     );
 };
 
