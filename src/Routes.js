@@ -10,7 +10,6 @@ import Games from "./components/games/Games";
 import { selectIsLoggedIn } from "./features/auth/authSlice";
 import Profile from "./pages/profile_page/Profile";
 
-import Calculator from "./components/calculator/Calculator";
 
 const MyRoutes = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -24,7 +23,6 @@ const MyRoutes = () => {
                 <Route path="/register" element={<Register />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/logout" element={<Logout />} />
-                <Route path="/calculator" element={<Calculator />} />
                 <Route path="/games" element={<Games />} />
                 <Route path="/games/:category/:ageGroup" element={<Games />} />
                 <Route path="/profile" element={isLoggedIn ? <Profile /> : <Login />} />
