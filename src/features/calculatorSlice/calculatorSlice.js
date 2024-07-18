@@ -13,8 +13,27 @@ const calculatorSlice = createSlice({
         },
         calculateResult(state) {
             try {
-                // Lielākā daļa cilvēku izmanto eval, bet šis ir ļoti bīstams, tāpēc reālas aplikācijās labāk izmantot drošākus risinājumus
-                state.result = eval(state.input + state.operation + state.result);
+                const inputValue = parseFloat(state.input);
+                const currentResult = parseFloat(state.result);
+
+                switch (state.operation) {
+                    case '+':
+                        state.result = currentResult + inputValue;
+                        break;
+                    case '-':
+                        state.result = currentResult - inputValue;
+                        break;
+                    case '*':
+                        state.result = currentResult * inputValue;
+                        break;
+                    case '/':
+                        state.result = currentResult / inputValue;
+                        break;
+                    default:
+                        state.result = 'Error';
+                        break;
+                }
+
                 state.input = '';
                 state.operation = '';
             } catch (error) {
