@@ -35,7 +35,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build -r https://github.com/Mar4inja/kidv3nturaky.git"
   },
   "eslintConfig": {
     "extends": [
@@ -68,5 +68,4 @@
     "webpack-dev-server": "^5.0.4"
   },
   "homepage": "https://Mar4inja.github.io/kidv3nturaky"
-
 }
