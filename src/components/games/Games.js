@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import Clock from '../clock/Clock';
 import { useDispatch, useSelector } from 'react-redux';
 import { createGame, fetchGamesByCategoryAndAge } from '../../features/games/gameSlice';
+import { selectIsLoggedIn } from '../../features/auth/authSlice'; // Assuming you have this selector
 
 const Games = () => {
     const { t } = useTranslation();
@@ -31,16 +32,10 @@ const Games = () => {
     });
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const isLoggedIn = useSelector(selectIsLoggedIn); // Use a Redux selector to get the login status
     const games = useSelector(state => state.games.games);
     const gameStatus = useSelector(state => state.games.status);
     const gameError = useSelector(state => state.games.error);
-
-    useEffect(() => {
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        if (isLoggedIn) {
-            setShowLoginPrompt(false);
-        }
-    }, []);
 
     useEffect(() => {
         if (showPlayGames && selectedCategory && selectedAgeGroup) {
@@ -49,7 +44,6 @@ const Games = () => {
     }, [showPlayGames, selectedCategory, selectedAgeGroup, dispatch]);
 
     const handleCardClick = (category) => {
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         if (isLoggedIn) {
             setSelectedCategory(category);
             setShowCategories(false);

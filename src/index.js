@@ -12,7 +12,7 @@ root.render(
     <React.StrictMode>
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <BrowserRouter basename="/kidv3nturaky"> {/* Adjust basename as per your repo name */}
+                <BrowserRouter>
                     <App />
                 </BrowserRouter>
             </PersistGate>
