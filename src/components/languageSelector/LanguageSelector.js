@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './languageSelector.module.css';
-import { FaGlobe } from 'react-icons/fa'; // Importējiet Globe ikonu no react-icons
+import { FaGlobe } from 'react-icons/fa'; // Import Globe icon from react-icons
 
 const LanguageSelector = () => {
     const { i18n } = useTranslation();
@@ -10,7 +10,7 @@ const LanguageSelector = () => {
 
     const changeLanguage = async (lng) => {
         try {
-            await i18n.changeLanguage(lng);  // Gaida, līdz valoda tiek mainīta
+            await i18n.changeLanguage(lng);  // Wait until the language is changed
         } catch (error) {
             console.error('Error changing language:', error);
         }

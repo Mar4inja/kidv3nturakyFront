@@ -10,6 +10,7 @@ import boyImage from '../../assets/profilePhoto/boy.png';
 import girlImage from '../../assets/profilePhoto/girl.png';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import SlideCards from "../../components/cards/SlideCards";
 
 
 

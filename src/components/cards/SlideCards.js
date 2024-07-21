@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./slideCards.module.css"; // Import the CSS module
 import img1 from "../../assets/quiz/math.jpg";
-import img2 from "../../assets/quiz/colors.jpg";    //shapes, fairytail, read
+import img2 from "../../assets/quiz/colors.jpg";
 import img3 from "../../assets/quiz/geography.jpg";
 import img4 from "../../assets/quiz/fairytale.jpg";
 import img5 from "../../assets/quiz/read.jpg";
@@ -10,13 +10,11 @@ const SlideCards = () => {
   const nextDomRef = useRef(null);
   const prevDomRef = useRef(null);
   const carouselDomRef = useRef(null);
-  const timeDomRef = useRef(null);
 
   useEffect(() => {
     const nextDom = nextDomRef.current;
     const prevDom = prevDomRef.current;
     const carouselDom = carouselDomRef.current;
-  
 
     if (!carouselDom) {
       console.error("Carousel DOM element not found");
@@ -34,17 +32,20 @@ const SlideCards = () => {
     const thumbnailItemsDom = thumbnailBorderDom.querySelectorAll(`.${styles.item}`);
 
     if (thumbnailItemsDom.length === 0) {
-      console.error("Thumbnail items not found");
+      console.error("No thumbnail items found in the carousel. Check if the items are properly loaded.");
       return;
     }
 
     thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+
     let timeRunning = 3000;
     let timeAutoNext = 7000;
+    let runTimeOut;
+    let runNextAuto;
 
     const showSlider = (type) => {
-      let SliderItemsDom = SliderDom.querySelectorAll(`.${styles.item}`);
-      let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll(`.${styles.item}`);
+      const SliderItemsDom = SliderDom.querySelectorAll(`.${styles.item}`);
+      const thumbnailItemsDom = thumbnailBorderDom.querySelectorAll(`.${styles.item}`);
 
       if (SliderItemsDom.length === 0 || thumbnailItemsDom.length === 0) {
         console.error("Slider items or thumbnail items not found");
@@ -60,6 +61,7 @@ const SlideCards = () => {
         thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
         carouselDom.classList.add(styles.prev);
       }
+
       clearTimeout(runTimeOut);
       runTimeOut = setTimeout(() => {
         carouselDom.classList.remove(styles.next);
@@ -73,25 +75,30 @@ const SlideCards = () => {
     };
 
     if (nextDom) {
-      nextDom.onclick = () => {
+      nextDom.addEventListener("click", () => {
         showSlider("next");
-      };
+      });
     }
 
     if (prevDom) {
-      prevDom.onclick = () => {
+      prevDom.addEventListener("click", () => {
         showSlider("prev");
-      };
+      });
     }
 
-    let runTimeOut;
-    let runNextAuto = setTimeout(() => {
+    runNextAuto = setTimeout(() => {
       if (nextDom) nextDom.click();
     }, timeAutoNext);
 
     return () => {
       clearTimeout(runTimeOut);
       clearTimeout(runNextAuto);
+      if (nextDom) nextDom.removeEventListener("click", () => {
+        showSlider("next");
+      });
+      if (prevDom) prevDom.removeEventListener("click", () => {
+        showSlider("prev");
+      });
     };
   }, []);
 
@@ -210,7 +217,6 @@ const SlideCards = () => {
               </div>
             </div>
           </div>
-          {/* Повторите блок для других элементов */}
         </div>
         <div className={styles.thumbnail}>
           <div className={styles.item}>
@@ -244,13 +250,10 @@ const SlideCards = () => {
             </div>
           </div>
         </div>
-        <div className={styles.prev} ref={prevDomRef}>
-          Prev
+        <div className={styles.arrows}>
+          <button ref={prevDomRef}>Prev</button>
+          <button ref={nextDomRef}>Next</button>
         </div>
-        <div className={styles.next} ref={nextDomRef}>
-          Next
-        </div>
-        <div className={styles.time} ref={timeDomRef}></div>
       </div>
   );
 };

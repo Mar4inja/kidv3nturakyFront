@@ -1,1 +1,26 @@
+/* home.module.css */
 
+.homeContainer {
+    /* Set the background image */
+    background-image: url('../../assets/about/about1.jpg'); /* Adjust the path to your image */
+    background-size: cover; /* Ensure the image covers the entire element */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    /* Your existing styles */
+}
+
+.image_box {
+    /* Your existing styles */
+}
+
+.content {
+    /* Your existing styles */
+}
