@@ -16,11 +16,8 @@ const Home = () => {
 
     return (
         <div className={styles.homeContainer}>
-            <div className={styles.card}>
                 <div className={styles.image_box}></div>
                 <div className={styles.content}>
-                    {/* Content goes here */}
-                </div>
             </div>
         </div>
     );

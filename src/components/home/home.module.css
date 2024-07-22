@@ -2,7 +2,7 @@
 
 .homeContainer {
     /* Set the background image */
-    background-image: url('../../assets/about/about1.jpg'); /* Adjust the path to your image */
+    background-image: url('../../assets/quiz/fairytale.jpg'); /* Adjust the path to your image */
     background-size: cover; /* Ensure the image covers the entire element */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent repeating the image */

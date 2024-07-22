@@ -1,10 +1,13 @@
-/* src/components/languageSelector.module.css */
+:root {
+    --icon-color: #cdc4c4;
+    --icon-hover-color: #4ce6ff;
+    --icon-active-color: #56d0de;
+}
 
-/* Container for the language selector */
 .languageSelector {
     position: absolute;
-    left: 96%;
-    top: 18px;
+    left: 130%;
+    top: 20px;
 }
 
 /* Button to toggle the dropdown */
@@ -53,11 +56,9 @@
 
 /* Icon styling */
 .icon {
-    font-size: 40px;
-    transition: transform 0.3s ease, color 0.3s;
+    font-size: 26px;
 }
 
 .icon:hover {
-    color: #b3ff00;
-    transform: scale(1.07);
+    color: var(--icon-hover-color);
 }

@@ -1,4 +1,20 @@
-/* Navbar Wrapper */
+* {
+    margin: 0; /* Убирает внешние отступы у всех элементов */
+    padding: 0; /* Убирает внутренние отступы у всех элементов */
+    box-sizing: border-box; /* Включает padding и border в размеры элементов */
+    text-decoration: none; /* Убирает подчеркивание текста у всех элементов */
+    border: none; /* Убирает рамки у всех элементов */
+    outline: none; /* Убирает внешние границы у всех элементов */
+    font-family: Poppins, sans-serif; /* Задает шрифт Poppins для всех элементов */
+}
+
+/* Объявление пользовательских свойств CSS (переменных) для повторного использования. */
+:root {
+    --icon-color: #cdc4c4;
+    --icon-hover-color: #4ce6ff;
+    --icon-active-color: #56d0de;
+}
+
 .navbarWrapper {
     position: relative;
 }
@@ -91,83 +107,69 @@
     justify-content: center; /* Center icons horizontally */
 }
 
-.navbarItem a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 42px; /* Font size for icons */
-    transition: color 0.3s;
-}
+
 
 .homeButton {
     position: absolute;
     left: 38%;
-    color: #fff;
+    color: var(--icon-color);
     font-size: 42px;
-    transition: transform 0.3s ease, color 0.3s; /* Pāreja uz lielumu un krāsu */
 }
 
 .homeButton:hover {
-    color: #b3ff00;
-    transform: scale(1.07); /* Palielina ikonu par aptuveni 7% */
+    color: var(--icon-hover-color);
 }
 
 .joystickButton {
     position: absolute;
     left: 42%;
     font-size: 50px;
-    color: #fff;
-    transition: transform 0.3s ease, color 0.3s; /* Pāreja uz lielumu un krāsu */
+    color: var(--icon-color);
 }
 
 .joystickButton:hover {
-    color: #b3ff00;
-    transform: scale(1.07); /* Palielina ikonu par aptuveni 7% */
+    color: var(--icon-hover-color);
 }
 
 /* Aktīvā klase */
 .active {
-    color: #eafa0c; /* Krāsa, kad ikona ir aktīva */
-    border: 2px solid black;
-    border-radius: 15px;
-    background-color: #6209f0;
+    color: var(--icon-active-color);
+    text-decoration-line: underline;
+
 }
 
 .aboutButton {
     position: absolute;
     left: 46%;
-    color: #fff;
+    color: var(--icon-color);
     font-size: 42px;
-    transition: transform 0.3s ease, color 0.3s;
 }
 
 .aboutButton:hover {
-    color: #b3ff00;
-    transform: scale(1.07);
+    color: var(--icon-hover-color);
 }
 
 .loginButton {
-    color: #fff;
+    color: var(--icon-color);
     font-size: 42px;
     position: absolute;
     left: 92%;
-    transition: transform 0.3s ease, color 0.3s; /* Pāreja uz lielumu un krāsu */
 }
 
 .loginButton:hover {
-    color: #b3ff00;
-    transform: scale(1.07); /* Palielina ikonu par aptuveni 7% */
+    color: var(--icon-hover-color);
 }
 
 .profileButton {
-    color: #fff;
-    font-size: 42px;
     position: absolute;
     left: 54%;
+    color: var(--icon-color);
+    font-size: 42px;
     transition: transform 0.3s ease, color 0.3s; /* Pāreja uz lielumu un krāsu */
 }
 
 .profileButton:hover {
-    color: #b3ff00;
+    color: var(--icon-hover-color);
     transform: scale(1.07); /* Palielina ikonu par aptuveni 7% */
 }
 

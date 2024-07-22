@@ -1,10 +1,8 @@
-// RequireAuth.jsx
-
 import React from 'react';
 import { useLocation, Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../features/auth/authSlice';
-import Navbar from '../navbar/Navbar';
+import { selectIsLoggedIn } from './authSlice'; // Ensure correct path
+import NavigationPanel from "../../components/navigationPanel/NavigationPanel";
 
 const RequireAuth = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -12,7 +10,7 @@ const RequireAuth = () => {
 
     return isLoggedIn ? (
         <>
-            <Navbar />
+            <NavigationPanel />
             <Outlet />
         </>
     ) : (
