@@ -1,66 +1,70 @@
-/* Stilizē galveno konteineri, kurā atrodas ielogošanās forma */
-.login-container {
+@import url('https://fonts.googleapis.com/css2?family=Sevillana:wght@400&display=swap');
+
+.sevillanaRegular {
+    font-family: "Sevillana", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+.loginContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-
+    padding: 20px;
+    min-height: 100vh; /* Occupies the full viewport height */
+    position: relative;
 }
 
-.background-container {
+/* Fons, kas aizsedz visu ekrānu */
+.backgroundContainer {
     position: absolute;
-    top: 0;
+    top: -13%;
     left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -1;
+    z-index: -1; /* Nodrošina, ka backgroundImage ir aiz satura */
 }
 
-.background-container img {
+/* Fona attēls, kas pārklāj visu konteineru */
+.backgroundImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
 }
 
-
-.login-form {
+/* Ielogošanās forma */
+.loginForm {
     width: 300px;
-    height: 350px;
     padding: 20px;
-    /*margin-right: 10px;*/
-    background-color: #f4f4f4;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    color: rgba(0, 0, 0, 0.836);
-    margin-top: 30px;
-    display: flex; /* Add this */
-    flex-direction: column; /* Add this */
-    justify-content: center; /* Add this */
-    opacity: 90%;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.login-form > span {
-    margin-top: 20px; /* Add this */
-
+.loginForm h2 {
+    font-family: 'Sevillana', cursive;
+    font-size: 2rem;
+    
 }
 
-.form-title {
-    margin-bottom: 40px;
-}
-
-
-
-.form-group {
+/* Formas grupas */
+.formGroup {
     margin-bottom: 20px;
+    width: 100%;
 
 }
 
-.login-btn {
+/* Stils pogai */
+.loginBtn {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -71,43 +75,53 @@
     transition: background-color 0.3s ease;
 }
 
-input[type='email'],
-input[type='password'] {
-    width: 100%;
+/* Input lauku stils */
+input[type='email']{
+
+    width: calc(100% - 20px); /* Ņemot vērā padding */
     padding: 10px;
-    border: 1px solid rgba(18, 82, 223, 0.63); /* Šis ir jūsu izvēlētais rāmītis */
+    border: 1px solid rgba(18, 82, 223, 0.63);
     border-radius: 4px;
-    box-shadow: inset 0 0 5px rgba(18, 82, 223, 0.2); /* Šis ir papildus rāmītis iekšpuses ēnojums */
+    box-shadow: inset 0 0 5px rgba(18, 82, 223, 0.2);
 }
 
-.login-btn:hover {
+input[type='password'] {
+    width: calc(100% - 20px); /* Ņemot vērā padding */
+    padding: 10px;
+    border: 1px solid rgba(18, 82, 223, 0.63);
+    border-radius: 4px;
+    box-shadow: inset 0 0 5px rgba(18, 82, 223, 0.2);
+}
+/* Pogas hover efekts */
+.loginBtn:hover {
     background-color: #0056b3;
 }
 
-.register-link {
+/* Reģistrācijas saites stils */
+.registerLink {
     margin-top: 10px;
-    padding: 5px; /* Šaurāks pogas platums */
-    color: #ffffff; /* Teksta krāsa */
-    text-align: center; /* Teksta centrēšana */
-}
-
-
-.register-link p {
+    padding: 5px;
+    color: #000;
     text-align: center;
-    margin-right: 10px;
-
 }
 
-.register-link a {
-    color: #000000;
+.registerLink p {
+    margin: 0;
+}
+
+.registerLink a {
+    color: #007bff;
     text-decoration: none;
     transition: color 0.3s ease;
-    padding: 2px;
-    border-radius: 5px;
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(0, 0, 0);
 }
 
-.register-link a:hover {
-    color: #5bd13a;
+/* Hover efekts reģistrācijas saitei */
+.registerLink a:hover {
+    color: #0056b3;
+}
+
+/* Kļūdu ziņojumu stils */
+.error {
+    color: red;
+    margin-top: 10px;
 }

@@ -1,12 +1,8 @@
-// profileSlice.js
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// Async thunk for profile updates
 export const updateProfile = createAsyncThunk('profile/updateProfile', async (formData, thunkAPI) => {
     try {
         // Simulate a backend request
-        // Replace this with an actual API call if needed
         return formData; // Simulating a successful response
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data);
@@ -21,7 +17,7 @@ const profileSlice = createSlice({
         age: '',
         gender: '',
         email: '',
-        profilePhoto: '',
+        profilePhoto: '', // Default empty string
         updateLoading: false,
         updatedProfile: null,
     },
@@ -49,8 +45,6 @@ export const { setProfilePhoto } = profileSlice.actions;
 
 export const selectUpdateLoading = (state) => state.profile.updateLoading;
 export const selectUpdatedProfile = (state) => state.profile.updatedProfile;
-export const selectProfilePhoto = (state) => state.profile.profilePhoto;
+export const selectProfilePhoto = (state) => state.profile.profilePhoto; // Selector for profile photo
 
 export default profileSlice.reducer;
-
-

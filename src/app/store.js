@@ -8,7 +8,6 @@ import profileReducer from '../features/profile/profileSlice';
 import gamesReducer from '../features/games/gameSlice';
 import calculatorReducer from '../features/calculatorSlice/calculatorSlice';
 
-
 import { configureStore } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({

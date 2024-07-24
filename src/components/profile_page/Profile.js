@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser } from '../../features/auth/authSlice';
-import { selectUpdateLoading, selectUpdatedProfile, setProfilePhoto, updateProfile } from '../../features/profile/profileSlice';
+import { selectUpdateLoading, selectUpdatedProfile, setProfilePhoto, updateProfile, selectProfilePhoto } from '../../features/profile/profileSlice'; // Importējiet selektoru
 import { useUpdateProfileMutation } from '../../app/api/apiSlice';
 import styles from './profile.module.css';
 
@@ -10,10 +10,6 @@ import boyImage from '../../assets/profilePhoto/boy.png';
 import girlImage from '../../assets/profilePhoto/girl.png';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import SlideCards from "../cards/SlideCards";
-
-
-
 
 const Profile = () => {
     const { t } = useTranslation();
@@ -23,6 +19,7 @@ const Profile = () => {
     const navigate = useNavigate();
     const loading = useSelector(selectUpdateLoading);
     const updatedProfile = useSelector(selectUpdatedProfile);
+    const profilePhoto = useSelector(selectProfilePhoto); // Iegūstiet profila foto no Redux stāvokļa
 
     const [updateProfileApi] = useUpdateProfileMutation();
 
@@ -35,11 +32,11 @@ const Profile = () => {
         age: user?.age || '',
         gender: user?.gender || 'male',
         email: user?.email || '',
-        profilePhoto: user?.profilePhoto || '',
+        profilePhoto: profilePhoto || '', // Izmantojiet profila foto no Redux stāvokļa
     });
 
     const [successMessage, setSuccessMessage] = useState('');
-    const [selectedImage, setSelectedImage] = useState(user?.profilePhoto || '');
+    const [selectedImage, setSelectedImage] = useState(profilePhoto || '');
 
     useEffect(() => {
         if (!user) {
@@ -104,12 +101,13 @@ const Profile = () => {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setSelectedImage(reader.result);
+                const imageUrl = reader.result;
+                setSelectedImage(imageUrl);
                 setFormData({
                     ...formData,
-                    profilePhoto: reader.result,
+                    profilePhoto: imageUrl,
                 });
-                dispatch(setProfilePhoto(reader.result));
+                dispatch(setProfilePhoto(imageUrl)); // Update Redux state
             };
             reader.readAsDataURL(file);
         }
@@ -121,7 +119,7 @@ const Profile = () => {
             ...formData,
             profilePhoto: '',
         });
-        dispatch(setProfilePhoto(''));
+        dispatch(setProfilePhoto('')); // Remove photo from Redux state
     };
 
     if (!user) {
@@ -234,14 +232,9 @@ const Profile = () => {
                                 <p><strong>{t('profile.gender')}:</strong> {formData.gender}</p>
                                 <p><strong>{t('profile.email')}:</strong> {formData.email}</p>
                                 <button onClick={handleEditData} className={styles.editDataButton}>
-                                    {t('profile.editData')}
+                                    {t('profile.edit')}
                                 </button>
                             </>
-                        )}
-                        {successMessage && (
-                            <div className={styles.successMessage}>
-                                {successMessage}
-                            </div>
                         )}
                     </div>
                 )}

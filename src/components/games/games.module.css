@@ -33,23 +33,26 @@
     padding: 20px;
     min-height: 100vh;
     overflow: hidden;
+
 }
 
 /* Konteineris fonam */
 .backgroundContainer {
-    position: absolute;
+    position: fixed; /* Fiksē fonu tā, lai tas nemainās ar lapas ritināšanu */
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    z-index: -1;
+    height: 100vh; /* Pilna ekrāna augstums */
+    z-index: -1; /* Nodrošina, ka attēls ir aiz satura */
+  
 }
 
 /* Fona attēls */
 .backgroundImage {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Attēls pielāgojas konteinera izmēram, saglabājot proporcijas */
+    background-size: cover; /* Nodrošina, ka attēls pārklāj visu konteinera laukumu */
 }
 
 /* Galvenā kartīte */

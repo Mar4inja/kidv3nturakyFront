@@ -1,26 +1,14 @@
-/* home.module.css */
 
 .homeContainer {
-    /* Set the background image */
-    background-image: url('../../assets/home/girlBirds.jpg'); /* Adjust the path to your image */
-    background-size: cover; /* Ensure the image covers the entire element */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repeating the image */
+    position: absolute;
+    background: url('../../assets/home/homepage.jpg') no-repeat center center fixed; /* Fona attēls, centrēts un fiksēts */
+    background-size: cover; /* Attēls pielāgojas konteinerim */
     width: 100%;
-    height: 100vh; /* Full viewport height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card {
-    /* Your existing styles */
-}
-
-.image_box {
-    /* Your existing styles */
-}
-
-.content {
-    /* Your existing styles */
+    height: 100%; /* Pārklāj visu ekrāna augstumu */
+    overflow: hidden; /* Novērš skrollbārus */
+    top: 0; /* Novieto konteineru zem navigācijas joslas */
+    left: 0; /* Nodrošina, ka konteineris ir piespiests pie kreisās malas */
+    right: 0; /* Nodrošina, ka konteineris ir piespiests pie labās malas */
+    bottom: 0; /* Nodrošina, ka konteineris ir piespiests pie apakšējās malas */
+    z-index: -1; /* Nodrošina, ka konteiners paliek zem navigācijas joslas */
 }

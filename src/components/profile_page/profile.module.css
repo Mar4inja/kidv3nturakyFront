@@ -13,19 +13,18 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    min-height: 100vh; /* Aizņem visu redzamo lapas augstumu */
-    position: relative; /* Ļauj DotMenu būt virs ProfileContainer */
-    z-index: 0; /* Nodrošina, ka ProfileContainer ir pirmajā slānī */
+    min-height: 100vh; /* Occupies the full viewport height */
+    position: relative;
 }
 
 .backgroundContainer {
     position: absolute;
-    top: 0;
+    top: -13%;
     left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -1; /* Nodrošina, ka backgroundImage ir aiz satura */
+    z-index: -1; 
 }
 
 .backgroundImage {

@@ -111,7 +111,6 @@ const Games = () => {
 
     return (
         <div className={styles.gamesContainer}>
-            <Clock />
             <div className={styles.backgroundContainer}>
                 <img src={gamesBackgroundImage} alt={t('games.backgroundAlt')} className={styles.backgroundImage} />
             </div>

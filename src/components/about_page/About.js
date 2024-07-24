@@ -9,6 +9,7 @@ const About = () => {
     return (
         <>
             <div className={styles.container}>
+
                 <div className={styles["background-container"]}>
                     <img
                         src={aboutBackgroundImage}

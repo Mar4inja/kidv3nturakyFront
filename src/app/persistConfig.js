@@ -1,10 +1,10 @@
-import storage from 'redux-persist/lib/storage'; // по умолчанию используется localStorage для веба
+import storage from 'redux-persist/lib/storage'; // Lieto localStorage
 import { default as sessionStorage } from 'redux-persist/lib/storage/session';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['profile', 'register', "games"], // Saglabāt šos reducētājus starp sesijām
+  whitelist: ['profile', 'register', 'games'], // Saglabāt šos reducētājus
 };
 
 const authPersistConfig = {

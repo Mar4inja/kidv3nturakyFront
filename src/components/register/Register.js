@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {registerUser, clearError} from "../../features/register/registerSlice";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser, clearError } from "../../features/register/registerSlice";
 import styles from "./register.module.css";
-import {Link, useNavigate} from "react-router-dom";
-import registerBackgroundImage from "../../assets/login/login.jpg";
-import {selectRegisterLoading, selectRegisterError} from "../../features/register/registerSlice";
-import {useTranslation} from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
+import registerBackgroundImage from "../../assets/login/a.jpg";
+import { selectRegisterLoading, selectRegisterError } from "../../features/register/registerSlice";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -19,7 +19,7 @@ const Register = () => {
         password: "",
     });
 
-    const {firstName, lastName, age, gender, email, password} = formData;
+    const { firstName, lastName, age, gender, email, password } = formData;
 
     const dispatch = useDispatch();
     const loading = useSelector(selectRegisterLoading);
@@ -43,21 +43,21 @@ const Register = () => {
     };
 
     const handleChange = (e) => {
-        setFormData({...formData, [e.target.id]: e.target.value});
+        setFormData({ ...formData, [e.target.id]: e.target.value });
     };
 
     return (
-        <div className={styles["register-container"]}>
-            <div className={styles["background-container"]}>
+        <div className={styles.registerContainer}>
+            <div className={styles.backgroundContainer}>
                 <img
                     src={registerBackgroundImage}
                     alt={t("login.backgroundAlt")}
-                    className={styles["background-image"]}
+                    className={styles.backgroundImage}
                 />
             </div>
-            <form className={styles["register-form"]} onSubmit={handleSubmit}>
+            <form className={styles.registerForm} onSubmit={handleSubmit}>
                 <h2>{t("register.formTitle")}</h2>
-                <div className={styles["form-group"]}>
+                <div className={styles.formGroup}>
                     <label htmlFor="firstName">{t("profile.firstName")}:</label>
                     <input
                         type="text"
@@ -67,7 +67,7 @@ const Register = () => {
                         required
                     />
                 </div>
-                <div className={styles["form-group"]}>
+                <div className={styles.formGroup}>
                     <label htmlFor="lastName">{t("profile.lastName")}:</label>
                     <input
                         type="text"
@@ -77,7 +77,7 @@ const Register = () => {
                         required
                     />
                 </div>
-                <div className={styles["form-group"]}>
+                <div className={styles.formGroup}>
                     <label htmlFor="age">{t("profile.age")}:</label>
                     <input
                         type="number"
@@ -87,7 +87,7 @@ const Register = () => {
                         required
                     />
                 </div>
-                <div className={styles["form-group"]}>
+                <div className={styles.formGroup}>
                     <label htmlFor="gender">{t("profile.gender")}:</label>
                     <select
                         id="gender"
@@ -100,7 +100,7 @@ const Register = () => {
                         <option value="female">{t("profile.female")}</option>
                     </select>
                 </div>
-                <div className={styles["form-group"]}>
+                <div className={styles.formGroup}>
                     <label htmlFor="email">{t("profile.email")}:</label>
                     <input
                         type="email"
@@ -110,7 +110,7 @@ const Register = () => {
                         required
                     />
                 </div>
-                <div className={styles["form-group"]}>
+                <div className={styles.formGroup}>
                     <label htmlFor="password">{t("login.passwordPlaceholder")}:</label>
                     <input
                         type="password"
@@ -122,7 +122,7 @@ const Register = () => {
                 </div>
                 <button
                     type="submit"
-                    className={styles["register-btn"]}
+                    className={styles.registerBtn}
                     disabled={loading}
                 >
                     {loading ? t("login.loggingIn") : t("register.formTitle")}

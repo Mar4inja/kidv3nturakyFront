@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./navigationPanel.module.css"; // Import styles as CSS module
 import { HamburgetMenuClose, HamburgetMenuOpen } from "./Icons"; // Import menu icons
-import logo from '../../assets/logo/logo.png'; // Import your logo image
-import kidventure from "../../assets/logo/kidLogoCopy-Photoroom.png"; // Import your kidventure logo image
-
-import puffBg from "../../assets/logo/puff.png"; // Import puff background image
+import logo from '../../assets/logo/logo.png'; // Import logo
+import kidventure from "../../assets/logo/kidLogoCopy-Photoroom.png"; // Import Kidventure logo
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCurrentUser, selectIsLoggedIn, logoutUser } from '../../features/auth/authSlice';
+import { selectIsLoggedIn, selectCurrentUser, logoutUser } from '../../features/auth/authSlice';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../languageSelector/LanguageSelector';
+import { FaUser } from 'react-icons/fa'; // Import user icon
 
 function NavigationPanel() {
     const [click, setClick] = useState(false);
     const { t } = useTranslation();
-    const user = useSelector(selectCurrentUser);
     const isLoggedIn = useSelector(selectIsLoggedIn);
+    const user = useSelector(selectCurrentUser); // Get current user data
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log('Current user:', user);
+    }, [user]);
 
     const handleClick = () => setClick(!click);
 
@@ -71,17 +74,44 @@ function NavigationPanel() {
                             {t('About')}
                         </NavLink>
                     </li>
-                    <li className={styles.navItem}>
-                        <NavLink
-                            exact
-                            to={isLoggedIn ? "#" : "/login"}
-                            activeClassName={styles.active}
-                            className={styles.navLinks}
-                            onClick={isLoggedIn ? handleLogout : handleClick}
-                        >
-                            {isLoggedIn ? t('Logout') : t('Login')}
-                        </NavLink>
-                    </li>
+                    {isLoggedIn ? (
+                        <>
+                            <li className={styles.navItem}>
+                                <NavLink
+                                    exact
+                                    to="/profile" // Link to user profile page
+                                    className={styles.navLinks}
+                                    onClick={handleClick}
+                                >
+                                    <FaUser className={styles.userIcon} /> {/* User icon */}
+                                    <span className={styles.userName}>
+                                        {user.firstName ? user.firstName.trim() : 'User'} {/* Display user first name */}
+                                    </span>
+                                </NavLink>
+                            </li>
+                            <li className={styles.navItem}>
+                                <NavLink
+                                    exact
+                                    to="#"
+                                    className={styles.navLinks}
+                                    onClick={handleLogout}
+                                >
+                                    {t('Logout')}
+                                </NavLink>
+                            </li>
+                        </>
+                    ) : (
+                        <li className={styles.navItem}>
+                            <NavLink
+                                exact
+                                to="/login"
+                                className={styles.navLinks}
+                                onClick={handleClick}
+                            >
+                                {t('Login')}
+                            </NavLink>
+                        </li>
+                    )}
                 </ul>
 
                 <div className={styles.navIcon} onClick={handleClick}>
@@ -96,7 +126,7 @@ function NavigationPanel() {
                     )}
                 </div>
 
-                {/* Language Selector */}
+                {/* Language selector */}
                 <LanguageSelector />
             </div>
         </nav>

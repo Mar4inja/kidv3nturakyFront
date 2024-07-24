@@ -1,55 +1,63 @@
-/* Stilizē galveno konteineri, kurā atrodas reģistrācijas forma */
-.register-container {
-  display: flex; /* Izvēlas "flex" izkārtojumu, lai elementi būtu vienā līnijā */
-  justify-content: center; /* Centrē elementus horizontāli */
-  flex-direction: column; /* Novieto ielogošanās formu un reģistrācijas saiti vertikāli */
-  align-items: center; /* Centrē elementus vertikāli */
-  height: 100vh; /* Iestata konteineri, lai aizņemtu visu ekrāna augstumu */
+@import url('https://fonts.googleapis.com/css2?family=Sevillana:wght@400&display=swap');
 
-
+.sevillanaRegular {
+    font-family: "Sevillana", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 
-.background-container {
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100vh; /* Occupies the full viewport height */
+  position: relative;
+}
+
+.backgroundContainer {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1; /* Lai fona attēls būtu aiz pārējā satura */
+    top: -13%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Nodrošina, ka backgroundImage ir aiz satura */
 }
 
-.background-container img {
+.backgroundContainer img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-/* Stilizē reģistrācijas formu */
-.register-form {
-  width: 300px; /* Iestata reģistrācijas formas platumu */
-  padding: 20px; /* Pievieno iekšējo atstarpju reģistrācijas formai */
-  background-color: rgba(244, 244, 244, 0.8); /* Iestata fona krāsu reģistrācijas formai */
-  border-radius: 8px; /* Iestata reģistrācijas formas ierobežojuma radiusu */
-  box-shadow: 0 10px 15px rgb(0, 0, 0); /* Pievieno ēnas efektu reģistrācijas formai */
-}
-
-/* Stilizē reģistrācijas formas virsrakstu */
-.register-form h2 {
-  margin-bottom: 20px; /* Pievieno atstarpi apakšējai malai starp virsrakstu un reģistrācijas formu */
-  text-align: center; /* Centrē virsrakstu horizontāli */
+.registerForm h2 {
+  font-family: 'Sevillana', cursive;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
   color: rgba(0, 0, 0, 0.863);
 }
 
-/* Stilizē reģistrācijas formas ievades laukus */
-.form-group {
-  margin-bottom: 20px; /* Pievieno atstarpi starp laukiem */
+.registerForm {
+  width: 300px;
+  padding: 20px;
+  background-color: rgba(244, 244, 244, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 10px 15px rgb(0, 0, 0);
+  box-sizing: border-box; /* Nodrošina, ka padding un border tiek iekļauti platumā */
+}
+
+.formGroup {
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 label {
-  display: block; /* Padara label elementu par bloka elementu */
-  margin-bottom: 5px; /* Pievieno nelielu atstarpi starp label un ievades lauku */
+  display: block;
+  margin-bottom: 5px;
   color: rgba(0, 0, 0, 0.849);
   font-size: small;
 }
@@ -57,43 +65,40 @@ label {
 input[type='text'],
 input[type='email'],
 input[type='number'] {
-  width: 100%; /* Piepilda lauka platuma 100% no tā vecāka elementa */
-  padding: 10px; /* Pievieno laukam iekšējo atstarpju */
-  border: 1px solid #ccc; /* Iestata lauka apmales stilu un krāsu */
-  border-radius: 4px; /* Iestata lauka ierobežojuma radiusu */
-}
-
-
-/* register.module.css */
-.form-group select {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box; /* Nodrošina, ka padding un border tiek iekļauti platumā */
 }
 
-
-/* Stilizē reģistrācijas formas iesniegšanas pogu */
-.register-btn {
-  width: 100%; /* Piepilda pogas platumu 100% no tā vecāka elementa */
-  padding: 10px; /* Pievieno pogai iekšējo atstarpju */
-  background-color: #007bff; /* Iestata pogas fona krāsu */
-  color: #fff; /* Iestata teksta krāsu pogā */
-  border: none; /* Noņem pogas apmales */
-  border-radius: 4px; /* Iestata pogas ierobežojuma radiusu */
-  cursor: pointer; /* Iestata kursora stāvokli par parādīšanu, kad pārslēdzas uz pogu */
-  transition: background-color 0.3s ease; /* Iestata pārejas efektu poga, kad pārslēdzas uz hover stāvokli */
+.formGroup select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Nodrošina, ka padding un border tiek iekļauti platumā */
 }
 
-.register-btn:hover {
-  background-color: #0056b3; /* Maina fona krāsu uz tumšāku hover stāvoklī */
+.registerBtn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registerBtn:hover {
+  background-color: #0056b3;
 }
 
 .error {
   color: red;
   margin-top: 10px;
 }
-
 
 .registerLink {
   margin-top: 15px;
@@ -108,7 +113,6 @@ input[type='number'] {
   border-radius: 5px;
   background: rgb(255, 255, 255);
   border: 1px solid rgb(0, 0, 0);
-
 }
 
 .registerLink a:hover {

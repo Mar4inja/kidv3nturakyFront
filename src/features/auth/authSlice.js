@@ -26,12 +26,14 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(updateProfile.fulfilled, (state, action) => {
       const { firstName, lastName, age, gender, email, profilePhoto } = action.payload;
-      if (firstName) state.user.firstName = firstName;
-      if (lastName) state.user.lastName = lastName;
-      if (age) state.user.age = age;
-      if (gender) state.user.gender = gender;
-      if (email) state.user.email = email;
-      if (profilePhoto) state.user.profilePhoto = profilePhoto;
+      if (state.user) {
+        if (firstName) state.user.firstName = firstName;
+        if (lastName) state.user.lastName = lastName;
+        if (age) state.user.age = age;
+        if (gender) state.user.gender = gender;
+        if (email) state.user.email = email;
+        if (profilePhoto) state.user.profilePhoto = profilePhoto;
+      }
     });
   }
 });

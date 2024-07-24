@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../features/auth/authSlice';
 import { useLoginMutation } from '../../features/auth/authApiSlice';
 import styles from './login.module.css';
-import loginBackgroundImage from '../../assets/login/login.jpg';
+import loginBackgroundImage from '../../assets/login/a.jpg';
 import { useTranslation } from 'react-i18next';
 
 const Login = () => {
@@ -31,7 +31,6 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            // Izsauc login funkciju un iegūst lietotāja datus
             const userData = await login({ email, password }).unwrap();
             dispatch(setCredentials(userData));
             setEmail("");
@@ -42,32 +41,30 @@ const Login = () => {
             navigate(redirect === 'games' ? '/profile' : '/profile');
 
         } catch (error) {
-            console.log("Error details:", error);  // Pārbaudiet, vai `error` satur `status` un `data`
+            console.log("Error details:", error);
 
-            // Iegūstiet kļūdas ziņojumu no `error.data`
-            const errorMessage = error?.data?.message || t('login.defaultError');  // Iegūstiet kļūdas ziņojumu no `error.data.message` vai tulkojiet kļūdu ziņojumu
+            const errorMessage = error?.data?.message || t('login.defaultError');
 
             if (error?.status === 401) {
-                // Apstrādā servera atbildes ziņojumus
                 switch (errorMessage) {
                     case "Email is incorrect.":
-                        setErrorMessage(t('login.emailIncorrect'));  // **401** kļūda: "Email is incorrect."
+                        setErrorMessage(t('login.emailIncorrect'));
                         break;
                     case "Password is incorrect.":
-                        setErrorMessage(t('login.passwordIncorrect'));  // **401** kļūda: "Password is incorrect."
+                        setErrorMessage(t('login.passwordIncorrect'));
                         break;
                     case "Email confirmation was not completed.":
-                        setErrorMessage(t('login.emailNotConfirmed'));  // **401** kļūda: "Email confirmation was not completed."
+                        setErrorMessage(t('login.emailNotConfirmed'));
                         break;
                     default:
-                        setErrorMessage(t('login.wrongEmailOrPassword'));  // Ja citi **401** kļūdu scenāriji
+                        setErrorMessage(t('login.wrongEmailOrPassword'));
                 }
             } else if (error?.status === 500) {
-                setErrorMessage(t('login.serverError'));  // **500** kļūda: "Server error, please try again later."
+                setErrorMessage(t('login.serverError'));
             } else if (!error?.status) {
-                setErrorMessage(t('login.noResponse'));  // Ja nav atbildes no servera
+                setErrorMessage(t('login.noResponse'));
             } else {
-                setErrorMessage(t('login.loginFailed'));  // Citas kļūdas: "Login failed, please try again."
+                setErrorMessage(t('login.loginFailed'));
             }
             errRef.current?.scrollIntoView({ behavior: "smooth" });
         }
@@ -77,17 +74,17 @@ const Login = () => {
     const handlePasswordInput = (e) => setPassword(e.target.value);
 
     return (
-        <div className={styles['login-container']}>
-            <div className={styles['background-container']}>
+        <div className={styles.loginContainer}>
+            <div className={styles.backgroundContainer}>
                 <img
                     src={loginBackgroundImage}
                     alt={t('login.backgroundAlt')}
-                    className={styles['background-image']}
+                    className={styles.backgroundImage}
                 />
             </div>
-            <form className={styles['login-form']} onSubmit={handleSubmit}>
-                <h2 className={styles['form-title']}>{t('login.formTitle')}</h2>
-                <div className={styles['form-group']}>
+            <form className={styles.loginForm} onSubmit={handleSubmit}>
+                <h2 className={styles.formTitle}>{t('login.formTitle')}</h2>
+                <div className={styles.formGroup}>
                     <input
                         type="email"
                         placeholder={t('login.emailPlaceholder')}
@@ -97,7 +94,7 @@ const Login = () => {
                         required
                     />
                 </div>
-                <div className={styles['form-group']}>
+                <div className={styles.formGroup}>
                     <input
                         type="password"
                         placeholder={t('login.passwordPlaceholder')}
@@ -108,18 +105,18 @@ const Login = () => {
                 </div>
                 <button
                     type="submit"
-                    className={styles['login-btn']}
+                    className={styles.loginBtn}
                     disabled={isLoading}
                 >
                     {isLoading ? t('login.loggingIn') : t('login.login')}
                 </button>
                 {errorMessage && (
-                    <p ref={errRef} className={styles['error']} aria-live="assertive">
+                    <p ref={errRef} className={styles.error} aria-live="assertive">
                         {errorMessage}
                     </p>
                 )}
             </form>
-            <div className={styles['register-link']}>
+            <div className={styles.registerLink}>
                 <p>
                     {t('login.noAccount')} <Link to="/register">{t('login.register')}</Link>
                 </p>

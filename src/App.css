@@ -1,13 +1,20 @@
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  background: rgb(236, 236, 236);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
 }
+
 .appContainer {
-  position: relative; /* Ļauj DotMenu būt virs visiem citiem elementiem */
-  min-height: 100vh; /* Nodrošina, ka appContainer aizņem vismaz ekrāna augstumu */
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
 }
+
