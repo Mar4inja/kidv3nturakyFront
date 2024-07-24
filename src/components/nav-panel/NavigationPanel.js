@@ -4,7 +4,7 @@ import styles from "./navigationPanel.module.css"; // Import styles as CSS modul
 import { HamburgetMenuClose, HamburgetMenuOpen } from "./Icons"; // Import menu icons
 import logo from '../../assets/logo/logo.png'; // Import your logo image
 import kidventure from "../../assets/logo/kidLogoCopy-Photoroom.png"; // Import your kidventure logo image
-import navBg from "../../assets/logo/vol.png"; // Import the image to be used as a full-width element
+
 import puffBg from "../../assets/logo/puff.png"; // Import puff background image
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser, selectIsLoggedIn, logoutUser } from '../../features/auth/authSlice';
@@ -30,9 +30,6 @@ function NavigationPanel() {
     return (
         <nav className={styles.navbar}>
             <div className={styles.navContainer}>
-                <img src={navBg} alt="Background" className={styles.navBg} />
-                <img src={puffBg} alt="Puff Background" className={styles.puffBg} />
-
                 <NavLink exact to="/" className={styles.kidLogo}>
                     <img src={kidventure} alt="Kidv3nturaky Logo2" className={styles.kidventure} />
                 </NavLink>

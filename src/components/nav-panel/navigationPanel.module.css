@@ -1,5 +1,7 @@
 .navbar {
     display: flex;
+    background: #1f5156;
+    border: 2px solid rgba(255, 255, 255, 0.842);
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
@@ -13,30 +15,11 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 80px;
+    height: 160px;
     max-width: 1500px;
     position: relative;
 }
 
-.navBg {
-    position: absolute;
-    top: 0;
-    left: -60%;
-    width: 200%;
-    height: 180%; /* Match the height of the navbar */
-    object-fit: cover; /* Ensure the image covers the area */
-    z-index: -1; /* Put image behind the content */
-}
-
-.puffBg {
-    position: absolute;
-    top: 50px; /* Adjust vertical position as needed */
-    right: 90%; /* Adjust horizontal position as needed */
-    width: 50%; /* Adjust width as needed */
-    height: auto; /* Maintain aspect ratio */
-    z-index: -1; /* Ensure it's behind other content but above background */
-    transform: scaleX(-1); /* Mirror the image horizontally */
-}
 
 .navLogo {
     align-items: center;
@@ -67,16 +50,20 @@
     width: 24rem; /* Adjust size as needed */
     height: auto; /* Maintain aspect ratio */
     position: absolute;
-    top: -10%;
+    top: -2%;
     left: -20%;
 }
 
 .navMenu {
     display: flex;
+    position: absolute;
+    top: 14%;
+    left: 60%;
     list-style: none;
     text-align: center;
     margin-right: 2rem;
 }
+
 
 .navLinks {
     color: #fff;
@@ -90,6 +77,7 @@
     line-height: 40px;
     margin-right: 1rem;
 }
+
 
 .navItem:after {
     content: "";
@@ -108,6 +96,10 @@
 .navItem .active {
     color: #ffdd40;
     border: 1px solid #ffdd40;
+}
+
+.navItem:hover .navLinks {
+    color: red; /* Pievienots hover efekts, lai mainītu tekstu uz sarkanu */
 }
 
 .navIcon {
