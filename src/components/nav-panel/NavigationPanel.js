@@ -123,7 +123,7 @@ function NavigationPanel() {
                         <span className={styles.icon}>
                             <HamburgetMenuOpen />
                         </span>
-                    )}
+                    )}Q
                 </div>
 
                 {/* Language selector */}

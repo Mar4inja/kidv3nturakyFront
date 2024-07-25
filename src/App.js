@@ -9,7 +9,6 @@ const App = () => {
 
     return (
         <div className="appContainer">
-      
             <NavigationPanel/>
             <MyRoutes />
         </div>

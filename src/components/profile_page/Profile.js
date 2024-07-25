@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser } from '../../features/auth/authSlice';
-import { selectUpdateLoading, selectUpdatedProfile, setProfilePhoto, updateProfile, selectProfilePhoto } from '../../features/profile/profileSlice'; // Importējiet selektoru
+import { selectUpdateLoading, selectUpdatedProfile, setProfilePhoto, updateProfile, selectProfilePhoto } from '../../features/profile/profileSlice';
 import { useUpdateProfileMutation } from '../../app/api/apiSlice';
 import styles from './profile.module.css';
+import Navbar from '../nav-panel/NavigationPanel'; // Импорт компонента Navbar
 
 import profileBackgroundImage from '../../assets/profilePhoto/profMain.jpg';
 import boyImage from '../../assets/profilePhoto/boy.png';
@@ -19,7 +20,7 @@ const Profile = () => {
     const navigate = useNavigate();
     const loading = useSelector(selectUpdateLoading);
     const updatedProfile = useSelector(selectUpdatedProfile);
-    const profilePhoto = useSelector(selectProfilePhoto); // Iegūstiet profila foto no Redux stāvokļa
+    const profilePhoto = useSelector(selectProfilePhoto);
 
     const [updateProfileApi] = useUpdateProfileMutation();
 
@@ -32,7 +33,7 @@ const Profile = () => {
         age: user?.age || '',
         gender: user?.gender || 'male',
         email: user?.email || '',
-        profilePhoto: profilePhoto || '', // Izmantojiet profila foto no Redux stāvokļa
+        profilePhoto: profilePhoto || '',
     });
 
     const [successMessage, setSuccessMessage] = useState('');
@@ -60,7 +61,7 @@ const Profile = () => {
             setTimeout(() => {
                 setSuccessMessage('');
                 setEditing(false);
-            }, 2000); // Show message for 2 seconds
+            }, 2000);
         }
     }, [updatedProfile, t]);
 
@@ -90,7 +91,7 @@ const Profile = () => {
         try {
             const response = await updateProfileApi(formData).unwrap();
             console.log('Profile update response:', response);
-            dispatch(updateProfile(response)); // Dispatch the action to update the Redux store
+            dispatch(updateProfile(response));
         } catch (error) {
             console.error(t('profile.updateError'), error);
         }
@@ -107,7 +108,7 @@ const Profile = () => {
                     ...formData,
                     profilePhoto: imageUrl,
                 });
-                dispatch(setProfilePhoto(imageUrl)); // Update Redux state
+                dispatch(setProfilePhoto(imageUrl));
             };
             reader.readAsDataURL(file);
         }
@@ -119,7 +120,7 @@ const Profile = () => {
             ...formData,
             profilePhoto: '',
         });
-        dispatch(setProfilePhoto('')); // Remove photo from Redux state
+        dispatch(setProfilePhoto(''));
     };
 
     if (!user) {
@@ -127,117 +128,119 @@ const Profile = () => {
     }
 
     return (
-        <div className={styles.profileContainer}>
-            <div className={styles.backgroundContainer}>
-                <img
-                    src={profileBackgroundImage}
-                    alt={t('profile.backgroundAlt')}
-                    className={styles.backgroundImage}
-                />
-            </div>
-            <div className={styles.fullName}>
-                <h2>{t('profile.welcome', {firstName: user.firstName, lastName: user.lastName})}</h2>
-            </div>
-            <div className={styles.profileImageContainer}>
-                <div className={styles.profileImageWrapper}>
-                    <label htmlFor="profilePhotoUpload" className={styles.profileImageLabel}>
-                        <img
-                            src={selectedImage || (user.gender === 'male' ? boyImage : girlImage)}
-                            alt={t('profile.profilePhotoAlt')}
-                            className={styles.profileImage}
-                        />
-                    </label>
-                    <input
-                        type="file"
-                        id="profilePhotoUpload"
-                        className={styles.fileInput}
-                        accept="image/*"
-                        onChange={handleImageUpload}
+        <div>
+            <div className={styles.profileContainer}>
+                <div className={styles.backgroundContainer}>
+                    <img
+                        src={profileBackgroundImage}
+                        alt={t('profile.backgroundAlt')}
+                        className={styles.backgroundImage}
                     />
-                    {selectedImage && (
-                        <button
-                            onClick={handleDeleteImage}
-                            className={styles.deleteButton}
-                        >
-                            {t('profile.deletePicture')}
-                        </button>
-                    )}
                 </div>
-                <button onClick={handleTogglePersonalData} className={styles.personalDataButton}>
-                    {t('profile.personalData')}
-                </button>
-                {showPersonalData && (
-                    <div className={styles.personalDataContainer}>
-                        <button onClick={handleTogglePersonalData} className={styles.closeButton}>
-                            &times;
-                        </button>
-                        {editing ? (
-                            <form onSubmit={handleSubmit} className={styles.profileForm}>
-                                <div className={styles.formGroup}>
-                                    <label htmlFor="firstName">{t('profile.firstName')}:</label>
-                                    <input
-                                        type="text"
-                                        name="firstName"
-                                        id="firstName"
-                                        value={formData.firstName}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div className={styles.formGroup}>
-                                    <label htmlFor="lastName">{t('profile.lastName')}:</label>
-                                    <input
-                                        type="text"
-                                        name="lastName"
-                                        id="lastName"
-                                        value={formData.lastName}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div className={styles.formGroup}>
-                                    <label htmlFor="age">{t('profile.age')}:</label>
-                                    <input
-                                        type="number"
-                                        name="age"
-                                        id="age"
-                                        value={formData.age}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div className={styles.formGroup}>
-                                    <label htmlFor="gender">{t('profile.gender')}:</label>
-                                    <select
-                                        name="gender"
-                                        id="gender"
-                                        value={formData.gender}
-                                        onChange={handleChange}
-                                        required
-                                    >
-                                        <option value="male">{t('profile.male')}</option>
-                                        <option value="female">{t('profile.female')}</option>
-                                    </select>
-                                </div>
-                                <p><strong>{t('profile.email')}:</strong> {user.email}</p>
-                                <button type="submit" className={styles.saveButton} disabled={loading}>
-                                    {loading ? t('profile.saving') : t('profile.save')}
-                                </button>
-                            </form>
-                        ) : (
-                            <>
-                                <p><strong>{t('profile.firstName')}:</strong> {formData.firstName}</p>
-                                <p><strong>{t('profile.lastName')}:</strong> {formData.lastName}</p>
-                                <p><strong>{t('profile.age')}:</strong> {formData.age}</p>
-                                <p><strong>{t('profile.gender')}:</strong> {formData.gender}</p>
-                                <p><strong>{t('profile.email')}:</strong> {formData.email}</p>
-                                <button onClick={handleEditData} className={styles.editDataButton}>
-                                    {t('profile.edit')}
-                                </button>
-                            </>
+                <div className={styles.fullName}>
+                    <h2>{t('profile.welcome', {firstName: user.firstName, lastName: user.lastName})}</h2>
+                </div>
+                <div className={styles.profileImageContainer}>
+                    <div className={styles.profileImageWrapper}>
+                        <label htmlFor="profilePhotoUpload" className={styles.profileImageLabel}>
+                            <img
+                                src={selectedImage || (user.gender === 'male' ? boyImage : girlImage)}
+                                alt={t('profile.profilePhotoAlt')}
+                                className={styles.profileImage}
+                            />
+                        </label>
+                        <input
+                            type="file"
+                            id="profilePhotoUpload"
+                            className={styles.fileInput}
+                            accept="image/*"
+                            onChange={handleImageUpload}
+                        />
+                        {selectedImage && (
+                            <button
+                                onClick={handleDeleteImage}
+                                className={styles.deleteButton}
+                            >
+                                {t('profile.deletePicture')}
+                            </button>
                         )}
                     </div>
-                )}
+                    <button onClick={handleTogglePersonalData} className={styles.personalDataButton}>
+                        {t('profile.personalData')}
+                    </button>
+                    {showPersonalData && (
+                        <div className={styles.personalDataContainer}>
+                            <button onClick={handleTogglePersonalData} className={styles.closeButton}>
+                                &times;
+                            </button>
+                            {editing ? (
+                                <form onSubmit={handleSubmit} className={styles.profileForm}>
+                                    <div className={styles.formGroup}>
+                                        <label htmlFor="firstName">{t('profile.firstName')}:</label>
+                                        <input
+                                            type="text"
+                                            name="firstName"
+                                            id="firstName"
+                                            value={formData.firstName}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div className={styles.formGroup}>
+                                        <label htmlFor="lastName">{t('profile.lastName')}:</label>
+                                        <input
+                                            type="text"
+                                            name="lastName"
+                                            id="lastName"
+                                            value={formData.lastName}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div className={styles.formGroup}>
+                                        <label htmlFor="age">{t('profile.age')}:</label>
+                                        <input
+                                            type="number"
+                                            name="age"
+                                            id="age"
+                                            value={formData.age}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div className={styles.formGroup}>
+                                        <label htmlFor="gender">{t('profile.gender')}:</label>
+                                        <select
+                                            name="gender"
+                                            id="gender"
+                                            value={formData.gender}
+                                            onChange={handleChange}
+                                            required
+                                        >
+                                            <option value="male">{t('profile.male')}</option>
+                                            <option value="female">{t('profile.female')}</option>
+                                        </select>
+                                    </div>
+                                    <p><strong>{t('profile.email')}:</strong> {user.email}</p>
+                                    <button type="submit" className={styles.saveButton} disabled={loading}>
+                                        {loading ? t('profile.saving') : t('profile.save')}
+                                    </button>
+                                </form>
+                            ) : (
+                                <>
+                                    <p><strong>{t('profile.firstName')}:</strong> {formData.firstName}</p>
+                                    <p><strong>{t('profile.lastName')}:</strong> {formData.lastName}</p>
+                                    <p><strong>{t('profile.age')}:</strong> {formData.age}</p>
+                                    <p><strong>{t('profile.gender')}:</strong> {formData.gender}</p>
+                                    <p><strong>{t('profile.email')}:</strong> {formData.email}</p>
+                                    <button onClick={handleEditData} className={styles.editDataButton}>
+                                        {t('profile.edit')}
+                                    </button>
+                                </>
+                            )}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
