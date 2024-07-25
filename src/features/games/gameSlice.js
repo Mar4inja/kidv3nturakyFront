@@ -12,11 +12,23 @@ export const fetchAllGames = createAsyncThunk('games/fetchAllGames', async () =>
     const response = await axios.get(baseUrl);
     return response.data;
 });
-
-export const fetchGamesByCategoryAndAge = createAsyncThunk('games/fetchGamesByCategoryAndAge', async ({ category, ageGroup }) => {
-    const response = await axios.get(`${baseUrl}?category=${category}&age=${ageGroup}`);
-    return response.data;
-});
+// Обновлённая функция fetchGamesByCategoryAndAge
+export const fetchGamesByCategoryAndAge = createAsyncThunk(
+    'games/fetchGamesByCategoryAndAge',
+    async ({ gameCategory, ageGroup }) => {
+        const token = getToken(); // Получение токена
+        const response = await axios.get(`${baseUrl}/filteredGames`, {
+            params: {
+                gameCategory,
+                ageGroup,
+            },
+            headers: {
+                'Authorization': `Bearer ${token}`, // Добавление заголовка авторизации
+            },
+        });
+        return response.data;
+    }
+);
 
 export const fetchGameById = createAsyncThunk('games/fetchGameById', async (id) => {
     const response = await axios.get(`${baseUrl}/${id}`);

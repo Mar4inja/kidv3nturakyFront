@@ -1,3 +1,4 @@
+// src/components/Games/Games.js
 import { useEffect, useState } from 'react';
 import styles from './games.module.css';
 import gamesBackgroundImage from '../../assets/games/games3.jpg';
@@ -8,7 +9,6 @@ import age4Image from '../../assets/ageGroups/4+.jpg';
 import age6Image from '../../assets/ageGroups/6+.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Clock from '../clock/Clock';
 import { useDispatch, useSelector } from 'react-redux';
 import { createGame, fetchGamesByCategoryAndAge } from '../../features/games/gameSlice';
 import { selectIsLoggedIn } from '../../features/auth/authSlice'; // Assuming you have this selector
@@ -39,7 +39,7 @@ const Games = () => {
 
     useEffect(() => {
         if (showPlayGames && selectedCategory && selectedAgeGroup) {
-            dispatch(fetchGamesByCategoryAndAge({ category: selectedCategory, ageGroup: selectedAgeGroup }));
+            dispatch(fetchGamesByCategoryAndAge({ gameCategory: selectedCategory, ageGroup: selectedAgeGroup }));
         }
     }, [showPlayGames, selectedCategory, selectedAgeGroup, dispatch]);
 
@@ -158,16 +158,16 @@ const Games = () => {
                     <h1>{t('games.ageGroupsHeader')}</h1>
                     <div className={styles.cardContainer}>
                         <div className={styles.cardWrapper}>
-                            <div className={styles.card} onClick={() => handleAgeGroupClick('4')} style={{ backgroundImage: `url(${age4Image})` }}>
+                            <div className={styles.card} onClick={() => handleAgeGroupClick('4+')} style={{ backgroundImage: `url(${age4Image})` }}>
                                 <div className={styles.cardContent}>
-                                    <span className={styles.ageGroupTitle}>{t('games.ageGroups.age4')}</span>
+                                    <span className={styles.geoTitle}>{t('games.ageGroups.4plus')}</span>
                                 </div>
                             </div>
                         </div>
                         <div className={styles.cardWrapper}>
-                            <div className={styles.card} onClick={() => handleAgeGroupClick('6')} style={{ backgroundImage: `url(${age6Image})` }}>
+                            <div className={styles.card} onClick={() => handleAgeGroupClick('6+')} style={{ backgroundImage: `url(${age6Image})` }}>
                                 <div className={styles.cardContent}>
-                                    <span className={styles.ageGroupTitle}>{t('games.ageGroups.age6')}</span>
+                                    <span className={styles.geoTitle}>{t('games.ageGroups.6plus')}</span>
                                 </div>
                             </div>
                         </div>
@@ -179,56 +179,54 @@ const Games = () => {
                 <div className={styles.playGamesContainer}>
                     <button className={styles.backButton} onClick={handleBackClick}>{t('games.backButton')}</button>
                     <h1>{t('games.playGamesHeader')}</h1>
-                    <div className={styles.cardContainer}>
-                        {gameStatus === 'loading' && <p>{t('games.loading')}</p>}
-                        {gameStatus === 'failed' && <p>{t('games.error', { message: gameError })}</p>}
-                        {gameStatus === 'succeeded' && games.length === 0 && <p>{t('games.noGames')}</p>}
-                        {gameStatus === 'succeeded' && games.length > 0 && (
-                            <div className={styles.gamesList}>
-                                {games.map((game) => (
-                                    <div key={game.id} className={styles.gameCard} onClick={() => navigate(`/game/${game.id}`)}>
-                                        <h2>{game.title}</h2>
-                                        <p>{game.description}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                    <button className={styles.addGameButton} onClick={handleAddGameClick}>{t('games.addGame')}</button>
+                    {gameStatus === 'loading' && <p>{t('games.loading')}</p>}
+                    {gameStatus === 'failed' && <p>{gameError}</p>}
+                    {gameStatus === 'succeeded' && games.length === 0 && <p>{t('games.noGames')}</p>}
+                    {gameStatus === 'succeeded' && games.length > 0 && (
+                        <ul>
+                            {games.map((game) => (
+                                <li key={game.id}>{game.title}</li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
             )}
 
+            <button onClick={handleAddGameClick}>{t('games.addGameButton')}</button>
+
             {showAddGameModal && (
                 <div className={styles.addGameModal}>
-                    <h2>{t('games.addGameModal.title')}</h2>
-                    <form onSubmit={handleAddGameSubmit}>
-                        <label>
-                            {t('games.addGameModal.titleLabel')}
-                            <input type="text" name="title" value={newGame.title} onChange={handleNewGameChange} required />
-                        </label>
-                        <label>
-                            {t('games.addGameModal.descriptionLabel')}
-                            <textarea name="description" value={newGame.description} onChange={handleNewGameChange} required />
-                        </label>
-                        <label>
-                            {t('games.addGameModal.difficultyLabel')}
-                            <input type="text" name="difficulty" value={newGame.difficulty} onChange={handleNewGameChange} required />
-                        </label>
-                        <label>
-                            {t('games.addGameModal.typeLabel')}
-                            <input type="text" name="type" value={newGame.type} onChange={handleNewGameChange} required />
-                        </label>
-                        <label>
-                            {t('games.addGameModal.contentLabel')}
-                            <textarea name="content" value={newGame.content} onChange={handleNewGameChange} required />
-                        </label>
-                        <label>
-                            {t('games.addGameModal.correctAnswerLabel')}
-                            <input type="text" name="correctAnswer" value={newGame.correctAnswer} onChange={handleNewGameChange} required />
-                        </label>
-                        <button type="submit">{t('games.addGameModal.submit')}</button>
-                        <button type="button" onClick={handleAddGameModalClose}>{t('games.addGameModal.cancel')}</button>
-                    </form>
+                    <div className={styles.modalContent}>
+                        <button className={styles.closeButton} onClick={handleAddGameModalClose}>X</button>
+                        <h2>{t('games.addGameModal.title')}</h2>
+                        <form onSubmit={handleAddGameSubmit}>
+                            <label>
+                                {t('games.addGameModal.titleLabel')}
+                                <input type="text" name="title" value={newGame.title} onChange={handleNewGameChange} required />
+                            </label>
+                            <label>
+                                {t('games.addGameModal.descriptionLabel')}
+                                <textarea name="description" value={newGame.description} onChange={handleNewGameChange} required />
+                            </label>
+                            <label>
+                                {t('games.addGameModal.difficultyLabel')}
+                                <input type="text" name="difficulty" value={newGame.difficulty} onChange={handleNewGameChange} required />
+                            </label>
+                            <label>
+                                {t('games.addGameModal.typeLabel')}
+                                <input type="text" name="type" value={newGame.type} onChange={handleNewGameChange} required />
+                            </label>
+                            <label>
+                                {t('games.addGameModal.contentLabel')}
+                                <textarea name="content" value={newGame.content} onChange={handleNewGameChange} required />
+                            </label>
+                            <label>
+                                {t('games.addGameModal.correctAnswerLabel')}
+                                <input type="text" name="correctAnswer" value={newGame.correctAnswer} onChange={handleNewGameChange} required />
+                            </label>
+                            <button type="submit">{t('games.addGameModal.submitButton')}</button>
+                        </form>
+                    </div>
                 </div>
             )}
         </div>

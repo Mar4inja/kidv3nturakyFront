@@ -39,10 +39,12 @@
 /* Ielogošanās forma */
 .loginForm {
     width: 300px;
+    height: 350px;
     padding: 20px;
+    margin-top: -250px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgb(0, 0, 0);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -51,8 +53,11 @@
 }
 
 .loginForm h2 {
+    position: absolute;
+    top: 26%;
     font-family: 'Sevillana', cursive;
     font-size: 2rem;
+
     
 }
 
@@ -76,15 +81,7 @@
 }
 
 /* Input lauku stils */
-input[type='email']{
-
-    width: calc(100% - 20px); /* Ņemot vērā padding */
-    padding: 10px;
-    border: 1px solid rgba(18, 82, 223, 0.63);
-    border-radius: 4px;
-    box-shadow: inset 0 0 5px rgba(18, 82, 223, 0.2);
-}
-
+input[type='email'],
 input[type='password'] {
     width: calc(100% - 20px); /* Ņemot vērā padding */
     padding: 10px;
@@ -92,6 +89,8 @@ input[type='password'] {
     border-radius: 4px;
     box-shadow: inset 0 0 5px rgba(18, 82, 223, 0.2);
 }
+
+
 /* Pogas hover efekts */
 .loginBtn:hover {
     background-color: #0056b3;
@@ -101,7 +100,7 @@ input[type='password'] {
 .registerLink {
     margin-top: 10px;
     padding: 5px;
-    color: #000;
+    color: #ffffff;
     text-align: center;
 }
 
@@ -110,9 +109,13 @@ input[type='password'] {
 }
 
 .registerLink a {
-    color: #007bff;
+    color: #000000;
     text-decoration: none;
     transition: color 0.3s ease;
+    padding: 2px;
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0);
 }
 
 /* Hover efekts reģistrācijas saitei */

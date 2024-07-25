@@ -42,7 +42,10 @@
 }
 
 .registerForm {
-  width: 300px;
+  position: absolute;
+  left: 1110px;
+  top: 8%;
+  width: 337px;
   padding: 20px;
   background-color: rgba(244, 244, 244, 0.8);
   border-radius: 8px;
@@ -101,7 +104,7 @@ input[type='number'] {
 }
 
 .registerLink {
-  margin-top: 15px;
+  margin-top: 150px;
   color: white;
 }
 
