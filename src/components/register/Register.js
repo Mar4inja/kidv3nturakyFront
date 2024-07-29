@@ -8,8 +8,9 @@ import { selectRegisterLoading, selectRegisterError } from "../../features/regis
 import { useTranslation } from "react-i18next";
 
 const Register = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(); // Initialize translation hook
 
+    // State to hold form data
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -21,18 +22,20 @@ const Register = () => {
 
     const { firstName, lastName, age, gender, email, password } = formData;
 
+    // Redux hooks
     const dispatch = useDispatch();
     const loading = useSelector(selectRegisterLoading);
     const error = useSelector(selectRegisterError);
     const navigate = useNavigate();
 
+    // Clear error when component unmounts or formData changes
     useEffect(() => {
-        // Notīrīt kļūdu, kad komponents tiek atvienots vai formData mainās
         return () => {
             dispatch(clearError());
         };
-    }, [dispatch, formData]);
+    }, [dispatch]);
 
+    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(registerUser(formData)).then((action) => {
@@ -42,6 +45,7 @@ const Register = () => {
         });
     };
 
+    // Handle form input changes
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
     };
@@ -51,14 +55,14 @@ const Register = () => {
             <div className={styles.backgroundContainer}>
                 <img
                     src={registerBackgroundImage}
-                    alt={t("login.backgroundAlt")}
+                    alt={t("games.backgroundAlt")} // Translation for background alt text
                     className={styles.backgroundImage}
                 />
             </div>
             <form className={styles.registerForm} onSubmit={handleSubmit}>
-                <h2>{t("register.formTitle")}</h2>
+                <h2>{t("register.formTitle")}</h2> {/* Form title */}
                 <div className={styles.formGroup}>
-                    <label htmlFor="firstName">{t("profile.firstName")}:</label>
+                    <label htmlFor="firstName">{t("register.firstName")}:</label> {/* First name label */}
                     <input
                         type="text"
                         id="firstName"
@@ -68,7 +72,7 @@ const Register = () => {
                     />
                 </div>
                 <div className={styles.formGroup}>
-                    <label htmlFor="lastName">{t("profile.lastName")}:</label>
+                    <label htmlFor="lastName">{t("register.lastName")}:</label> {/* Last name label */}
                     <input
                         type="text"
                         id="lastName"
@@ -78,7 +82,7 @@ const Register = () => {
                     />
                 </div>
                 <div className={styles.formGroup}>
-                    <label htmlFor="age">{t("profile.age")}:</label>
+                    <label htmlFor="age">{t("register.age")}:</label> {/* Age label */}
                     <input
                         type="number"
                         id="age"
@@ -88,20 +92,20 @@ const Register = () => {
                     />
                 </div>
                 <div className={styles.formGroup}>
-                    <label htmlFor="gender">{t("profile.gender")}:</label>
+                    <label htmlFor="gender">{t("register.gender")}:</label> {/* Gender label */}
                     <select
                         id="gender"
                         value={gender}
                         onChange={handleChange}
                         required
                     >
-                        <option value="">{t("profile.gender")}</option>
-                        <option value="male">{t("profile.male")}</option>
-                        <option value="female">{t("profile.female")}</option>
+                        <option value="">{t("register.selectGender")}</option>
+                        <option value="male">{t("register.male")}</option>
+                        <option value="female">{t("register.female")}</option>
                     </select>
                 </div>
                 <div className={styles.formGroup}>
-                    <label htmlFor="email">{t("profile.email")}:</label>
+                    <label htmlFor="email">{t("register.email")}:</label> {/* Email label */}
                     <input
                         type="email"
                         id="email"
@@ -111,7 +115,7 @@ const Register = () => {
                     />
                 </div>
                 <div className={styles.formGroup}>
-                    <label htmlFor="password">{t("login.passwordPlaceholder")}:</label>
+                    <label htmlFor="password">{t("register.password")}:</label> {/* Password label */}
                     <input
                         type="password"
                         id="password"
@@ -123,15 +127,15 @@ const Register = () => {
                 <button
                     type="submit"
                     className={styles.registerBtn}
-                    disabled={loading}
+                    disabled={loading} // Disable button while loading
                 >
-                    {loading ? t("login.loggingIn") : t("register.formTitle")}
+                    {loading ? t("register.registering") : t("register.register")}
                 </button>
-                {error && <p className={styles.error}>{error}</p>}
+                {error && <p className={styles.error}>{t(`register.${error}`)}</p>} {/* Display error message */}
             </form>
             <div className={styles.registerLink}>
                 <p>
-                    {t("login.noAccount")} <Link to="/login">{t("register.login")}</Link>
+                    {t("login.noAccount")} <Link to="/login">{t("login.register")}</Link> {/* Link to login */}
                 </p>
             </div>
         </div>

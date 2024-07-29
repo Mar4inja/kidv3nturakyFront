@@ -1,141 +1,88 @@
 {
-  "welcome": "Willkommen auf unserer Website!",
-  "navbar": {
-    "home": "Startseite",
-    "about": "Über uns",
-    "login": "Anmelden",
-    "register": "Registrieren",
-    "games": "Spiele",
-    "profile": "Profil",
-    "logout": "Abmelden"
-  },
-  "footer": {
-    "contact": "Kontakt",
-    "privacy": "Datenschutz"
-  },
-  "login": {
-    "backgroundAlt": "Hintergrundbild der Anmeldeseite",
-    "formTitle": "Anmelden",
-    "emailPlaceholder": "E-Mail",
-    "passwordPlaceholder": "Passwort",
-    "loggingIn": "Anmelden...",
-    "login": "Anmelden",
-    "noResponse": "Keine Antwort vom Server.",
-    "missingEmailOrPassword": "E-Mail oder Passwort fehlt",
-    "unauthorized": "Nicht autorisiert",
-    "loginFailed": "Anmeldung fehlgeschlagen",
-    "noAccount": "Kein Konto?",
-    "register": "Registrieren"
-  },
-  "register": {
-    "backgroundAlt": "Hintergrundbild der Registrierungsseite",
-    "formTitle": "Registrieren",
-    "emailPlaceholder": "E-Mail",
-    "passwordPlaceholder": "Passwort",
-    "confirmPasswordPlaceholder": "Passwort bestätigen",
-    "registering": "Registrieren...",
-    "register": "Registrieren",
-    "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
-    "login": "Anmelden",
-    "registrationFailed": "Registrierung fehlgeschlagen",
-    "passwordMismatch": "Passwörter stimmen nicht überein",
-    "success": "Registrierung erfolgreich!"
-  },
   "games": {
-    "backgroundAlt": "Hintergrundbild der Spiele",
+    "backgroundAlt": "Spiele Hintergrund",
     "loginPrompt": {
-      "message": "Nicht autorisierte Benutzer können QUIZ nicht spielen, bitte melden Sie sich an oder registrieren Sie sich!",
-      "login": "Anmelden",
+      "message": "Sie müssen eingeloggt sein, um diesen Inhalt zu sehen.",
+      "login": "Einloggen",
       "cancel": "Abbrechen"
     },
-    "backButton": "Zurück zu den Kategorien",
     "categoriesHeader": "Kategorien",
     "categories": {
       "geography": "Geographie",
       "math": "Mathematik",
       "fairytales": "Märchen"
     },
-    "filters": {
-      "ageGroup": "Altersgruppe",
-      "difficulty": "Schwierigkeitsgrad",
-      "gameType": "Spieltyp",
-      "apply": "Anwenden",
-      "chooseYourOption": "Wählen Sie Ihre Option",
-      "ageGroupOptions": {
-        "4-7": "4 - 7 Jahre",
-        "7-10": "7 - 10 Jahre",
-        "10-13": "10 - 13 Jahre",
-        "13-16": "13 - 16 Jahre"
-      },
-      "difficultyOptions": {
-        "easy": "Einfach",
-        "medium": "Mittel",
-        "hard": "Schwierig"
-      },
-      "gameTypeOptions": {
-        "educational": "Bildend",
-        "fun": "Spaß",
-        "both": "Beides"
-      }
+    "ageGroupsHeader": "Altersgruppen",
+    "ageGroups": {
+      "kindergarten": "Kindergarten",
+      "firstClass": "Erste Klasse"
     },
-    "question": {
-      "header": "Quiz Fragen",
-      "prompt": "Bitte beantworten Sie die folgenden Fragen:"
+    "playGamesHeader": "Spiele spielen",
+    "loading": "Wird geladen...",
+    "noGames": "Keine Spiele verfügbar.",
+    "backButton": "Zurück",
+    "addGameButton": "Spiel hinzufügen",
+    "addGameModal": {
+      "title": "Neues Spiel hinzufügen",
+      "titleLabel": "Titel:",
+      "descriptionLabel": "Beschreibung:",
+      "difficultyLabel": "Schwierigkeitsgrad:",
+      "typeLabel": "Typ:",
+      "contentLabel": "Inhalt:",
+      "correctAnswerLabel": "Richtige Antwort:",
+      "submitButton": "Absenden"
+    },
+    "register": {
+      "formTitle": "Registrieren",
+      "emailPlaceholder": "E-Mail",
+      "passwordPlaceholder": "Passwort",
+      "confirmPasswordPlaceholder": "Passwort bestätigen",
+      "register": "Registrieren",
+      "registering": "Wird registriert...",
+      "emailExists": "Diese E-Mail-Adresse ist bereits vergeben.",
+      "registrationFailed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut."
     }
   },
-  "about": {
-    "backgroundAlt": "Hintergrundbild über uns",
-    "header1": "Über uns",
-    "text1": "KidVenturaKi ist die perfekte Online-Plattform für Kinder, die Bildungs-Spiele und Quizze anbietet. Unser Ziel ist es, das Lernen zu einem spannenden Abenteuer zu machen, indem wir interaktive und lehrreiche Inhalte bereitstellen. Wir bieten eine Vielzahl von Quizzen und Spielen für verschiedene Altersgruppen und Interessen an, darunter Mathematik, Wissenschaft, Geografie und vieles mehr. Unsere interaktiven Quizze helfen dabei, das im Unterricht Gelernte zu festigen und Kindern neue Konzepte auf eine unterhaltsame und einprägsame Weise näherzubringen. Jedes Quiz entspricht Bildungsstandards, um die Relevanz und den Wert des Materials sicherzustellen. Um Kinder zu motivieren, haben wir ein virtuelles Belohnungssystem integriert, bei dem sie Punkte für ihre Erfolge sammeln können. Unser Ranglistensystem fördert gesunden Wettbewerb und motiviert Kinder, ihre Ergebnisse zu verbessern und ihr Bestes zu geben. KidVenturaKi wurde mit dem Fokus auf Benutzerfreundlichkeit und ansprechender Grafik entwickelt, um die Aufmerksamkeit junger Lerner zu gewinnen und zu halten. Eltern und Lehrer können sich darauf verlassen, dass alle Inhalte sorgfältig geprüft und für Kinder geeignet sind. Unser Ziel ist es, eine sichere und anregende Umgebung zu schaffen, in der Kinder entdecken und lernen können.",
-    "header2": "Unsere Zukunftspläne",
-    "text2": "KidVenturaKi ist ständig auf der Suche nach Möglichkeiten, seine Angebote zu verbessern und zu erweitern, um die besten Bildungsressourcen für Kinder zu bieten. Unsere Zukunftspläne umfassen die Entwicklung neuer und spannender Spiele, die ein noch breiteres Themenspektrum und Altersgruppen abdecken. Wir arbeiten an der Integration von Augmented Reality (AR) und Künstlicher Intelligenz (KI), um noch fesselndere und interaktive Lernmaterialien zu schaffen. Außerdem planen wir, mehr Möglichkeiten für Kooperationen unter Kindern zu schaffen, um Teamarbeit und gemeinsames Problemlösen zu fördern. Unser Ziel ist es, eine globale Bildungsplattform zu schaffen, auf der Kinder aus der ganzen Welt gemeinsam lernen, ihre Erfolge teilen und sich gegenseitig inspirieren können. Mit KidVenturaKi werden Ihre Kinder auf dem Weg zu erfolgreichem Lernen und spannenden Entdeckungen begleitet!"
+  "navigationPanel": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "games": "Spiele",
+    "contact": "Kontakt",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "profile": "Profil",
+    "logout": "Abmelden"
   },
-  "profile": {
-    "backgroundAlt": "Hintergrundbild des Profils",
-    "welcome": "Hallo, {{firstName}} {{lastName}}",
-    "profilePhotoAlt": "Profilfoto",
-    "deletePicture": "Foto löschen",
-    "personalData": "Persönliche Daten",
+  "register": {
+    "formTitle": "Registrieren",
     "firstName": "Vorname",
     "lastName": "Nachname",
     "age": "Alter",
     "gender": "Geschlecht",
-    "email": "E-Mail",
-    "agePlaceholder": "Alter eingeben",
-    "updateProfile": "Profil aktualisieren",
-    "changePassword": "Passwort ändern",
-    "currentPassword": "Aktuelles Passwort",
-    "newPassword": "Neues Passwort",
-    "confirmNewPassword": "Neues Passwort bestätigen",
-    "passwordChangeFailed": "Passwortänderung fehlgeschlagen",
-    "passwordChanged": "Passwort erfolgreich geändert",
-    "profileUpdateFailed": "Profilaktualisierung fehlgeschlagen",
-    "profileUpdated": "Profil erfolgreich aktualisiert",
-    "deleteAccount": "Konto löschen",
-    "deleteAccountConfirmation": "Bist du sicher, dass du dein Konto löschen möchtest? Dies kann nicht rückgängig gemacht werden.",
-    "accountDeleted": "Konto erfolgreich gelöscht",
-    "deleteAccountFailed": "Fehler beim Löschen des Kontos",
-    "updateSuccess": "Profil erfolgreich aktualisiert!",
-    "changePhoto": "Foto ändern",
-    "changePhotoSuccess": "Foto erfolgreich geändert",
-    "changePhotoFailed": "Fehler beim Ändern des Fotos",
-    "editData": "Persönliche Daten bearbeiten",
-    "viewAchievements": "Erfolge ansehen",
-    "achievements": {
-      "title": "Deine Erfolge",
-      "noAchievements": "Du hast noch keine Erfolge erreicht.",
-      "viewAll": "Alle Erfolge ansehen"
-    }
+    "selectGender": "Geschlecht wählen",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "register": "Registrieren",
+    "registering": "Registrierung läuft...",
+    "emailExists": "Diese E-Mail-Adresse existiert bereits.",
+    "registrationFailed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut."
   },
-  "common": {
-    "error": {
-      "network": "Netzwerkfehler. Bitte versuchen Sie es später noch einmal.",
-      "form": "Fehler beim Absenden des Formulars. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut."
-    },
-    "success": {
-      "form": "Formular erfolgreich abgesendet!"
-    },
-    "loading": "Laden...",
-    "notFound": "Seite nicht gefunden"
+  "login": {
+    "formTitle": "Anmelden",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+    "passwordPlaceholder": "Geben Sie Ihr Passwort ein",
+    "loggingIn": "Anmelden...",
+    "login": "Anmelden",
+    "emailIncorrect": "E-Mail-Adresse ist falsch.",
+    "passwordIncorrect": "Passwort ist falsch.",
+    "emailNotConfirmed": "E-Mail-Bestätigung wurde nicht abgeschlossen.",
+    "wrongEmailOrPassword": "Falsche E-Mail-Adresse oder Passwort.",
+    "serverError": "Serverfehler. Bitte versuchen Sie es später noch einmal.",
+    "noResponse": "Keine Antwort vom Server.",
+    "loginFailed": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "noAccount": "Haben Sie kein Konto?",
+    "register": "Registrieren"
   }
 }

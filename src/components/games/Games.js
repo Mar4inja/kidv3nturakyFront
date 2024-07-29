@@ -1,4 +1,3 @@
-// src/components/Games/Games.js
 import { useEffect, useState } from 'react';
 import styles from './games.module.css';
 import gamesBackgroundImage from '../../assets/games/games3.jpg';
@@ -10,14 +9,14 @@ import age6Image from '../../assets/ageGroups/6+.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { createGame, fetchGamesByCategoryAndAge } from '../../features/games/gameSlice';
+import { fetchGamesByCategoryAndAgeGroup } from '../../features/games/gameSlice'; // Import function with correct name
 import { selectIsLoggedIn } from '../../features/auth/authSlice'; // Assuming you have this selector
 
 const Games = () => {
     const { t } = useTranslation();
     const [showCategories, setShowCategories] = useState(true);
     const [showAgeGroups, setShowAgeGroups] = useState(false);
-    const [showPlayGames, setShowPlayGames] = useState(false);
+
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedAgeGroup, setSelectedAgeGroup] = useState('');
     const [showLoginPrompt, setShowLoginPrompt] = useState(false);
@@ -30,6 +29,7 @@ const Games = () => {
         content: '',
         correctAnswer: ''
     });
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(selectIsLoggedIn); // Use a Redux selector to get the login status
@@ -38,10 +38,13 @@ const Games = () => {
     const gameError = useSelector(state => state.games.error);
 
     useEffect(() => {
-        if (showPlayGames && selectedCategory && selectedAgeGroup) {
-            dispatch(fetchGamesByCategoryAndAge({ gameCategory: selectedCategory, ageGroup: selectedAgeGroup }));
+        console.log('Selected Category:', selectedCategory);
+        console.log('Selected Age Group:', selectedAgeGroup);
+
+        if (selectedCategory && selectedAgeGroup) {
+            dispatch(fetchGamesByCategoryAndAgeGroup({ gameCategory: selectedCategory, ageGroup: selectedAgeGroup }));
         }
-    }, [showPlayGames, selectedCategory, selectedAgeGroup, dispatch]);
+    }, [selectedCategory, selectedAgeGroup, dispatch]);
 
     const handleCardClick = (category) => {
         if (isLoggedIn) {
@@ -56,13 +59,11 @@ const Games = () => {
     const handleAgeGroupClick = (ageGroup) => {
         setSelectedAgeGroup(ageGroup);
         setShowAgeGroups(false);
-        setShowPlayGames(true);
     };
 
     const handleBackClick = () => {
         setShowCategories(true);
         setShowAgeGroups(false);
-        setShowPlayGames(false);
         setSelectedCategory('');
         setSelectedAgeGroup('');
     };
@@ -91,22 +92,10 @@ const Games = () => {
         }));
     };
 
-    const handleAddGameSubmit = async (e) => {
+    const handleSubmitNewGame = (e) => {
         e.preventDefault();
-        try {
-            await dispatch(createGame(newGame)).unwrap();
-            setNewGame({
-                title: '',
-                description: '',
-                difficulty: '',
-                type: '',
-                content: '',
-                correctAnswer: ''
-            });
-            setShowAddGameModal(false);
-        } catch (error) {
-            console.error('Failed to add the new game:', error);
-        }
+        // TODO: Dispatch the action to create a new game
+        console.log('New Game:', newGame);
     };
 
     return (
@@ -158,16 +147,16 @@ const Games = () => {
                     <h1>{t('games.ageGroupsHeader')}</h1>
                     <div className={styles.cardContainer}>
                         <div className={styles.cardWrapper}>
-                            <div className={styles.card} onClick={() => handleAgeGroupClick('4+')} style={{ backgroundImage: `url(${age4Image})` }}>
+                            <div className={styles.card} onClick={() => handleAgeGroupClick('kindergarten')} style={{ backgroundImage: `url(${age4Image})` }}>
                                 <div className={styles.cardContent}>
-                                    <span className={styles.geoTitle}>{t('games.ageGroups.4plus')}</span>
+                                    <span className={styles.geoTitle}>{t('games.ageGroups.kindergarten')}</span>
                                 </div>
                             </div>
                         </div>
                         <div className={styles.cardWrapper}>
-                            <div className={styles.card} onClick={() => handleAgeGroupClick('6+')} style={{ backgroundImage: `url(${age6Image})` }}>
+                            <div className={styles.card} onClick={() => handleAgeGroupClick('firstClass')} style={{ backgroundImage: `url(${age6Image})` }}>
                                 <div className={styles.cardContent}>
-                                    <span className={styles.geoTitle}>{t('games.ageGroups.6plus')}</span>
+                                    <span className={styles.geoTitle}>{t('games.ageGroups.firstClass')}</span>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +164,7 @@ const Games = () => {
                 </div>
             )}
 
-            {showPlayGames && !showLoginPrompt && (
+            {!showLoginPrompt && (
                 <div className={styles.playGamesContainer}>
                     <button className={styles.backButton} onClick={handleBackClick}>{t('games.backButton')}</button>
                     <h1>{t('games.playGamesHeader')}</h1>
@@ -183,11 +172,17 @@ const Games = () => {
                     {gameStatus === 'failed' && <p>{gameError}</p>}
                     {gameStatus === 'succeeded' && games.length === 0 && <p>{t('games.noGames')}</p>}
                     {gameStatus === 'succeeded' && games.length > 0 && (
-                        <ul>
+                        <div className={styles.cardContainer}>
                             {games.map((game) => (
-                                <li key={game.id}>{game.title}</li>
+                                <div key={game.id} className={styles.cardWrapper}>
+                                    <div className={styles.card}>
+                                        <div className={styles.cardContent}>
+                                            <span className={styles.geoTitle}>{game.title}</span>
+                                        </div>
+                                    </div>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     )}
                 </div>
             )}
@@ -199,7 +194,7 @@ const Games = () => {
                     <div className={styles.modalContent}>
                         <button className={styles.closeButton} onClick={handleAddGameModalClose}>X</button>
                         <h2>{t('games.addGameModal.title')}</h2>
-                        <form onSubmit={handleAddGameSubmit}>
+                        <form onSubmit={handleSubmitNewGame}>
                             <label>
                                 {t('games.addGameModal.titleLabel')}
                                 <input type="text" name="title" value={newGame.title} onChange={handleNewGameChange} required />

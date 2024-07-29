@@ -57,9 +57,10 @@
     top: 26%;
     font-family: 'Sevillana', cursive;
     font-size: 2rem;
-
-    
+    font-weight: 550; /* Izmantojiet, lai nodrošinātu konsekventu biezumu */
+    font-style: normal; /* Izmantojiet, lai nodrošinātu konsekventu stilu */
 }
+
 
 /* Formas grupas */
 .formGroup {

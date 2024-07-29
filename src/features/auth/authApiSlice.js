@@ -8,7 +8,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
             query: credentials => ({
                 url: 'auth',
                 method: 'POST',
-                body: credentials  // Sūta pieprasījumu ar ievadītajiem dati
+                body: credentials
             })
         }),
     })

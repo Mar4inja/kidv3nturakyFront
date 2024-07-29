@@ -34,10 +34,10 @@ function NavigationPanel() {
         <nav className={styles.navbar}>
             <div className={styles.navContainer}>
                 <NavLink exact to="/" className={styles.kidLogo}>
-                    <img src={kidventure} alt="Kidv3nturaky Logo2" className={styles.kidventure} />
+                    <img src={kidventure} alt="Kidventure Logo" className={styles.kidventure} />
                 </NavLink>
                 <NavLink exact to="/" className={styles.navLogo}>
-                    <img src={logo} alt="Kidv3nturaky Logo" className={styles.logo} />
+                    <img src={logo} alt="Logo" className={styles.logo} />
                 </NavLink>
 
                 <ul className={click ? `${styles.navMenu} ${styles.active}` : styles.navMenu}>
@@ -45,33 +45,30 @@ function NavigationPanel() {
                         <NavLink
                             exact
                             to="/"
-                            activeClassName={styles.active}
                             className={styles.navLinks}
                             onClick={handleClick}
                         >
-                            {t('Home')}
+                            {t('navigationPanel.home')}
                         </NavLink>
                     </li>
                     <li className={styles.navItem}>
                         <NavLink
                             exact
                             to="/games"
-                            activeClassName={styles.active}
                             className={styles.navLinks}
                             onClick={handleClick}
                         >
-                            {t('Games')}
+                            {t('navigationPanel.games')} {/* Changed from services to games */}
                         </NavLink>
                     </li>
                     <li className={styles.navItem}>
                         <NavLink
                             exact
                             to="/about"
-                            activeClassName={styles.active}
                             className={styles.navLinks}
                             onClick={handleClick}
                         >
-                            {t('About')}
+                            {t('navigationPanel.about')}
                         </NavLink>
                     </li>
                     {isLoggedIn ? (
@@ -79,13 +76,13 @@ function NavigationPanel() {
                             <li className={styles.navItem}>
                                 <NavLink
                                     exact
-                                    to="/profile" // Link to user profile page
+                                    to="/profile"
                                     className={styles.navLinks}
                                     onClick={handleClick}
                                 >
-                                    <FaUser className={styles.userIcon} /> {/* User icon */}
+                                    <FaUser className={styles.userIcon} />
                                     <span className={styles.userName}>
-                                        {user.firstName ? user.firstName.trim() : 'User'} {/* Display user first name */}
+                                        {user.firstName ? user.firstName.trim() : 'User'}
                                     </span>
                                 </NavLink>
                             </li>
@@ -96,7 +93,7 @@ function NavigationPanel() {
                                     className={styles.navLinks}
                                     onClick={handleLogout}
                                 >
-                                    {t('Logout')}
+                                    {t('navigationPanel.logout')}
                                 </NavLink>
                             </li>
                         </>
@@ -108,7 +105,7 @@ function NavigationPanel() {
                                 className={styles.navLinks}
                                 onClick={handleClick}
                             >
-                                {t('Login')}
+                                {t('navigationPanel.login')}
                             </NavLink>
                         </li>
                     )}
@@ -123,10 +120,9 @@ function NavigationPanel() {
                         <span className={styles.icon}>
                             <HamburgetMenuOpen />
                         </span>
-                    )}Q
+                    )}
                 </div>
 
-                {/* Language selector */}
                 <LanguageSelector />
             </div>
         </nav>
