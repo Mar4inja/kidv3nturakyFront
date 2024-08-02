@@ -12,11 +12,11 @@ const getToken = () => {
 };
 
 // Fetch games by category and age group
-export const fetchGamesByCategoryAndAgeGroup = createAsyncThunk(
-    'games/fetchGamesByCategoryAndAgeGroup',
-    async ({ gameCategory, ageGroup }) => {
+export const fetchGamesByGameCategoryAndAgeGroup = createAsyncThunk(
+    'games/fetchGamesByGameCategoryAndAgeGroup',
+    async ({gameCategory, ageGroup }) => {
         const token = getToken(); // Get token
-        const response = await axios.get(`${baseUrl}/byCategoryAndAgeGroup`, {
+        const response = await axios.get(`${baseUrl}/byGameCategoryAndAgeGroup`, {
             params: {
                 gameCategory,
                 ageGroup,
@@ -25,6 +25,7 @@ export const fetchGamesByCategoryAndAgeGroup = createAsyncThunk(
                 'Authorization': `Bearer ${token}`, // Add authorization header
             },
         });
+        
         return response.data;
     }
 );
@@ -50,24 +51,33 @@ const initialState = {
     game: null,
     status: 'idle',
     error: null,
+    gameCategory: null,  // Added to manage category selection
+    ageGroup: null,      // Added to manage age group selection
 };
 
 // Slice
 const gamesSlice = createSlice({
     name: 'games',
     initialState,
-    reducers: {},
+    reducers: {
+        setGameCategory: (state, action) => {
+            state.gameCategory = action.payload;
+        },
+        setAgeGroup: (state, action) => {
+            state.ageGroup = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             // Fetch games by category and age group
-            .addCase(fetchGamesByCategoryAndAgeGroup.pending, (state) => {
+            .addCase(fetchGamesByGameCategoryAndAgeGroup.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchGamesByCategoryAndAgeGroup.fulfilled, (state, action) => {
+            .addCase(fetchGamesByGameCategoryAndAgeGroup.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.games = action.payload;
             })
-            .addCase(fetchGamesByCategoryAndAgeGroup.rejected, (state, action) => {
+            .addCase(fetchGamesByGameCategoryAndAgeGroup.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })
@@ -86,4 +96,5 @@ const gamesSlice = createSlice({
     },
 });
 
+export const { setGameCategory, setAgeGroup } = gamesSlice.actions;
 export default gamesSlice.reducer;

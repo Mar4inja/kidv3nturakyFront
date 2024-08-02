@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Sevillana:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lobster&family=Pacifico&display=swap');
 
 .sevillanaRegular {
     font-family: "Sevillana", cursive;
     font-weight: 400;
     font-style: normal;
-  }
-  
+}
 
 .loginContainer {
     display: flex;
@@ -13,11 +12,10 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    min-height: 100vh; /* Occupies the full viewport height */
+    min-height: 100vh;
     position: relative;
 }
 
-/* Fons, kas aizsedz visu ekrānu */
 .backgroundContainer {
     position: absolute;
     top: -13%;
@@ -25,10 +23,9 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -1; /* Nodrošina, ka backgroundImage ir aiz satura */
+    z-index: -1;
 }
 
-/* Fona attēls, kas pārklāj visu konteineru */
 .backgroundImage {
     width: 100%;
     height: 100%;
@@ -36,15 +33,16 @@
     object-position: center;
 }
 
-/* Ielogošanās forma */
 .loginForm {
-    width: 300px;
-    height: 350px;
-    padding: 20px;
-    margin-top: -250px;
+    width: 90%;
+    max-width: 300px;
+    height: 300px;
+    max-height: 100vh; /* Ensures the form doesn't exceed viewport height */
+    padding: 15px;
+    margin-top: -450px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
-    box-shadow: 0 10px 15px rgb(0, 0, 0);
+    box-shadow: 0 5px 10px rgb(0, 0, 0);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -53,26 +51,22 @@
 }
 
 .loginForm h2 {
+    font-family: "Lobster", sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 2rem !important;
     position: absolute;
-    top: 26%;
-    font-family: 'Sevillana', cursive;
-    font-size: 2rem;
-    font-weight: 550; /* Izmantojiet, lai nodrošinātu konsekventu biezumu */
-    font-style: normal; /* Izmantojiet, lai nodrošinātu konsekventu stilu */
+    top: 20%;
 }
 
 
-/* Formas grupas */
 .formGroup {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     width: 100%;
-
 }
 
-/* Stils pogai */
 .loginBtn {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -81,24 +75,22 @@
     transition: background-color 0.3s ease;
 }
 
-/* Input lauku stils */
 input[type='email'],
 input[type='password'] {
-    width: calc(100% - 20px); /* Ņemot vērā padding */
-    padding: 10px;
+    width: calc(100% - 16px);
+    padding: 8px;
     border: 1px solid rgba(18, 82, 223, 0.63);
     border-radius: 4px;
     box-shadow: inset 0 0 5px rgba(18, 82, 223, 0.2);
 }
 
-
-/* Pogas hover efekts */
 .loginBtn:hover {
     background-color: #0056b3;
 }
 
-/* Reģistrācijas saites stils */
 .registerLink {
+    font-family: "Lobster", sans-serif !important;
+    font-size: 1.2rem;
     margin-top: 10px;
     padding: 5px;
     color: #ffffff;
@@ -119,13 +111,56 @@ input[type='password'] {
     border: 1px solid rgb(0, 0, 0);
 }
 
-/* Hover efekts reģistrācijas saitei */
 .registerLink a:hover {
     color: #0056b3;
 }
 
-/* Kļūdu ziņojumu stils */
 .error {
     color: red;
     margin-top: 10px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .loginForm {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .loginForm h2 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Medium devices (tablets, 600px to 768px) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    .loginForm {
+        width: 80%;
+        padding: 12px;
+    }
+
+    .loginForm h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Large devices (desktops, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .loginForm {
+        width: 60%;
+        padding: 15px;
+    }
+
+    .loginForm h2 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .loginForm {
+        width: 40%;
+    }
 }

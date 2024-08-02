@@ -246,6 +246,49 @@
     left: -284px;
 }
 
+/* Konteineris spēles sekcijai */
+.playGamesContainer {
+    padding: 20px;
+    text-align: center;
+    min-height: 100vh; /* Lai konteiners aizņemtu vismaz ekrāna augstumu */
+}
+
+/* Spēles kartīšu konteiners */
+.playGamesCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px; /* Marģins, lai atdalītu kartītes no cita satura */
+}
+
+/* Individuāla spēles kartīte */
+.playGameCard {
+    width: 150px; /* Kartītes platums */
+    height: 150px; /* Kartītes augstums */
+    background-color: #f0f0f0; /* Kartītes fona krāsa */
+    border-radius: 8px; /* Stūru noapaļojums */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Viegls ēnas efekts */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s; /* Pārejas efekti uz hover */
+}
+
+/* Kartītes iekšējais saturs */
+.playGameCardContent {
+    font-size: 16px; /* Teksta lielums */
+    color: #555; /* Teksta krāsa */
+    text-align: center;
+}
+
+/* Hover efekts kartītei */
+.playGameCard:hover {
+    transform: scale(1.05); /* Mazs palielinājums hover laikā */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Spēcīgāks ēnas efekts */
+}
+
 /* Filtra formas konteiners - izņemts, jo vairs netiks izmantots */
 .filterFormContainer {
     display: none;

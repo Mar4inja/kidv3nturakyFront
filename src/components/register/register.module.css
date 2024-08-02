@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sevillana:wght@400&display=swap');
 
-.sevillanaRegular {
-    font-family: "Sevillana", cursive;
-    font-weight: 400;
-    font-style: normal;
-}
 
 .registerContainer {
   display: flex;
@@ -12,18 +7,18 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  min-height: 100vh; /* Occupies the full viewport height */
+  min-height: 100vh;
   position: relative;
 }
 
 .backgroundContainer {
   position: absolute;
-    top: -13%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1; /* Nodrošina, ka backgroundImage ir aiz satura */
+  top: -13%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
 }
 
 .backgroundContainer img {
@@ -34,23 +29,24 @@
 }
 
 .registerForm h2 {
-  font-family: 'Sevillana', cursive;
-  font-size: 2rem;
+  font-family: "Lobster", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 2rem !important;
   margin-bottom: 20px;
   text-align: center;
   color: rgba(0, 0, 0, 0.863);
 }
 
 .registerForm {
-  position: absolute;
-  left: 1110px;
-  top: 8%;
-  width: 337px;
+  width: 90%;
+  max-width: 400px; /* Sets a maximum width for the form */
   padding: 20px;
   background-color: rgba(244, 244, 244, 0.8);
   border-radius: 8px;
   box-shadow: 0 10px 15px rgb(0, 0, 0);
-  box-sizing: border-box; /* Nodrošina, ka padding un border tiek iekļauti platumā */
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
+  text-align: center;
+  margin: auto; /* Centers the form horizontally */
 }
 
 .formGroup {
@@ -72,7 +68,7 @@ input[type='number'] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* Nodrošina, ka padding un border tiek iekļauti platumā */
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
 .formGroup select {
@@ -80,7 +76,7 @@ input[type='number'] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* Nodrošina, ka padding un border tiek iekļauti platumā */
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
 .registerBtn {
@@ -104,8 +100,8 @@ input[type='number'] {
 }
 
 .registerLink {
-  margin-top: 150px;
-  color: white;
+  margin-top: 20px;
+  color: #ee3f3f;
 }
 
 .registerLink a {
@@ -120,4 +116,56 @@ input[type='number'] {
 
 .registerLink a:hover {
   color: #5bd13a;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .registerForm h2 {
+    font-size: 1.5rem;
+  }
+
+  .registerLink {
+    margin-top: 50px;
+  }
+}
+
+/* Medium devices (tablets, 600px to 768px) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .registerForm h2 {
+    font-size: 1.75rem;
+  }
+
+  .registerLink {
+    margin-top: 80px;
+  }
+}
+
+/* Large devices (desktops, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .registerForm h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .registerForm {
+    width: 40%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .registerForm {
+    font-size: 2rem;
+    margin-top: -50px;
+  }
+}
+/* Large devices (desktops, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .registerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
