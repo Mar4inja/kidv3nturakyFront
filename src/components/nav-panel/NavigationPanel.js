@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import styles from "./navigationPanel.module.css"; // Import styles as CSS module
-import { HamburgetMenuClose, HamburgetMenuOpen } from "./Icons"; // Import menu icons
-import logo from '../../assets/logo/logo.png'; // Import logo
-import kidventure from "../../assets/logo/kidLogoCopy-Photoroom.png"; // Import Kidventure logo
+import styles from "./navigationPanel.module.css";
+import { HamburgetMenuClose, HamburgetMenuOpen } from "./Icons";
+import logo from '../../assets/logo/logo.png';
+import kidventure from "../../assets/logo/kidLogoCopy-Photoroom.png";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLoggedIn, selectCurrentUser, logoutUser } from '../../features/auth/authSlice';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../languageSelector/LanguageSelector';
-import { FaUser } from 'react-icons/fa'; // Import user icon
+import { FaUser } from 'react-icons/fa';
+import DropdownProfile from "../dropdown_menu/DropdownMenu";
 
 function NavigationPanel() {
     const [click, setClick] = useState(false);
+    const [openProfile, setOpenProfile] = useState(false);
+
     const { t } = useTranslation();
     const isLoggedIn = useSelector(selectIsLoggedIn);
-    const user = useSelector(selectCurrentUser); // Get current user data
+    const user = useSelector(selectCurrentUser);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -29,6 +32,8 @@ function NavigationPanel() {
         localStorage.removeItem("isLoggedIn");
         navigate('/login');
     };
+
+    const toggleProfileDropdown = () => setOpenProfile(!openProfile);
 
     return (
         <nav className={styles.navbar}>
@@ -58,7 +63,7 @@ function NavigationPanel() {
                             className={styles.navLinks}
                             onClick={handleClick}
                         >
-                            {t('navigationPanel.games')} {/* Changed from services to games */}
+                            {t('navigationPanel.games')}
                         </NavLink>
                     </li>
                     <li className={styles.navItem}>
@@ -73,19 +78,6 @@ function NavigationPanel() {
                     </li>
                     {isLoggedIn ? (
                         <>
-                            <li className={styles.navItem}>
-                                <NavLink
-                                    exact
-                                    to="/profile"
-                                    className={styles.navLinks}
-                                    onClick={handleClick}
-                                >
-                                    <FaUser className={styles.userIcon} />
-                                    <span className={styles.userName}>
-                                        {user.firstName ? user.firstName.trim() : 'User'}
-                                    </span>
-                                </NavLink>
-                            </li>
                             <li className={styles.navItem}>
                                 <NavLink
                                     exact
@@ -123,7 +115,16 @@ function NavigationPanel() {
                     )}
                 </div>
 
-                <LanguageSelector />
+                <div className={styles.rightContainer}>
+                    <LanguageSelector /> {/* Переместили сюда */}
+                    {isLoggedIn && (
+                        <div className={styles.profileMenu} onClick={toggleProfileDropdown}>
+                            <FaUser className={styles.userIcon} />
+                            {openProfile && <DropdownProfile />}
+                        </div>
+                    )}
+                </div>
+
             </div>
         </nav>
     );

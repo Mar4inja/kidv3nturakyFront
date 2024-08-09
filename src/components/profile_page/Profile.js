@@ -1,53 +1,59 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectCurrentUser } from '../../features/auth/authSlice';
-import { selectUpdateLoading, selectUpdatedProfile, setProfilePhoto, updateProfile, selectProfilePhoto } from '../../features/profile/profileSlice';
-import { useUpdateProfileMutation } from '../../app/api/apiSlice';
-import styles from './profile.module.css';
-import Navbar from '../nav-panel/NavigationPanel'; // Импорт компонента Navbar
-
-import profileBackgroundImage from '../../assets/profilePhoto/profMain.jpg';
-import boyImage from '../../assets/profilePhoto/boy.png';
-import girlImage from '../../assets/profilePhoto/girl.png';
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import React, { useState, useEffect } from 'react'; // Импорт React и хук useState, useEffect
+import { useSelector, useDispatch } from 'react-redux'; // Импорт хук useSelector и useDispatch из Redux
+import {
+    selectUpdateLoading, // Селектор для состояния загрузки обновления профиля
+    selectUpdatedProfile, // Селектор для обновленного профиля
+    setProfilePhoto, // Действие для установки фото профиля
+    updateProfile, // Действие для обновления профиля
+    selectProfilePhoto, // Селектор для фото профиля
+} from '../../features/profile/profileSlice'; // Импорт селекторов и действий из слайса профиля
+import { selectCurrentUser } from '../../features/auth/authSlice'; // Селектор для текущего пользователя
+import { useUpdateProfileMutation } from '../../app/api/apiSlice'; // Хук для обновления профиля через API
+import styles from './profile.module.css'; // Импорт стилей для компонента
+import profileBackgroundImage from '../../assets/profilePhoto/profMain.jpg'; // Импорт фонового изображения
+import boyImage from '../../assets/profilePhoto/boy.png'; // Импорт изображения мальчика
+import girlImage from '../../assets/profilePhoto/girl.png'; // Импорт изображения девочки
+import { useNavigate } from 'react-router-dom'; // Хук для навигации
+import { useTranslation } from 'react-i18next'; // Хук для перевода
 
 const Profile = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(); // Инициализация функции перевода
 
-    const dispatch = useDispatch();
-    const user = useSelector(selectCurrentUser);
-    const navigate = useNavigate();
-    const loading = useSelector(selectUpdateLoading);
-    const updatedProfile = useSelector(selectUpdatedProfile);
-    const profilePhoto = useSelector(selectProfilePhoto);
+    const dispatch = useDispatch(); // Инициализация dispatch
+    const user = useSelector(selectCurrentUser); // Получение текущего пользователя из Redux
+    const navigate = useNavigate(); // Инициализация navigate для перенаправления
+    const loading = useSelector(selectUpdateLoading); // Получение состояния загрузки из Redux
+    const updatedProfile = useSelector(selectUpdatedProfile); // Получение обновленного профиля из Redux
+    const profilePhoto = useSelector(selectProfilePhoto); // Получение фото профиля из Redux
 
-    const [updateProfileApi] = useUpdateProfileMutation();
+    const [updateProfileApi] = useUpdateProfileMutation(); // Инициализация хука для обновления профиля через API
 
-    const [showPersonalData, setShowPersonalData] = useState(false);
-    const [editing, setEditing] = useState(false);
+    const [showPersonalData, setShowPersonalData] = useState(false); // Состояние для показа/скрытия личных данных
+    const [editing, setEditing] = useState(false); // Состояние для режима редактирования
 
+    // Начальные данные формы
     const [formData, setFormData] = useState({
-        firstName: user?.firstName || '',
-        lastName: user?.lastName || '',
-        age: user?.age || '',
-        gender: user?.gender || 'male',
-        email: user?.email || '',
-        profilePhoto: profilePhoto || '',
+        firstName: user?.firstName || '', // Имя пользователя
+        lastName: user?.lastName || '', // Фамилия пользователя
+        age: user?.age || '', // Возраст пользователя
+        gender: user?.gender || 'male', // Пол пользователя
+        email: user?.email || '', // Электронная почта пользователя
+        profilePhoto: profilePhoto || '', // Фото профиля пользователя
     });
 
-    const [successMessage, setSuccessMessage] = useState('');
-    const [selectedImage, setSelectedImage] = useState(profilePhoto || '');
+    const [successMessage, setSuccessMessage] = useState(''); // Сообщение об успешном обновлении
+    const [selectedImage, setSelectedImage] = useState(profilePhoto || ''); // Выбранное изображение для фото профиля
 
+    // Перенаправление на страницу логина, если пользователь не авторизован
     useEffect(() => {
         if (!user) {
             navigate('/login');
         }
     }, [user, navigate]);
 
+    // Обновление данных формы, когда профиль обновлен
     useEffect(() => {
         if (updatedProfile) {
-            console.log('Profile updated:', updatedProfile);
             setFormData({
                 firstName: updatedProfile.firstName,
                 lastName: updatedProfile.lastName,
@@ -65,6 +71,7 @@ const Profile = () => {
         }
     }, [updatedProfile, t]);
 
+    // Переключение отображения личных данных
     const handleTogglePersonalData = () => {
         setShowPersonalData(!showPersonalData);
         if (showPersonalData) {
@@ -72,31 +79,32 @@ const Profile = () => {
         }
     };
 
+    // Вход в режим редактирования
     const handleEditData = () => {
         setEditing(true);
     };
 
+    // Обработка изменения полей формы
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (name !== 'email') {
-            setFormData({
-                ...formData,
-                [name]: value,
-            });
-        }
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
     };
 
+    // Обработка отправки формы
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await updateProfileApi(formData).unwrap();
-            console.log('Profile update response:', response);
-            dispatch(updateProfile(response));
+            const response = await updateProfileApi(formData).unwrap(); // Отправка данных профиля
+            dispatch(updateProfile(response)); // Обновление профиля в Redux
         } catch (error) {
-            console.error(t('profile.updateError'), error);
+            console.error(t('profile.updateError'), error); // Логирование ошибки
         }
     };
 
+    // Обработка загрузки изображения
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -104,25 +112,27 @@ const Profile = () => {
             reader.onloadend = () => {
                 const imageUrl = reader.result;
                 setSelectedImage(imageUrl);
-                setFormData({
-                    ...formData,
+                setFormData((prevData) => ({
+                    ...prevData,
                     profilePhoto: imageUrl,
-                });
-                dispatch(setProfilePhoto(imageUrl));
+                }));
+                dispatch(setProfilePhoto(imageUrl)); // Обновление фото профиля в Redux
             };
             reader.readAsDataURL(file);
         }
     };
 
+    // Удаление изображения профиля
     const handleDeleteImage = () => {
         setSelectedImage('');
-        setFormData({
-            ...formData,
+        setFormData((prevData) => ({
+            ...prevData,
             profilePhoto: '',
-        });
-        dispatch(setProfilePhoto(''));
+        }));
+        dispatch(setProfilePhoto('')); // Удаление фото профиля из Redux
     };
 
+    // Если пользователь не авторизован, не рендерить компонент
     if (!user) {
         return null;
     }
@@ -222,24 +232,25 @@ const Profile = () => {
                                         </select>
                                     </div>
                                     <p><strong>{t('profile.email')}:</strong> {user.email}</p>
-                                    <button type="submit" className={styles.saveButton} disabled={loading}>
-                                        {loading ? t('profile.saving') : t('profile.save')}
+                                    <button type="submit" className={styles.submitButton}>
+                                        {loading ? t('profile.saving') : t('profile.saveChanges')}
                                     </button>
                                 </form>
                             ) : (
-                                <>
+                                <div className={styles.profileData}>
                                     <p><strong>{t('profile.firstName')}:</strong> {formData.firstName}</p>
                                     <p><strong>{t('profile.lastName')}:</strong> {formData.lastName}</p>
                                     <p><strong>{t('profile.age')}:</strong> {formData.age}</p>
                                     <p><strong>{t('profile.gender')}:</strong> {formData.gender}</p>
                                     <p><strong>{t('profile.email')}:</strong> {formData.email}</p>
-                                    <button onClick={handleEditData} className={styles.editDataButton}>
+                                    <button onClick={handleEditData} className={styles.editButton}>
                                         {t('profile.edit')}
                                     </button>
-                                </>
+                                </div>
                             )}
                         </div>
                     )}
+                    {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
                 </div>
             </div>
         </div>

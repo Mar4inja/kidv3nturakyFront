@@ -1,5 +1,4 @@
-
-
+/* Основные стили для навигационной панели */
 .navbar {
     display: flex;
     justify-content: center;
@@ -7,9 +6,7 @@
     font-size: 1.2rem;
     position: sticky;
     top: 0;
-
-
-
+    z-index: 100; /* Навигационная панель всегда остается на верхнем слое */
 }
 
 .navContainer {
@@ -17,12 +14,10 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 160PX;
+    height: 160px;
     max-width: 1500px;
     position: relative;
-  
 }
-
 
 .navLogo {
     align-items: center;
@@ -37,21 +32,22 @@
 .logo {
     filter: brightness(0) invert(1);
     position: absolute;
-    top: 650px;
+    top: 50%; /* Для лучшего позиционирования */
     left: -40%;
-    width: 50rem; /* Adjust the size of your logo */
+    width: 50rem;
     height: 50rem;
+    transform: translateY(-50%);
 }
 
 .kidLogo {
     display: flex;
     align-items: center;
-    margin-right: auto; /* Adjust if needed to position it correctly */
+    margin-right: auto;
 }
 
 .kidventure {
-    width: 24rem; /* Adjust size as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 24rem;
+    height: auto;
     position: absolute;
     top: -2%;
     left: -20%;
@@ -72,21 +68,19 @@
     width: 700px;
 }
 
-
 .navLinks {
     color: #fff;
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
     border-bottom: 3px solid transparent;
-
 }
 
 .navItem {
     line-height: 40px;
     margin-right: 1rem;
+    position: relative; /* Позиционирование для дропдауна */
 }
-
 
 .navItem:after {
     content: "";
@@ -107,8 +101,6 @@
     border: 1px solid #ffdd40;
 }
 
-
-
 .navIcon {
     display: none;
     color: #f5b921;
@@ -118,6 +110,81 @@
     display: inline-block;
     width: 2rem;
     height: 2rem;
+}
+
+/* Стили для контейнера с профилем и переключателем языка внизу справа */
+.rightBottomContainer {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 101;
+    gap: 10px; /* Отступ между элементами внутри контейнера */
+}
+
+
+/* Button to toggle the dropdown */
+.iconButton {
+    background: none;
+    border: none;
+    color: #fff; /* Белый цвет иконки */
+    font-size: 42px; /* Размер иконки */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dropdown menu styling */
+.dropdownMenu {
+    position: absolute;
+    top: 100%; /* Расположение дропдауна ниже кнопки */
+    right: 0; /* Выравнивание дропдауна по правому краю */
+    background-color: rgba(1, 0, 7, 0.58);
+    border: 1px solid rgb(119, 112, 18);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    min-width: 120px;
+    padding: 5px 0;
+}
+
+/* Dropdown items styling */
+.dropdownItem {
+    background: none;
+    border: none;
+    color: #fff; /* Белый цвет текста */
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.dropdownItem:hover {
+    background-color: #b3ff00; /* Цвет выделения при наведении */
+    color: #01000794; /* Цвет текста при наведении */
+}
+
+/* Иконка профиля */
+.userIcon {
+    font-size: 26px; /* Размер иконки */
+    color: #fff; /* Цвет иконки */
+    position: absolute;
+    left: 120%;
+    top: 20%;
+}
+
+
+/* Иконки */
+.icon {
+    font-size: 26px; /* Размер иконок */
+}
+
+.icon:hover {
+    color: var(--icon-hover-color);
 }
 
 @media screen and (max-width: 960px) {
@@ -135,7 +202,7 @@
 
     .navMenu.active {
         background: #1f5156;
-        left: 0px;
+        left: 0;
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 1;
@@ -164,16 +231,10 @@
         color: #ffdd40;
     }
 
-    .userIcon {
-        font-size: 24px; /* Размер иконки пользователя */
-        margin-right: 8px; /* Отступ между иконкой и именем пользователя */
-        color: #fff; /* Цвет иконки */
+    .dropdownProfile {
+        position: static; /* Для мобильных устройств - статическое позиционирование */
+        box-shadow: none;
+        background: none;
+        padding: 0;
     }
-    
-    .userName {
-        font-weight: bold;
-        color: #fff; /* Цвет имени пользователя */
-        font-size: 1rem; /* Размер шрифта имени пользователя */
-    }
-    
 }

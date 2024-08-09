@@ -1,333 +1,332 @@
-/* profile.module.css */
-
-/* Vispārējie stili */
+/* Базовые стили для страницы */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+    margin: 0; /* Убирает стандартные отступы страницы */
+    padding: 0; /* Убирает стандартные отступы страницы */
+    font-family: Poppins, sans-serif; /* Задает шрифт для всего документа */
 }
 
+/* Контейнер профиля */
 .profileContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    min-height: 100vh; /* Occupies the full viewport height */
-    position: relative;
-
+    display: flex; /* Устанавливает контейнер как flexbox */
+    flex-direction: column; /* Располагает дочерние элементы вертикально */
+    align-items: center; /* Центрирует дочерние элементы по горизонтали */
+    justify-content: center; /* Центрирует дочерние элементы по вертикали */
+    padding: 20px; /* Добавляет отступы внутри контейнера */
+    min-height: 100vh; /* Устанавливает минимальную высоту контейнера на весь экран */
+    position: relative; /* Позволяет абсолютное позиционирование дочерних элементов */
 }
 
+/* Контейнер для фона */
 .backgroundContainer {
-    position: absolute;
-    top: -13%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Nodrošina, ka backgroundImage ir aiz satura */
-
+    position: absolute; /* Позволяет разместить элемент относительно родительского */
+    top: -13%; /* Поднимает фон выше контейнера */
+    left: 0; /* Размещает фон по левому краю */
+    width: 100%; /* Фон занимает всю ширину экрана */
+    height: 100%; /* Фон занимает всю высоту экрана */
+    z-index: -1; /* Отправляет фон за другие элементы */
 }
 
+/* Стили для фонового изображения */
 .backgroundImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background-size: cover;
-   
+    position: absolute; /* Позволяет разместить элемент относительно контейнера */
+    top: 0; /* Размещает изображение в верхней части контейнера */
+    left: 0; /* Размещает изображение по левому краю */
+    width: 100%; /* Изображение растягивается на всю ширину контейнера */
+    height: 100%; /* Изображение растягивается на всю высоту контейнера */
+    object-fit: cover; /* Масштабирует изображение, чтобы оно полностью заполнило контейнер */
+    background-size: cover; /* Увеличивает или уменьшает размер фона, чтобы он покрыл весь контейнер */
 }
 
+/* Стили для имени пользователя */
 .fullName {
-    position: absolute;
-    top: 15%; /* Pielāgots top, lai paceltu fullName */
-    left: 154px;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    color: #fdfdfd;
-    text-align: center; /* Centrē tekstu, kad ekrāna platums ir mazāks */
+    position: absolute; /* Позволяет абсолютное позиционирование внутри контейнера */
+    top: 10%; /* Размещает имя немного ниже верхнего края контейнера */
+    left: 50%; /* Размещает имя по центру контейнера */
+    transform: translate(-50%, -50%); /* Центрирует элемент по горизонтали и вертикали */
+    z-index: 1; /* Размещает элемент над фоном */
+    color: #fdfdfd; /* Устанавливает белый цвет текста */
+    text-align: center; /* Центрирует текст внутри блока */
 }
 
-.profileImageLabel {
-    display: inline-block;
-    cursor: pointer;
-
-}
-
-.profileImageLabel:hover {
-    opacity: 0.9; /* Mazliet samazina attēla caurspīdību, kad pele ir virs tā */
-}
-
-.deleteButton {
-    margin-top: 10px;
-    padding: 5px 10px;
-    border: none;
-    background-color: #f44336; /* Sarkanā krāsa */
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    top: 115%; /* Novieto poga zem attēla */
-    left: 28%;
-    transform: translateY(10px); /* Lai pārliecinātos, ka poga ir zem attēla */
-}
-
-.deleteButton:hover {
-    background-color: #d32f2f; /* Tumšāka sarkanā krāsa, kad pele ir virs pogas */
-}
-
-.deleteButton:focus {
-    outline: none; /* Noņem pogas fokusu */
-}
-
+/* Контейнер для изображения профиля */
 .profileImageContainer {
-    position: absolute;
-    top: 35%; /* Pielāgots top, lai paceltu profileImageContainer */
-    left: 6%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: absolute; /* Позволяет абсолютное позиционирование внутри контейнера */
+    top: 32%; /* Размещает изображение чуть ниже центра контейнера */
+    left: 50%; /* Размещает изображение по центру контейнера */
+    transform: translate(-50%, -50%); /* Центрирует контейнер изображения по горизонтали и вертикали */
+    z-index: 2; /* Размещает изображение над фоном и именем */
+    display: flex; /* Устанавливает контейнер как flexbox */
+    flex-direction: column; /* Располагает дочерние элементы вертикально */
+    align-items: center; /* Центрирует дочерние элементы по горизонтали */
 }
 
+/* Обертка для изображения профиля */
 .profileImageWrapper {
-    position: relative; /* Pievienots pozicionēšanai delete pogai */
+    position: relative; /* Позволяет абсолютное позиционирование дочерних элементов, например, кнопки удаления */
 }
 
+/* Стили для изображения профиля */
 .profileImage {
-    width: 250px;
-    height: 350px;
-    border-radius: 2%;
-    object-fit: cover;
-    border: 3px solid rgb(242, 255, 222);
-    z-index: 100;
+    width: 250px; /* Устанавливает ширину изображения */
+    height: 350px; /* Устанавливает высоту изображения */
+    border-radius: 2%; /* Делает углы изображения слегка закругленными */
+    object-fit: cover; /* Масштабирует изображение, чтобы оно полностью заполнило контейнер */
+    border: 3px solid rgb(242, 255, 222); /* Добавляет рамку вокруг изображения */
+    z-index: 100; /* Поднимает изображение над другими элементами */
 }
 
+/* Стили для метки загрузки изображения профиля */
+.profileImageLabel {
+    display: inline-block; /* Устанавливает метку как блочный элемент */
+    cursor: pointer; /* Меняет курсор на указатель при наведении */
+}
+
+/* Скрывает поле ввода файла */
 .fileInput {
-    display: none; /* Slēpj ievades lauku, kas tiek izmantots attēlu augšupielādē */
+    display: none; /* Полностью скрывает элемент из отображения */
 }
 
+/* Стили для кнопки удаления изображения профиля */
+.deleteButton {
+    margin-top: 10px; /* Добавляет отступ сверху */
+    padding: 5px 10px; /* Добавляет внутренние отступы для кнопки */
+    border: none; /* Убирает стандартную рамку у кнопки */
+    background-color: #f44336; /* Устанавливает красный цвет фона кнопки */
+    color: white; /* Устанавливает белый цвет текста */
+    border-radius: 5px; /* Делает углы кнопки закругленными */
+    cursor: pointer; /* Меняет курсор на указатель при наведении */
+    position: absolute; /* Позволяет абсолютное позиционирование кнопки */
+    top: 115%; /* Размещает кнопку ниже изображения */
+    left: 28%; /* Размещает кнопку немного левее центра */
+    transform: translateY(10px); /* Смещает кнопку чуть ниже изображения */
+}
+
+/* Эффект при наведении на кнопку удаления */
+.deleteButton:hover {
+    background-color: #d32f2f; /* Делает фон кнопки темнее при наведении */
+}
+
+/* Стили для кнопки при фокусе */
+.deleteButton:focus {
+    outline: none; /* Убирает стандартную обводку при фокусе */
+}
+
+/* Стили для кнопки просмотра личных данных */
 .personalDataButton {
-    background-color: rgba(40, 140, 239, 0.82);
-    margin-top: 20px;
-    padding: 10px 20px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s; /* Pāreja fona krāsai un mērogam */
+    background-color: rgba(40, 140, 239, 0.82); /* Полупрозрачный синий фон для кнопки */
+    margin-top: 20px; /* Добавляет отступ сверху */
+    padding: 10px 20px; /* Добавляет внутренние отступы для кнопки */
+    border: none; /* Убирает стандартную рамку у кнопки */
+    font-size: 16px; /* Устанавливает размер шрифта */
+    cursor: pointer; /* Меняет курсор на указатель при наведении */
+    border-radius: 5px; /* Делает углы кнопки закругленными */
+    transition: background-color 0.3s, transform 0.3s; /* Плавная анимация изменения цвета и масштаба */
 }
 
+/* Эффект при наведении на кнопку личных данных */
 .personalDataButton:hover {
-    background-color: #218838; /* Tumšāka fona krāsa peldošam efektam */
-    transform: scale(1.05); /* Liels peldošs efekts */
+    background-color: #218838; /* Делает фон кнопки зеленым при наведении */
+    transform: scale(1.05); /* Увеличивает кнопку при наведении */
 }
 
+/* Контейнер для личных данных */
 .personalDataContainer {
-    position: absolute;
-    font-size: 16px;
-    top: 1px;
-    left: 120%;
-    height: 700px;
-    width: 1200px;
-    background-size: cover;
-    border-radius: 10px;
-    padding: 20px;
-    z-index: 3;
-    overflow: hidden; /* Pārliecinās, ka ::before elements nepārplūst ārpus konteineram */
+    position: absolute; /* Позволяет абсолютное позиционирование контейнера */
+    font-size: 16px; /* Устанавливает размер шрифта для текста */
+    top: 1px; /* Размещает контейнер у верхнего края */
+    left: 120%; /* Размещает контейнер справа от изображения профиля */
+    height: 385px; /* Устанавливает высоту контейнера */
+    width: 300px; /* Устанавливает ширину контейнера */
+    background-size: cover; /* Масштабирует фон, чтобы он покрыл весь контейнер */
+    border-radius: 10px; /* Делает углы контейнера закругленными */
+    padding: 20px; /* Добавляет внутренние отступы внутри контейнера */
+    z-index: 3; /* Размещает контейнер над другими элементами */
+    overflow: hidden; /* Обрезает содержимое, выходящее за границы контейнера */
 }
 
+/* Псевдоэлемент для затемнения фона контейнера личных данных */
 .personalDataContainer::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: beige;
-    background-size: cover;
-    opacity: 0.8;
-    z-index: -1; /* Nodrošina, ka attēls ir aiz satura */
+    content: ""; /* Пустое содержание для псевдоэлемента */
+    position: absolute; /* Позволяет абсолютное позиционирование псевдоэлемента */
+    top: 0; /* Размещает псевдоэлемент у верхнего края контейнера */
+    left: 0; /* Размещает псевдоэлемент по левому краю контейнера */
+    height: 100%; /* Задает псевдоэлементу полную высоту контейнера */
+    width: 100%; /* Задает псевдоэлементу полную ширину контейнера */
+    background-color: beige; /* Устанавливает бежевый цвет фона */
+    background-size: cover; /* Масштабирует фон, чтобы он покрыл весь псевдоэлемент */
+    opacity: 0.8; /* Делает фон полупрозрачным */
+    z-index: -1; /* Размещает псевдоэлемент за содержимым контейнера */
 }
 
+/* Стили для текста в контейнере личных данных */
 .personalDataContainer > p {
-    color: #000000;
+    color: #000000; /* Устанавливает черный цвет текста */
+    margin: 15px 0; /* Добавляет отступы сверху и снизу для текста */
 }
 
-/* Paziņojumam blakus Save pogai */
-.successMessage {
-    color: #28a745; /* Zaļa krāsa */
-    margin-left: 200px;
-    margin-top: -30px; /* Atstarpe starp pogu un paziņojumu */
-    font-weight: bold; /* Bolds teksts */
-}
-
-.personalDataContainer p {
-    margin: 15px 0;
-}
-
+/* Стили для закрывающей кнопки в контейнере личных данных */
 .closeButton {
-    color: #000000;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    transition: color 0.3s; /* Pāreja krāsai */
+    color: #000000; /* Устанавливает черный цвет текста */
+    position: absolute; /* Позволяет абсолютное позиционирование кнопки */
+    top: 10px; /* Размещает кнопку в верхнем правом углу контейнера */
+    right: 10px; /* Размещает кнопку у правого края контейнера */
+    background: none; /* Убирает фон кнопки */
+    border: none; /* Убирает рамку кнопки */
+    font-size: 20px; /* Устанавливает размер шрифта */
+    cursor: pointer; /* Меняет курсор на указатель при наведении */
+    transition: color 0.3s; /* Плавная анимация изменения цвета */
 }
 
+/* Эффект при наведении на кнопку закрытия */
 .closeButton:hover {
-    color: #ffffff; /* Krāsa aizvērt pogai hover efektā */
+    color: #ffffff; /* Меняет цвет кнопки на белый при наведении */
 }
 
+/* Стили для кнопки редактирования данных */
 .editDataButton {
-    background-color: rgba(40, 140, 239, 0.91);
-    color: white;
-    padding: 10px 20px;
-    margin-top: 181px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s; /* Pāreja fona krāsai un mērogam */
+    background-color: rgba(40, 140, 239, 0.91); /* Полупрозрачный синий фон для кнопки */
+    color: white; /* Устанавливает белый цвет текста */
+    padding: 10px 20px; /* Добавляет внутренние отступы для кнопки */
+    margin-top: 181px; /* Добавляет отступ сверху */
+    border: none; /* Убирает рамку у кнопки */
+    border-radius: 5px; /* Делает углы кнопки закругленными */
+    cursor: pointer; /* Меняет курсор на указатель при наведении */
+    transition: background-color 0.3s, transform 0.3s; /* Плавная анимация изменения цвета и масштаба */
 }
 
+/* Эффект при наведении на кнопку редактирования */
 .editDataButton:hover {
-    background-color: #218838; /* Tumšāka fona krāsa peldošam efektam */
-    transform: scale(1.05); /* Liels peldošs efekts */
+    background-color: #218838; /* Делает фон кнопки зеленым при наведении */
+    transform: scale(1.05); /* Увеличивает кнопку при наведении */
 }
 
-/* Jauns stils formām */
+/* Стили для формы профиля */
 .profileForm {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Устанавливает контейнер как flexbox */
+    flex-direction: column; /* Располагает дочерние элементы вертикально */
 }
 
+/* Группировка элементов формы */
 .formGroup {
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* Добавляет отступ снизу для каждой группы */
 }
 
+/* Стили для метки формы */
 .formGroup label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    display: block; /* Задает метке блочный тип отображения */
+    margin-bottom: 5px; /* Добавляет отступ снизу */
+    font-weight: bold; /* Делает текст жирным */
 }
 
+/* Стили для полей ввода и выбора */
 .formGroup input,
 .formGroup select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
+    width: 100%; /* Устанавливает ширину на 100% от родительского контейнера */
+    padding: 10px; /* Добавляет внутренние отступы */
+    border: 1px solid #ddd; /* Задает светлую рамку */
+    border-radius: 5px; /* Делает углы полей закругленными */
+    box-sizing: border-box; /* Включает отступы и рамки в общую ширину и высоту элемента */
 }
 
-/* Jauns stils formām */
+/* Стили для отключенных полей ввода */
 .profileForm input[disabled] {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Устанавливает светло-серый цвет фона */
 }
 
-/* styles.css or any CSS file */
-.save-button {
-    padding: 5px 10px;
-    font-size: 12px;
-
-    background-color: #4CAF50; /* Green */
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+/* Стили для кнопки сохранения */
+.saveButton {
+    position: absolute; /* Позволяет абсолютное позиционирование кнопки */
+    top: 90%; /* Размещает кнопку почти внизу контейнера */
+    padding: 10px 10px; /* Добавляет внутренние отступы */
+    width: 100px; /* Устанавливает ширину кнопки */
+    font-size: 14px; /* Устанавливает размер шрифта */
+    background-color: rgba(40, 140, 239, 0.82); /* Полупрозрачный синий фон для кнопки */
+    color: rgb(255, 255, 255); /* Устанавливает белый цвет текста */
+    border: none; /* Убирает рамку */
+    border-radius: 3px; /* Делает углы кнопки закругленными */
+    cursor: pointer; /* Меняет курсор на указатель при наведении */
 }
 
-.save-button:hover {
-    background-color: #45a049;
+/* Эффект при наведении на кнопку сохранения */
+.saveButton:hover {
+    background-color: #45a049; /* Делает фон кнопки темно-зеленым при наведении */
 }
 
-/* Reaģēt uz mazākiem ekrāniem */
+/* Стили для адаптации под маленькие экраны */
 @media screen and (max-width: 768px) {
     .profileContainer {
-        padding: 10px;
+        padding: 10px; /* Уменьшает отступы внутри контейнера */
     }
 
     .fullName {
-        font-size: 20px; /* Mazāks fonta izmērs */
-        top: 10%;
+        font-size: 20px; /* Уменьшает размер шрифта для имени пользователя */
+        top: 10%; /* Корректирует позицию имени на экране */
     }
 
     .profileImage {
-        width: 120px; /* Mazāks attēls */
-        height: 120px; /* Mazāks attēls */
+        width: 120px; /* Уменьшает ширину изображения профиля */
+        height: 120px; /* Уменьшает высоту изображения профиля */
     }
 
     .personalDataButton {
-        padding: 8px 15px; /* Mazāka poga */
-        font-size: 14px; /* Mazāks fonta izmērs */
+        padding: 8px 15px; /* Уменьшает внутренние отступы у кнопки */
+        font-size: 14px; /* Уменьшает размер шрифта кнопки */
     }
 
     .personalDataContainer {
-        top: 75%; /* Novietots zemāk */
-        width: 95%; /* Platums pielāgots mazākiem ekrāniem */
+        top: 75%; /* Корректирует позицию контейнера личных данных */
+        width: 95%; /* Уменьшает ширину контейнера на маленьких экранах */
     }
-
-    /* profile.module.css */
 
     .successMessage {
-        padding: 10px;
-        background-color: #4CAF50; /* Green background */
-        color: white; /* White text */
-        border-radius: 5px;
-        text-align: center;
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        z-index: 1000;
+        padding: 10px; /* Увеличивает отступы у уведомления */
+        background-color: #4CAF50; /* Зеленый фон для уведомления */
+        color: white; /* Белый цвет текста для уведомления */
+        border-radius: 5px; /* Делает углы уведомления закругленными */
+        text-align: center; /* Центрирует текст внутри блока */
+        position: fixed; /* Закрепляет уведомление на экране */
+        top: 10px; /* Размещает уведомление вверху экрана */
+        right: 10px; /* Размещает уведомление справа */
+        z-index: 1000; /* Размещает уведомление над другими элементами */
     }
 
-
     .fullName h2 {
-        font-size: 18px; /* Mazāks fonta izmērs mazākiem ekrāniem */
+        font-size: 18px; /* Уменьшает размер шрифта для заголовка имени на маленьких экранах */
     }
 }
 
+/* Стили для адаптации под очень маленькие экраны */
 @media screen and (max-width: 480px) {
     .profileImage {
-        width: 100px; /* Mazāks attēls */
-        height: 100px; /* Mazāks attēls */
+        width: 100px; /* Уменьшает ширину изображения профиля */
+        height: 100px; /* Уменьшает высоту изображения профиля */
     }
 
     .fullName {
-        font-size: 18px; /* Mazāks fonta izmērs */
-        top: 5%;
+        font-size: 18px; /* Уменьшает размер шрифта для имени пользователя */
+        top: 5%; /* Корректирует позицию имени на экране */
     }
 
     .personalDataButton {
-        padding: 6px 12px; /* Mazāka poga */
-        font-size: 12px; /* Mazāks fonta izmērs */
+        padding: 6px 12px; /* Уменьшает внутренние отступы у кнопки */
+        font-size: 12px; /* Уменьшает размер шрифта кнопки */
     }
 
     .personalDataContainer {
-        top: 70%; /* Novietots zemāk */
-        width: 100%; /* Platums pielāgots mazākiem ekrāniem */
+        top: 70%; /* Корректирует позицию контейнера личных данных */
+        width: 100%; /* Уменьшает ширину контейнера на маленьких экранах */
     }
 
     .successMessage {
-        margin-top: 2px; /* Mazāka atstarpe */
-        font-size: 12px; /* Mazāks fonta izmērs */
+        margin-top: 2px; /* Уменьшает отступ сверху для уведомления */
+        font-size: 12px; /* Уменьшает размер шрифта для уведомления */
     }
 
     .closeButton {
-        font-size: 16px; /* Mazāks fonta izmērs */
+        font-size: 16px; /* Уменьшает размер шрифта кнопки закрытия */
     }
 
     .fullName h2 {
-        font-size: 16px; /* Mazāks fonta izmērs vēl mazākiem ekrāniem */
+        font-size: 16px; /* Уменьшает размер шрифта для заголовка имени на очень маленьких экранах */
     }
-
-    .navHeader {
-
-    }
-
 }

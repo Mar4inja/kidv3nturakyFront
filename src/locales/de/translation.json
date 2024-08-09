@@ -84,5 +84,25 @@
     "loginFailed": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.",
     "noAccount": "Haben Sie kein Konto?",
     "register": "Registrieren"
+  },
+  "profile": {
+    "backgroundAlt": "Profil Hintergrund",
+    "welcome": "Willkommen, {{firstName}} {{lastName}}!",
+    "profilePhotoAlt": "Profilbild",
+    "personalData": "Persönliche Daten",
+    "updateSuccess": "Profil erfolgreich aktualisiert!",
+    "updateError": "Profilaktualisierung fehlgeschlagen!",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "age": "Alter",
+    "gender": "Geschlecht",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "email": "E-Mail-Adresse",
+    "edit": "Bearbeiten",
+    "saving": "Wird gespeichert...",
+    "save": "Speichern",
+    "deletePicture": "Bild löschen",
+    "profile": "Profil"
   }
 }

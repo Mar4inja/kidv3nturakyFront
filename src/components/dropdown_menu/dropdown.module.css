@@ -1,0 +1,44 @@
+/* DropdownProfile stili */
+.dropdownProfile {
+    position: absolute; /* Pozicionē dropdown izvēlni neatkarīgi no navigācijas paneļa */
+    top: 4rem; /* Vertikālais attālums no lietotāja ikonas */
+    right: 1rem; /* Horizontālais attālums no navigācijas paneļa labās malas */
+    width: 200px; /* Platums izvēlnei */
+    background-color: #ffffff; /* Dropdown fona krāsa */
+    border: 1px solid #ddd; /* Apmale */
+    border-radius: 8px; /* Noapaļoti stūri */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ēnu efekts */
+    z-index: 1000; /* Drošs z-index, lai dropdown būtu redzams virs citiem elementiem */
+}
+
+.dropdownProfile ul {
+    list-style: none; /* Noņem saraksta punktiņus */
+    padding: 0;
+    margin: 0;
+}
+
+.dropdownProfile li {
+    padding: 10px 15px; /* Iekšējais nošķīrums */
+    border-bottom: 1px solid #ddd; /* Apmale starp izvēlnes elementiem */
+    color: #000000; /* Teksta krāsa */
+    cursor: pointer; /* Kursoru maiņa uz rokas simbolu */
+}
+
+.dropdownProfile li:last-child {
+    border-bottom: none; /* Noņem apmali no pēdējā elementa */
+}
+
+.dropdownProfile li:hover {
+    background-color: #f0f0f0; /* Fona krāsa pārskata laikā */
+}
+
+.dropdownProfile a {
+    color: inherit; /* Manto krāsu no vecāka elementa */
+    text-decoration: none; /* Noņem apakšsvītru no saites */
+    display: block;
+}
+
+.dropdownProfile a:hover {
+    color: #333; /* Maina teksta krāsu uz pārskata laiku */
+}
+

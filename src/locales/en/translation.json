@@ -76,5 +76,24 @@
     "register": "Register",
     "profile": "Profile",
     "logout": "Log Out"
-  }
+  },
+  "profile": {
+    "backgroundAlt": "Profile Background",
+    "welcome": "Welcome, {{firstName}} {{lastName}}!",
+    "profilePhotoAlt": "Profile Photo",
+    "personalData": "Personal Data",
+    "updateSuccess": "Profile updated successfully!",
+    "updateError": "Profile update failed!",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "age": "Age",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "email": "Email",
+    "edit": "Edit",
+    "saving": "Saving...",
+    "save": "Save",
+    "deletePicture": "Delete Picture"
+}
 }

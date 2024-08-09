@@ -5,28 +5,24 @@
 }
 
 .languageSelector {
-    position: absolute;
-    left: 130%;
-    top: 20px;
+    position: relative; /* Важно для корректного позиционирования выпадающего меню */
 }
 
-/* Button to toggle the dropdown */
 .iconButton {
     background: none;
     border: none;
-    color: #fff; /* White color for the icon */
-    font-size: 42px; /* Size of the icon */
+    color: #fff;
+    font-size: 42px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Dropdown menu styling */
 .dropdownMenu {
     position: absolute;
-    top: 100%; /* Position dropdown below the button */
-    right: 0; /* Align the dropdown to the right */
+    top: 100%;
+    right: 0;
     background-color: rgba(1, 0, 7, 0.58);
     border: 1px solid rgb(119, 112, 18);
     border-radius: 10px;
@@ -36,11 +32,10 @@
     padding: 5px 0;
 }
 
-/* Dropdown items styling */
 .dropdownItem {
     background: none;
     border: none;
-    color: #fff; /* White text color */
+    color: #fff;
     padding: 8px 10px;
     text-align: left;
     font-size: 14px;
@@ -50,13 +45,13 @@
 }
 
 .dropdownItem:hover {
-    background-color: #b3ff00; /* Highlight color on hover */
-    color: #01000794; /* Text color on hover */
+    background-color: #b3ff00;
+    color: #01000794;
 }
 
-/* Icon styling */
 .icon {
     font-size: 26px;
+ 
 }
 
 .icon:hover {
